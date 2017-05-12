@@ -7,8 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 OwnerGroup.destroy_all
+Profile.destroy_all
 User.destroy_all
 House.destroy_all
+
 
 u1 = User.create({
 email: 'rob@gmail.com',
@@ -27,6 +29,8 @@ email: 'bill@gmail.com',
 password: '12345678',
 password_confirmation: '12345678'
   })
+
+
 
 h1 = House.create({
   address: '23 Castle Terrace',
@@ -73,4 +77,29 @@ house: h1
 OwnerGroup.create({
 user: u2,
 house: h3
+  })
+
+
+Profile.create({
+  user: u1,
+  first_name: 'rob',
+  last_name:  'brice',
+  address: '34 The Big Street',
+  image: 'url_placeholder'
+  })
+
+Profile.create({
+  user: u2,
+  first_name: 'sue',
+  last_name:  'aitchison',
+  address: '21 Roller Street',
+  image: 'url_placeholder'
+  })
+
+Profile.create({
+  user: u3,
+  first_name: 'bill',
+  last_name:  'smith',
+  address: '101 Shard Street',
+  image: 'url_placeholder'
   })

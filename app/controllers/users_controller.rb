@@ -6,6 +6,13 @@ class UsersController < ApplicationController
 
     render json: users.as_json({
       include: {
+
+        profiles: {
+          only:[:first_name, :last_name, :address, :image]
+        
+
+
+        },
         owner_groups: {
           include: {
             house: {
