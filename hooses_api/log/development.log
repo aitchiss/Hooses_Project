@@ -2259,3 +2259,13 @@ Processing by OwnerGroupsController#show_houses as HTML
 Completed 200 OK in 70ms (Views: 0.6ms | ActiveRecord: 11.4ms)
 
 
+Started GET "/api/owner_groups/user/14" for 127.0.0.1 at 2017-05-12 15:57:57 +0100
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OwnerGroupsController#show_houses as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+Completed 200 OK in 66ms (Views: 0.8ms | ActiveRecord: 11.0ms)
+
+
