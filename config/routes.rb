@@ -4,6 +4,10 @@ devise_for :users
 
   scope path: "api" do
     resources :users, defaults: {format: :json}
+
+    get '/owner_groups/user/:id' => 'owner_groups#show_houses'
+
+    get '/owner_groups/house/:id' => 'owner_groups#show_users'
   end
 
 

@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :owner_groups
   has_many :profiles
+  has_many :topics
+  has_many :messages
   has_many :houses, through: :owner_groups, source: :houses 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+Message.destroy_all
+Topic.destroy_all
 OwnerGroup.destroy_all
 Profile.destroy_all
 User.destroy_all
@@ -102,4 +103,62 @@ Profile.create({
   last_name:  'smith',
   address: '101 Shard Street',
   image: 'url_placeholder'
+  })
+
+t1 = Topic.create({
+  user: u1,
+  house: h1,
+  title: "leaky pipe",
+  status: "open"
+  })
+
+t2 = Topic.create({
+  user: u2,
+  house: h2,
+  title: "roof repairs",
+  status: "open"
+  })
+
+t3 = Topic.create({
+  user: u3,
+  house: h3,
+  title: "smelly drain",
+  status: "open"
+  })
+
+t4 = Topic.create({
+  user: u1,
+  house: h3,
+  title: "take your bins out",
+  status: "open"
+  })
+
+m1 = Message.create({
+  user: u1,
+  topic: t1,
+  content: "will somebody please help me sort this leaky pipe"
+  })
+
+m2 = Message.create({
+  user: u3,
+  topic: t1,
+  content: "I already called someone - don't worry"
+  })
+
+m3 = Message.create({
+  user: u2,
+  topic: t2,
+  content: "the roof has caved in - please send help"
+  })
+
+m4 = Message.create({
+  user: u3,
+  topic: t3,
+  content: "the bin situation is getting bad"
+  })
+
+m5 = Message.create({
+  user: u1,
+  topic: t3,
+  content: "sorry about that"
   })

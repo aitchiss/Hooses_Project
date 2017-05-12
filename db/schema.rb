@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512110954) do
+ActiveRecord::Schema.define(version: 20170512125620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20170512110954) do
     t.string "post_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "topic_id"
+    t.bigint "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_messages_on_topic_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "owner_groups", force: :cascade do |t|
@@ -42,6 +52,17 @@ ActiveRecord::Schema.define(version: 20170512110954) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "topics", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "house_id"
+    t.string "title"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_topics_on_house_id"
+    t.index ["user_id"], name: "index_topics_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,7 +80,11 @@ ActiveRecord::Schema.define(version: 20170512110954) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "messages", "topics"
+  add_foreign_key "messages", "users"
   add_foreign_key "owner_groups", "houses"
   add_foreign_key "owner_groups", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "topics", "houses"
+  add_foreign_key "topics", "users"
 end
