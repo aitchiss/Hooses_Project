@@ -1,0 +1,21 @@
+*{
+  font-family: 'Roboto', sans-serif;
+}
+
+.container-responsive{
+  background: rgb(237, 241, 245);
+  padding: 10px;
+}
+
+.white-background{
+  background-color:#FFFFFF;
+}
+
+.panel-default>.panel-heading{
+ background-color:#FFFFFF; 
+}
+
+html{
+
+  background-color: rgb(237, 241, 245);
+}

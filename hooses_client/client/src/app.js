@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import HomeContainer from './containers/HomeContainer.jsx'
 
 window.onload = function () {
   ReactDOM.render(
-    <h1>Hello Hooses.com!</h1>,
+    <HomeContainer/>,
     document.getElementById('app')
   );
 };
