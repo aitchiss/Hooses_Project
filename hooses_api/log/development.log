@@ -3006,3 +3006,89 @@ Processing by UsersController#index as JSON
 Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 1.2ms)
 
 
+Started PUT "/api/users/7/profile" for 127.0.0.1 at 2017-05-13 12:04:54 +0100
+Processing by UsersController#edit_profile as */*
+  Parameters: {"first_name"=>"Barry", "last_name"=>"Testcase", "address"=>"15 High Street", "image"=>"testimage.png", "id"=>"7", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 ORDER BY "profiles"."id" ASC LIMIT $2[0m  [["user_id", 7], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 136ms (ActiveRecord: 10.0ms)
+
+
+  
+NameError (undefined local variable or method `profile_params' for #<UsersController:0x007fe194f29720>):
+  
+app/controllers/users_controller.rb:51:in `edit_profile'
+Started PUT "/api/users/7/profile" for 127.0.0.1 at 2017-05-13 12:05:31 +0100
+Processing by UsersController#edit_profile as */*
+  Parameters: {"first_name"=>"Barry", "last_name"=>"Testcase", "address"=>"15 High Street", "image"=>"testimage.png", "id"=>"7", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 ORDER BY "profiles"."id" ASC LIMIT $2[0m  [["user_id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 10.9ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/users_controller.rb:51:in `edit_profile'
+Started PUT "/api/users/7/profile" for 127.0.0.1 at 2017-05-13 12:06:25 +0100
+Processing by UsersController#edit_profile as */*
+  Parameters: {"first_name"=>"Barry", "last_name"=>"Testcase", "address"=>"15 High Street", "image"=>"testimage.png", "id"=>"7", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 ORDER BY "profiles"."id" ASC LIMIT $2[0m  [["user_id", 7], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 7]]
+Completed 200 OK in 40ms (Views: 0.2ms | ActiveRecord: 9.4ms)
+
+
+Started PUT "/api/users/7/profile" for 127.0.0.1 at 2017-05-13 12:07:28 +0100
+Processing by UsersController#edit_profile as */*
+  Parameters: {"first_name"=>"Barry", "last_name"=>"Testcase", "address"=>"15 High Street", "image"=>"testimage.png", "id"=>"7", "user"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 ORDER BY "profiles"."id" ASC LIMIT $2[0m  [["user_id", 7], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 10.1ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/users_controller.rb:51:in `edit_profile'
+Started PUT "/api/users/7/profile" for 127.0.0.1 at 2017-05-13 12:07:45 +0100
+Processing by UsersController#edit_profile as */*
+  Parameters: {"first_name"=>"Barry", "last_name"=>"Testcase", "address"=>"15 High Street", "image"=>"testimage.png", "id"=>"7", "user"=>{}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.7ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 ORDER BY "profiles"."id" ASC LIMIT $2[0m  [["user_id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[33mUPDATE "profiles" SET "first_name" = $1, "updated_at" = $2 WHERE "profiles"."id" = $3[0m  [["first_name", "Barry"], ["updated_at", "2017-05-13 11:07:45.741781"], ["id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 7]]
+Completed 200 OK in 55ms (Views: 0.2ms | ActiveRecord: 19.0ms)
+
+
+Started PUT "/api/users/7/profile" for 127.0.0.1 at 2017-05-13 12:08:15 +0100
+Processing by UsersController#edit_profile as */*
+  Parameters: {"first_name"=>"Barry", "last_name"=>"Testcase", "address"=>"15 High Street", "image"=>"testimage.png", "id"=>"7", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT  "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 ORDER BY "profiles"."id" ASC LIMIT $2[0m  [["user_id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "profiles" SET "last_name" = $1, "updated_at" = $2 WHERE "profiles"."id" = $3[0m  [["last_name", "Testcase"], ["updated_at", "2017-05-13 11:08:16.036979"], ["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "profiles" SET "address" = $1, "updated_at" = $2 WHERE "profiles"."id" = $3[0m  [["address", "15 High Street"], ["updated_at", "2017-05-13 11:08:16.039344"], ["id", 12]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE "profiles" SET "image" = $1, "updated_at" = $2 WHERE "profiles"."id" = $3[0m  [["image", "testimage.png"], ["updated_at", "2017-05-13 11:08:16.041513"], ["id", 12]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 7]]
+Completed 200 OK in 45ms (Views: 0.2ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/api/users" for 127.0.0.1 at 2017-05-13 12:08:23 +0100
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 7]]
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 9]]
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
