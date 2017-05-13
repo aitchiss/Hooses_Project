@@ -12,9 +12,13 @@ devise_for :users
     put 'users/:id/profile' => 'users#edit_profile'
 
 
+    ##OWNER GROUP ROUTES
 
+    #default rails routes gives us create
+    resources :owner_groups, defaults: {format: :json}
+    #custom route to show all houses belonging to a user via owner group
     get '/owner_groups/user/:id' => 'owner_groups#show_houses'
-
+    #custom route to show all users associated with a house via owner group
     get '/owner_groups/house/:id' => 'owner_groups#show_users'
 
     ## HOUSES
