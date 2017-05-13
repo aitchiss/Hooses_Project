@@ -18,20 +18,21 @@ return (
       <div className="navbar-header">
         <button type="button" className="navbar-toggle collapsed bs-example-navbar-collapse-1" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span className="sr-only">Toggle navigation</span>
-          <span className="icon-bar">Community</span>
-          <span className="icon-bar">About</span>
-          <span className="icon-bar">Sign Out</span>
+          <span className="icon-bar"></span>
+          <span className="icon-bar"></span>
+          <span className="icon-bar"></span>
         </button>
         <a className="navbar-brand" href="#">Hooses</a>
       </div>
 
-    
-        <ul className="nav navbar-nav navbar-right bs-example-navbar-collapse-1">
+
+    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul className="nav navbar-nav navbar-right">
           <li>Community</li>
           <li>About</li>
           <li>Sign Out</li>
         </ul>
-
+    </div>
 
    
   </nav>

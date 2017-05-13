@@ -22552,21 +22552,9 @@ var NavBar = function (_React$Component) {
               { className: "sr-only" },
               "Toggle navigation"
             ),
-            _react2.default.createElement(
-              "span",
-              { className: "icon-bar" },
-              "Community"
-            ),
-            _react2.default.createElement(
-              "span",
-              { className: "icon-bar" },
-              "About"
-            ),
-            _react2.default.createElement(
-              "span",
-              { className: "icon-bar" },
-              "Sign Out"
-            )
+            _react2.default.createElement("span", { className: "icon-bar" }),
+            _react2.default.createElement("span", { className: "icon-bar" }),
+            _react2.default.createElement("span", { className: "icon-bar" })
           ),
           _react2.default.createElement(
             "a",
@@ -22575,22 +22563,26 @@ var NavBar = function (_React$Component) {
           )
         ),
         _react2.default.createElement(
-          "ul",
-          { className: "nav navbar-nav navbar-right bs-example-navbar-collapse-1" },
+          "div",
+          { className: "collapse navbar-collapse", id: "bs-example-navbar-collapse-1" },
           _react2.default.createElement(
-            "li",
-            null,
-            "Community"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "About"
-          ),
-          _react2.default.createElement(
-            "li",
-            null,
-            "Sign Out"
+            "ul",
+            { className: "nav navbar-nav navbar-right" },
+            _react2.default.createElement(
+              "li",
+              null,
+              "Community"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "About"
+            ),
+            _react2.default.createElement(
+              "li",
+              null,
+              "Sign Out"
+            )
           )
         )
       );
