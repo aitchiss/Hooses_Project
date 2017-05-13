@@ -1,6 +1,13 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
+small{
+  font-size: 70%;
+}
+
+.panel-title>small>a{
+ color: #3097D1; 
+} 
 
 .container-responsive{
   background: rgb(237, 241, 245);

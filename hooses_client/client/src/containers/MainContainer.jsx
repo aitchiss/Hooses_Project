@@ -7,7 +7,7 @@ import CoOwners from '../components/CoOwners.jsx'
 import AllTopicsView from '../components/AllTopicsView.jsx'
 import Profile from '../components/Profile.jsx'
 
-class HomeContainer extends React.Component {
+class MainContainer extends React.Component {
 
 
   constructor(props){
@@ -76,6 +76,6 @@ return (
 
 
 
-export default HomeContainer
+export default MainContainer
 
 

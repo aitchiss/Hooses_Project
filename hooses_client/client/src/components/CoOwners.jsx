@@ -7,9 +7,9 @@ render(){
 
 return(
 
-  <div className="panel panel-default">
+  <div className="panel panel-success">
     <div className="panel-heading">
-     <div className="panel-title">Owners</div>
+     <div className="panel-title">Owners &#183; <small><a href="#">edit</a></small></div>
     </div>
 
     <div className="panel-body">

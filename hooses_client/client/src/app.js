@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HomeContainer from './containers/HomeContainer.jsx'
+import MainContainer from './containers/MainContainer.jsx'
 
 window.onload = function () {
   ReactDOM.render(
-    <HomeContainer/>,
+    <MainContainer/>,
     document.getElementById('app')
   );
 };

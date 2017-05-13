@@ -7,16 +7,14 @@ render(){
 
 return(
 
-  <div className="panel panel-primary">
+  <div className="panel panel-success">
     <div className="panel-heading">
-      <h3 className="panel-title">My Houses</h3>
+      <div className="panel-title">My Houses &#183; <small><a href="#">edit</a></small></div>
     </div>
     <div className="panel-body">
-    <ul className='list-group'>
-      <li className='list-group-item'>House 1</li>
-      <li className='list-group-item'>House 2</li>
-      <li className='list-group-item'>House 3</li>
-    </ul>
+      <div>House 1</div>
+      <div>House 2</div>
+      <div>House 3</div>
     </div>
   </div>
 

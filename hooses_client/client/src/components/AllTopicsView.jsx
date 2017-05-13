@@ -13,7 +13,7 @@ return(
     </div>
 
     <div className="panel-body">
-      the list of topics goes in here by scrolling through the array of topics. We can further subdivide boostraps grid to give the layout of this
+      the list of topics goes in here by scrolling through the array of topics. We can further subdivide boostrap's grid to give the layout we need for this
 
 
       </div>
