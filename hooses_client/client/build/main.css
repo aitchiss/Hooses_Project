@@ -37,9 +37,10 @@ background-color: #3097D1;
 }
 
 .navbar-nav>li{
-padding-top: 15px;
-padding-bottom: 15px;
+padding-top: 17px;
+padding-bottom: 17px;
 padding-left:80px;
+font-size: 90%;
 }
 
 .navbar-default .navbar-toggle .icon-bar{
@@ -56,11 +57,7 @@ padding-left:80px;
     padding-top: 15px;
     padding-bottom: 5px;
     padding-left:10px;
-
 }
-
-
-
 
 .main-content{
   margin-top: 20px;
