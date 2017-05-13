@@ -12,7 +12,10 @@ body {
   background: rgb(237, 241, 245);
 }
 
-
+.main-content{
+  padding-left:12px;
+  padding-right:12px;
+}
 
 .navbar-default .navbar-brand{
   color: #FFFFFF;
@@ -25,7 +28,7 @@ background-color: #3097D1;
 .navbar .navbar-nav {
   display: inline-block;
   float: none;
-  padding-left: 16px;
+  padding-left: 30px;
   color: #FFFFFF;
 }
 
