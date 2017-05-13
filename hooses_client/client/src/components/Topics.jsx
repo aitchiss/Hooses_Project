@@ -1,6 +1,6 @@
 import React from 'react'
 
-class AllTopicsView extends React.Component{
+class Topics extends React.Component{
 
 
 render(){
@@ -14,8 +14,6 @@ return(
 
     <div className="panel-body">
       the list of topics goes in here by scrolling through the array of topics. We can further subdivide boostrap's grid to give the layout we need for this
-
-
       </div>
 
    </div>
@@ -24,4 +22,4 @@ return(
 
 }
 
-export default AllTopicsView
+export default Topics

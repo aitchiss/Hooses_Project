@@ -5,6 +5,29 @@ small{
   font-size: 70%;
 }
 
+
+
+body { 
+  padding-top: 60px; 
+  background: rgb(237, 241, 245);
+}
+
+.navbar{
+margin-bottom: 0px;
+}
+
+.navbar-default .navbar-brand{
+  color: #FFFFFF;
+}
+
+.navbar-default{
+background-color: #3097D1;
+}
+
+.main-content{
+  margin-top: 20px;
+}
+
 .panel-title>small>a{
  color: #3097D1; 
 } 

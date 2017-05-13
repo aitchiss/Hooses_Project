@@ -1,10 +1,9 @@
 import React from 'react'
+import NavBar from '../components/NavBar.jsx'
 import MyHouses from '../components/MyHouses.jsx'
-import ViewLinks from '../components/ViewLinks.jsx'
-import AddressTitle from '../components/AddressTitle.jsx'
-import KitchenTable from '../components/KitchenTable.jsx'
 import CoOwners from '../components/CoOwners.jsx'
-import AllTopicsView from '../components/AllTopicsView.jsx'
+import AddressTitle from '../components/AddressTitle.jsx'
+import OptionTabBar from '../components/OptionTabBar.jsx'
 import Profile from '../components/Profile.jsx'
 
 class MainContainer extends React.Component {
@@ -22,6 +21,9 @@ render(){
 
 return (
 
+<div className="main-content">
+  <NavBar/>
+
   <div className="container-responsive">
 
   <div className="row">
@@ -35,13 +37,9 @@ return (
   <div className="col-md-7">
 
   <AddressTitle/>
+  <OptionTabBar/>
 
-  <ul className="nav nav-tabs">
-    <li role="presentation" className="active"><a href="#">Kitchen Table</a></li>
-    <li role="presentation"><a href="#">Topics</a></li>
-    <li role="presentation"><a href="#">Job Calls</a></li>
-    <li role="presentation"><a href="#">Expenditure</a></li>
-  </ul>
+
 
 
   </div>
@@ -60,6 +58,7 @@ return (
 
   </div>
 
+  </div>
 
 );
 
