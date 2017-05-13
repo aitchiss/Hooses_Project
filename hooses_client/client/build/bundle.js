@@ -9592,15 +9592,52 @@ var MainContainer = function (_React$Component) {
             'div',
             { className: 'col-md-3' },
             _react2.default.createElement(_MyHouses2.default, null),
-            _react2.default.createElement(_ViewLinks2.default, null),
             _react2.default.createElement(_CoOwners2.default, null)
           ),
           _react2.default.createElement(
             'div',
             { className: 'col-md-7' },
             _react2.default.createElement(_AddressTitle2.default, null),
-            _react2.default.createElement(_KitchenTable2.default, null),
-            _react2.default.createElement(_AllTopicsView2.default, null)
+            _react2.default.createElement(
+              'ul',
+              { className: 'nav nav-tabs' },
+              _react2.default.createElement(
+                'li',
+                { role: 'presentation', className: 'active' },
+                _react2.default.createElement(
+                  'a',
+                  { href: '#' },
+                  'Kitchen Table'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                { role: 'presentation' },
+                _react2.default.createElement(
+                  'a',
+                  { href: '#' },
+                  'Topics'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                { role: 'presentation' },
+                _react2.default.createElement(
+                  'a',
+                  { href: '#' },
+                  'Job Calls'
+                )
+              ),
+              _react2.default.createElement(
+                'li',
+                { role: 'presentation' },
+                _react2.default.createElement(
+                  'a',
+                  { href: '#' },
+                  'Expenditure'
+                )
+              )
+            )
           ),
           _react2.default.createElement(
             'div',
@@ -9812,7 +9849,7 @@ var CoOwners = function (_React$Component) {
         _react2.default.createElement(
           "div",
           { className: "panel-body" },
-          "pics and names goes in here"
+          "pics and names goes in here ... see thumbnails"
         )
       );
     }
@@ -9876,7 +9913,7 @@ var KitchenTable = function (_React$Component) {
         _react2.default.createElement(
           "div",
           { className: "panel-body" },
-          "This is where the blog stuff goes"
+          "This is where the blog stuff goes - see bootstrap media layout"
         )
       );
     }

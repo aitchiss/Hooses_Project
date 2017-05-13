@@ -28,6 +28,7 @@ return (
 
   <div className="col-md-3">
     <MyHouses/>
+    <ViewLinks/>
     <CoOwners/>
   </div>
   
@@ -35,14 +36,8 @@ return (
   <div className="col-md-7">
 
   <AddressTitle/>
-
-  <ul className="nav nav-tabs">
-    <li role="presentation" className="active"><a href="#">Kitchen Table</a></li>
-    <li role="presentation"><a href="#">Topics</a></li>
-    <li role="presentation"><a href="#">Job Calls</a></li>
-    <li role="presentation"><a href="#">Expenditure</a></li>
-  </ul>
-
+  <KitchenTable/>
+  <AllTopicsView/>
 
   </div>
   

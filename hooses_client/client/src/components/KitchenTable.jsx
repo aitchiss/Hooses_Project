@@ -13,7 +13,7 @@ return(
     </div>
 
     <div className="panel-body">
-        This is where the blog stuff goes
+        This is where the blog stuff goes - see bootstrap media layout
       </div>
 
    </div>

@@ -13,7 +13,7 @@ return(
     </div>
 
     <div className="panel-body">
-        pics and names goes in here
+        pics and names goes in here ... see thumbnails 
       </div>
 
    </div>
