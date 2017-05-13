@@ -12,9 +12,7 @@ body {
   background: rgb(237, 241, 245);
 }
 
-.navbar{
-margin-bottom: 0px;
-}
+
 
 .navbar-default .navbar-brand{
   color: #FFFFFF;
@@ -23,6 +21,43 @@ margin-bottom: 0px;
 .navbar-default{
 background-color: #3097D1;
 }
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  padding-left: 16px;
+  color: #FFFFFF;
+}
+
+ .navbar-right{
+  margin-right: 30px;
+}
+
+.navbar-nav>li{
+padding-top: 15px;
+padding-bottom: 15px;
+padding-left:80px;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+  background-color:#FFFFFF;
+}
+
+.navbar-default .navbar-toggle:focus,
+ .navbar-default .navbar-toggle:hover{
+  background-color: #3097D1;
+ }
+
+@media (max-width: 768px) {
+    .navbar-nav>li{
+    padding-top: 15px;
+    padding-bottom: 5px;
+    padding-left:10px;
+
+}
+
+
+
 
 .main-content{
   margin-top: 20px;

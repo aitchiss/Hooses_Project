@@ -30,7 +30,7 @@ return (
         <ul className="nav navbar-nav navbar-right">
           <li>Community</li>
           <li>About</li>
-          <li>Sign Out</li>
+          <li className="end-li">Sign Out</li>
         </ul>
     </div>
 
