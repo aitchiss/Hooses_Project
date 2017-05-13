@@ -15,6 +15,12 @@ class HousesController < ApplicationController
     render json: house
   end
 
+  def update
+    house = House.find(params[:id])
+    house.update_attributes(house_params)
+    render json: house
+  end
+
   def house_params
     params.require(:house).permit([:address, :post_code])
   end

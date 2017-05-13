@@ -3166,3 +3166,27 @@ Processing by HousesController#create as JSON
 Completed 200 OK in 18ms (Views: 0.6ms | ActiveRecord: 6.3ms)
 
 
+Started GET "/api/houses/7" for 127.0.0.1 at 2017-05-13 12:21:30 +0100
+Processing by HousesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 4.6ms)
+
+
+Started PUT "/api/houses/7" for 127.0.0.1 at 2017-05-13 12:21:39 +0100
+Processing by HousesController#update as JSON
+  Parameters: {"house"=>{"address"=>"test address change", "post_code"=>"EH44444"}, "id"=>"7"}
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "houses" SET "address" = $1, "post_code" = $2, "updated_at" = $3 WHERE "houses"."id" = $4[0m  [["address", "test address change"], ["post_code", "EH44444"], ["updated_at", "2017-05-13 11:21:39.114939"], ["id", 7]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/houses/7" for 127.0.0.1 at 2017-05-13 12:21:41 +0100
+Processing by HousesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
