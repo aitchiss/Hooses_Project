@@ -10,7 +10,7 @@ class OptionTabBar extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      selectedView: 'Kitchen Table'
+      selectedView: 'KitchenTable'
     }
   }
 
@@ -33,13 +33,24 @@ class OptionTabBar extends React.Component {
 
   render () {
 
-      let view = null
+    let view;
 
-      if (this.state.selectedView === 'KitchenTable'){
-        view = <KitchenTable/>
-      }
-
-
+    switch(this.state.selectedView) {
+      case 'KitchenTable':
+      view = <KitchenTable/>
+      break;  
+      case 'Topics':
+      view = <Topics/>
+      break;
+      case 'JobCalls':
+      view = <JobCalls/>
+      break;
+      case 'Expenditure':
+      view = <Expenditure/>
+      break;        
+      default:
+      view = <KitchenTable/>
+    }
 
     return (
 
@@ -51,23 +62,13 @@ class OptionTabBar extends React.Component {
       <li><a onClick={this.expenditure.bind(this)}>Expenditure</a></li>
       </ul>
 
-      <h2>{this.state.selectedView}</h2>
       <div>{view}</div>
-
-
-
 
       </div>
 
-
       )
-
-
   }
 
-
 }
-
-
 
 export default OptionTabBar
