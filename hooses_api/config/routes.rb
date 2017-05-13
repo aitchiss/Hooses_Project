@@ -5,12 +5,17 @@ devise_for :users
   scope path: "api" do
     resources :users, defaults: {format: :json}
 
+    ##PROFILE ROUTES - ATTACHED TO INDIVIDUAL USER
+    # create a profile
+    post '/users/:id/profile' => 'users#create_profile'
+   
+
+
+
     get '/owner_groups/user/:id' => 'owner_groups#show_houses'
 
     get '/owner_groups/house/:id' => 'owner_groups#show_users'
   end
 
-
-  resources :users
 
 end
