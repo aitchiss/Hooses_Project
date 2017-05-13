@@ -25,13 +25,28 @@ class UsersController < ApplicationController
     })
   end
 
+  ## NEED TO MAKE SURE ONLY EVER HAS ONE PROFILE
   def create_profile
     user = User.find(params[:id])
+    user_profiles = user.profiles
 
-    profile = Profile.create({
-      user: user,
-      first_name: params[:first_name]
-      })
+
+    if user_profiles.length == 0
+
+      profile = Profile.create({
+        user: user,
+        first_name: params[:first_name],
+        last_name: params[:last_name],
+        address: params[:address],
+        image: params[:image]
+        })
+
+    end
+  end
+
+  def edit_profile
+
+
   end
 
 

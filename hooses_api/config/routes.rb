@@ -8,7 +8,8 @@ devise_for :users
     ##PROFILE ROUTES - ATTACHED TO INDIVIDUAL USER
     # create a profile
     post '/users/:id/profile' => 'users#create_profile'
-   
+    # edit a profile
+    put 'users/:id/profile' => 'users#edit_profile'
 
 
 
