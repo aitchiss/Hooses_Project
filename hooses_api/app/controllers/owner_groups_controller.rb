@@ -33,6 +33,22 @@ class OwnerGroupsController < ApplicationController
 
     user_houses = OwnerGroup.where({:user_id => params[:user_id]})
 
+    #return back a list of all that users houses - seems most useful option?
+    render json: user_houses.as_json({
+      include: {
+        house:{
+          only: [:address, :post_code]
+        }
+      }
+    })
+  end
+
+  def destroy
+    owner_group = OwnerGroup.find(params[:id])
+    user = owner_group.user
+    user_houses = OwnerGroup.where({:user_id => user.id})
+    owner_group.destroy!
+
     render json: user_houses.as_json({
       include: {
         house:{
