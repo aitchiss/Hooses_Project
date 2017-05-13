@@ -16,6 +16,9 @@ devise_for :users
     get '/owner_groups/user/:id' => 'owner_groups#show_houses'
 
     get '/owner_groups/house/:id' => 'owner_groups#show_users'
+
+    ## HOUSES
+    resources :houses, defaults: {format: :json}
   end
 
 

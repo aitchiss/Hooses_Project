@@ -1,11 +1,23 @@
 class HousesController < ApplicationController
 
-def index
+  def index
+    houses = House.all
+    render json: houses
+  end
 
-houses = House.all
-render json: houses
+  def show
+    house = House.find(params[:id])
+    render json: house
+  end
 
-end
+  def create
+    house = House.create(house_params)
+    render json: house
+  end
+
+  def house_params
+    params.require(:house).permit([:address, :post_code])
+  end
 
 
 end

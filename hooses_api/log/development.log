@@ -3092,3 +3092,77 @@ Processing by UsersController#index as JSON
 Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/api/houses" for 127.0.0.1 at 2017-05-13 12:11:00 +0100
+Processing by HousesController#index as JSON
+  [1m[36mHouse Load (0.6ms)[0m  [1m[34mSELECT "houses".* FROM "houses"[0m
+Completed 200 OK in 17ms (Views: 5.8ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/houses/7" for 127.0.0.1 at 2017-05-13 12:11:34 +0100
+Processing by HousesController#show as JSON
+  Parameters: {"id"=>"7"}
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/api/houses" for 127.0.0.1 at 2017-05-13 12:13:17 +0100
+Processing by HousesController#create as JSON
+  Parameters: {"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX", "house"=>{"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX"}}
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 3.1ms)
+
+
+  
+NameError (undefined local variable or method `house_params' for #<HousesController:0x007fe19811cbd8>
+Did you mean?  house_path):
+  
+app/controllers/houses_controller.rb:14:in `create'
+Started POST "/api/houses" for 127.0.0.1 at 2017-05-13 12:13:34 +0100
+Processing by HousesController#create as JSON
+  Parameters: {"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX", "house"=>{"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX"}}
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 3.6ms)
+
+
+  
+NameError (undefined local variable or method `houses_params' for #<HousesController:0x007fe19684b500>
+Did you mean?  houses_path):
+  
+app/controllers/houses_controller.rb:14:in `create'
+Started POST "/api/houses" for 127.0.0.1 at 2017-05-13 12:13:42 +0100
+Processing by HousesController#create as JSON
+  Parameters: {"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX", "house"=>{"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX"}}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 5.6ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/houses_controller.rb:14:in `create'
+Started POST "/api/houses" for 127.0.0.1 at 2017-05-13 12:16:10 +0100
+Processing by HousesController#create as JSON
+  Parameters: {"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX", "house"=>{"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX"}}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 5.7ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/controllers/houses_controller.rb:14:in `create'
+Started POST "/api/houses" for 127.0.0.1 at 2017-05-13 12:17:38 +0100
+Processing by HousesController#create as JSON
+  Parameters: {"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX", "house"=>{"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX"}}
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 5.0ms)
+
+
+  
+ArgumentError (When assigning attributes, you must pass a hash as an argument.):
+  
+app/controllers/houses_controller.rb:14:in `create'
+Started POST "/api/houses" for 127.0.0.1 at 2017-05-13 12:18:23 +0100
+Processing by HousesController#create as JSON
+  Parameters: {"house"=>{"address"=>"72 Netherby Road", "post_code"=>"EH5 3LX"}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "houses" ("address", "post_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["address", "72 Netherby Road"], ["post_code", "EH5 3LX"], ["created_at", "2017-05-13 11:18:23.397529"], ["updated_at", "2017-05-13 11:18:23.397529"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 18ms (Views: 0.6ms | ActiveRecord: 6.3ms)
+
+
