@@ -8,6 +8,12 @@ class MessagesController < ApplicationController
 
   end
 
+  def update
+    message = Message.find(params[:id])
+    message.update_attributes(message_params)
+    render json: message
+  end
+
   def message_params
     params.require(:message).permit([:user_id, :topic_id, :content])
   end
