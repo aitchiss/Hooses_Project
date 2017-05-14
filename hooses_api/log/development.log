@@ -3603,3 +3603,21 @@ Processing by TopicsController#show as JSON
 Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 0.6ms)
 
 
+Started DELETE "/api/messages/16" for 127.0.0.1 at 2017-05-14 11:19:13 +0100
+Processing by MessagesController#destroy as JSON
+  Parameters: {"id"=>"16"}
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 16ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/api/topics/10" for 127.0.0.1 at 2017-05-14 11:19:18 +0100
+Processing by TopicsController#show as JSON
+  Parameters: {"id"=>"10"}
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."topic_id" = $1[0m  [["topic_id", 10]]
+Completed 200 OK in 24ms (Views: 0.5ms | ActiveRecord: 4.9ms)
+
+

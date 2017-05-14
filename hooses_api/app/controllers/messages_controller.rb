@@ -14,6 +14,11 @@ class MessagesController < ApplicationController
     render json: message
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    message.destroy!
+  end
+
   def message_params
     params.require(:message).permit([:user_id, :topic_id, :content])
   end
