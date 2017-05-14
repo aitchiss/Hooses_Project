@@ -3426,3 +3426,19 @@ Processing by TopicsController#create as JSON
 Completed 200 OK in 53ms (Views: 0.4ms | ActiveRecord: 20.5ms)
 
 
+Started GET "/api/houses/8" for 127.0.0.1 at 2017-05-14 10:40:22 +0100
+Processing by HousesController#show as JSON
+  Parameters: {"id"=>"8"}
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTopic Load (1.7ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."house_id" = $1[0m  [["house_id", 8]]
+Completed 200 OK in 44ms (Views: 0.2ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/api/houses/8" for 127.0.0.1 at 2017-05-14 10:40:38 +0100
+Processing by HousesController#show as JSON
+  Parameters: {"id"=>"8"}
+  [1m[36mHouse Load (0.2ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTopic Load (0.6ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."house_id" = $1[0m  [["house_id", 8]]
+Completed 200 OK in 36ms (Views: 0.3ms | ActiveRecord: 9.9ms)
+
+

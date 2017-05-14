@@ -7,7 +7,13 @@ class HousesController < ApplicationController
 
   def show
     house = House.find(params[:id])
-    render json: house
+    render json: house.as_json({
+      include: {
+        topics: {
+          only: [:title, :status]
+        }
+      }
+      })
   end
 
   def create
