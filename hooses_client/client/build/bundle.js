@@ -10098,7 +10098,7 @@ var NavBar = function (_React$Component) {
           ),
           _react2.default.createElement(
             "a",
-            { className: "navbar-brand", href: "#" },
+            { className: "navbar-brand", href: "http://localhost:3000/#/app" },
             "Hooses"
           )
         ),
@@ -26329,18 +26329,44 @@ var WelcomeContainer = function (_React$Component) {
           { className: "container-responsive" },
           _react2.default.createElement(
             "div",
-            { className: "row" },
+            { className: "hero-title" },
+            "care for shared property ... easily"
+          ),
+          _react2.default.createElement(
+            "form",
+            { className: "form-signin" },
+            _react2.default.createElement(
+              "h2",
+              { className: "form-signin-heading" },
+              "Please sign in"
+            ),
+            _react2.default.createElement(
+              "label",
+              { className: "sr-only" },
+              "Email address"
+            ),
+            _react2.default.createElement("input", { type: "email", id: "inputEmail", className: "form-control", placeholder: "Email address", required: true, autoFocus: true }),
+            _react2.default.createElement(
+              "label",
+              { className: "sr-only" },
+              "Password"
+            ),
+            _react2.default.createElement("input", { type: "password", id: "inputPassword", className: "form-control", placeholder: "Password", required: true }),
             _react2.default.createElement(
               "div",
-              { className: "col-md-2" },
+              { className: "checkbox" },
               _react2.default.createElement(
-                "h1",
+                "label",
                 null,
-                "Welcome"
+                _react2.default.createElement("input", { type: "checkbox", id: "remember-me", value: "remember-me" }),
+                "Remember Me"
               )
             ),
-            _react2.default.createElement("div", { className: "col-md-8" }),
-            _react2.default.createElement("div", { className: "col-md-2" })
+            _react2.default.createElement(
+              "button",
+              { className: "btn btn-lg btn-primary btn-block", type: "submit" },
+              "Sign in"
+            )
           )
         )
       );

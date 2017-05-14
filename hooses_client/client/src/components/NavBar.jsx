@@ -22,7 +22,7 @@ return (
           <span className="icon-bar"></span>
           <span className="icon-bar"></span>
         </button>
-        <a className="navbar-brand" href="#">Hooses</a>
+        <a className="navbar-brand" href="http://localhost:3000/#/app">Hooses</a>
       </div>
 
 
