@@ -27,6 +27,9 @@ devise_for :users
     ## TOPICS
     resources :topics, defaults: {format: :json}
 
+    ##MESSAGES
+    resources :messages, defaults: {format: :json}
+
   end
 
 

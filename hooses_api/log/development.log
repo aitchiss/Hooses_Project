@@ -3548,3 +3548,38 @@ Completed 404 Not Found in 2ms (ActiveRecord: 0.7ms)
 ActiveRecord::RecordNotFound (Couldn't find Topic with 'id'=13):
   
 app/controllers/topics_controller.rb:6:in `show'
+Started GET "/api/topics/12" for 127.0.0.1 at 2017-05-14 11:12:57 +0100
+Processing by TopicsController#show as JSON
+  Parameters: {"id"=>"12"}
+  [1m[36mTopic Load (0.2ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."topic_id" = $1[0m  [["topic_id", 12]]
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/api/topics/10" for 127.0.0.1 at 2017-05-14 11:13:01 +0100
+Processing by TopicsController#show as JSON
+  Parameters: {"id"=>"10"}
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."topic_id" = $1[0m  [["topic_id", 10]]
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/api/messages" for 127.0.0.1 at 2017-05-14 11:15:54 +0100
+Processing by MessagesController#create as JSON
+  Parameters: {"message"=>{"user_id"=>8, "topic_id"=>10, "content"=>"test adding a message"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTopic Load (0.2ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("topic_id", "user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["topic_id", 10], ["user_id", 8], ["content", "test adding a message"], ["created_at", "2017-05-14 10:15:54.346142"], ["updated_at", "2017-05-14 10:15:54.346142"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 64ms (Views: 0.3ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/api/topics/10" for 127.0.0.1 at 2017-05-14 11:16:01 +0100
+Processing by TopicsController#show as JSON
+  Parameters: {"id"=>"10"}
+  [1m[36mTopic Load (0.3ms)[0m  [1m[34mSELECT  "topics".* FROM "topics" WHERE "topics"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."topic_id" = $1[0m  [["topic_id", 10]]
+Completed 200 OK in 9ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+

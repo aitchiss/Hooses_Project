@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
     render json: topic.as_json({
       include: {
         messages: {
-          only: [:user_id, :content, :created_at]
+          only: [:id, :user_id, :content, :created_at]
         }
       }
     })
