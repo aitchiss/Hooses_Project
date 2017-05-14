@@ -8,6 +8,7 @@ class HousesController < ApplicationController
   def show
     house = House.find(params[:id])
     render json: house.as_json({
+      except: [:created_at, :updated_at],
       include: {
         topics: {
           only: [:title, :status]
