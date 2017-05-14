@@ -37,36 +37,34 @@ class OptionTabBar extends React.Component {
 
     switch(this.state.selectedView) {
       case 'KitchenTable':
-      view = <KitchenTable/>
-      break;  
+        view = <KitchenTable/>
+        break;  
       case 'Topics':
-      view = <Topics/>
-      break;
+        view = <Topics/>
+        break;
       case 'JobCalls':
-      view = <JobCalls/>
-      break;
+        view = <JobCalls/>
+        break;
       case 'Expenditure':
-      view = <Expenditure/>
-      break;        
+        view = <Expenditure/>
+        break;        
       default:
-      view = <KitchenTable/>
+        view = <KitchenTable/>
     }
 
     return (
 
       <div>
-      <ul className="nav nav-tabs">
-      <li><a onClick={this.kitchenTable.bind(this)}>Kitchen Table</a></li>
-      <li><a onClick={this.topics.bind(this)}>Topics</a></li>
-      <li><a onClick={this.jobCalls.bind(this)}>Job Calls</a></li>
-      <li><a onClick={this.expenditure.bind(this)}>Expenditure</a></li>
-      </ul>
+        <ul className="nav nav-tabs">
+          <li><a onClick={this.kitchenTable.bind(this)}>Kitchen Table</a></li>
+          <li><a onClick={this.topics.bind(this)}>Topics</a></li>
+          <li><a onClick={this.jobCalls.bind(this)}>Job Calls</a></li>
+          <li><a onClick={this.expenditure.bind(this)}>Expenditure</a></li>
+        </ul>
 
-      <div>{view}</div>
-
+        <div>{view}</div>
       </div>
-
-      )
+    )
   }
 
 }
