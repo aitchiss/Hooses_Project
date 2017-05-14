@@ -79,17 +79,8 @@ font-size: 90%;
 
 
 .main-content{
-/*  background-image: url(images/notflix-background.jpg);
-  background-size: cover;*/
-
-  background-image: url(images/group.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background-image: url("group.jpg") 
   background-size: cover;
-
-
-
 }
 
 .hero-title{
