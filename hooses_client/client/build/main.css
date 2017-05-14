@@ -1,13 +1,18 @@
 *{
   font-family: 'Roboto', sans-serif;
 }
-small{
-  font-size: 70%;
+
+html{
+  background-color: rgb(237, 241, 245);
 }
 
 body { 
   padding-top: 60px; 
   background: rgb(237, 241, 245);
+}
+
+small{
+  font-size: 70%;
 }
 
 .main-content{
@@ -50,8 +55,6 @@ font-size: 90%;
   background-color: #3097D1;
  }
 
-
-
 .main-content{
   margin-top: 20px;
 }
@@ -73,11 +76,21 @@ font-size: 90%;
  background-color:#FFFFFF; 
 }
 
-html{
 
-  background-color: rgb(237, 241, 245);
+
+.main-content{
+/*  background-image: url(images/notflix-background.jpg);
+  background-size: cover;*/
+
+  background-image: url(images/group.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+
+
 }
-
 
 .hero-title{
 text-align: center;

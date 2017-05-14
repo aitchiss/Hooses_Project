@@ -26323,49 +26323,53 @@ var WelcomeContainer = function (_React$Component) {
 
       return _react2.default.createElement(
         "div",
-        { className: "main-content" },
+        { className: "welcome-container" },
         _react2.default.createElement(
           "div",
-          { className: "container-responsive" },
+          { className: "main-content" },
           _react2.default.createElement(
             "div",
-            { className: "hero-title" },
-            "care for shared property ... easily"
-          ),
-          _react2.default.createElement(
-            "form",
-            { className: "form-signin" },
-            _react2.default.createElement(
-              "h2",
-              { className: "form-signin-heading" },
-              "Please sign in"
-            ),
-            _react2.default.createElement(
-              "label",
-              { className: "sr-only" },
-              "Email address"
-            ),
-            _react2.default.createElement("input", { type: "email", id: "inputEmail", className: "form-control", placeholder: "Email address", required: true, autoFocus: true }),
-            _react2.default.createElement(
-              "label",
-              { className: "sr-only" },
-              "Password"
-            ),
-            _react2.default.createElement("input", { type: "password", id: "inputPassword", className: "form-control", placeholder: "Password", required: true }),
+            { className: "container-responsive" },
             _react2.default.createElement(
               "div",
-              { className: "checkbox" },
-              _react2.default.createElement(
-                "label",
-                null,
-                _react2.default.createElement("input", { type: "checkbox", id: "remember-me", value: "remember-me" }),
-                "Remember Me"
-              )
+              { className: "hero-title" },
+              "care for shared property ... easily"
             ),
             _react2.default.createElement(
-              "button",
-              { className: "btn btn-lg btn-primary btn-block", type: "submit" },
-              "Sign in"
+              "form",
+              { className: "form-signin" },
+              _react2.default.createElement(
+                "h2",
+                { className: "form-signin-heading" },
+                "Please sign in"
+              ),
+              _react2.default.createElement(
+                "label",
+                { className: "sr-only" },
+                "Email address"
+              ),
+              _react2.default.createElement("input", { type: "email", id: "inputEmail", className: "form-control", placeholder: "Email address", required: true, autoFocus: true }),
+              _react2.default.createElement(
+                "label",
+                { className: "sr-only" },
+                "Password"
+              ),
+              _react2.default.createElement("input", { type: "password", id: "inputPassword", className: "form-control", placeholder: "Password", required: true }),
+              _react2.default.createElement(
+                "div",
+                { className: "checkbox" },
+                _react2.default.createElement(
+                  "label",
+                  null,
+                  _react2.default.createElement("input", { type: "checkbox", id: "remember-me", value: "remember-me" }),
+                  "Remember Me"
+                )
+              ),
+              _react2.default.createElement(
+                "button",
+                { className: "btn btn-lg btn-primary btn-block", type: "submit" },
+                "Sign in"
+              )
             )
           )
         )

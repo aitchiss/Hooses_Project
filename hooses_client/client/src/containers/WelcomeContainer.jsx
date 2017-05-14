@@ -11,14 +11,11 @@ class WelcomeContainer extends React.Component {
   }
 
 
-
   render(){
-
-
-
 
     return (
 
+      <div className="welcome-container">
 
       <div className="main-content">
       <div className="container-responsive">
@@ -51,6 +48,7 @@ class WelcomeContainer extends React.Component {
         </div>
       </div>
 
+      </div>
 
 
 
