@@ -1,3 +1,4 @@
+
 class AjaxRequest {
 
   get(url, done){
@@ -58,6 +59,9 @@ class AjaxRequest {
   }
 
 
+
 }
 
+
 export default AjaxRequest
+
