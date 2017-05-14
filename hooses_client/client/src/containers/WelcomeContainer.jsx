@@ -15,11 +15,11 @@ class WelcomeContainer extends React.Component {
 
     return (
 
-      <div className="welcome-container">
+
 
       <div className="main-content">
       <div className="container-responsive">
-
+      <div className="welcome-container">
 
       <div className="hero-title">care for shared property ... easily</div>
 

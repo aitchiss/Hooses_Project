@@ -78,15 +78,17 @@ font-size: 90%;
 
 
 
-.main-content{
-  background-image: url("group.jpg") 
+.welcome-container{
+  background: url("images/group.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
 .hero-title{
 text-align: center;
 font-size: 60px;
-color: #d5d5d5;
 }
 
 
