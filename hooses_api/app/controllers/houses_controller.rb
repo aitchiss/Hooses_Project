@@ -14,7 +14,7 @@ class HousesController < ApplicationController
           only: [:title, :status]
         }
       }
-      })
+    })
   end
 
   def create
@@ -25,7 +25,14 @@ class HousesController < ApplicationController
   def update
     house = House.find(params[:id])
     house.update_attributes(house_params)
-    render json: house
+    render json: house.as_json({
+      except: [:created_at, :updated_at],
+      include: {
+        topics: {
+          only: [:title, :status]
+        }
+      }
+    })
   end
 
   def house_params

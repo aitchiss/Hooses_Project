@@ -14,4 +14,16 @@ class TopicsController < ApplicationController
     
   end
 
+  def update
+    topic = Topic.find(params[:id])
+    topic.update_attributes(topic_params)
+    render json: topic
+
+  end
+
+
+  def topic_params
+    params.require(:topic).permit([:title, :status])
+  end
+
 end
