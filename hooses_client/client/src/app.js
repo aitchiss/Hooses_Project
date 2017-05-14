@@ -9,13 +9,13 @@ import { HashRouter, Route, IndexRoute } from 'react-router-dom'
 window.onload = () => {
   render(
     <HashRouter>
-    <div>
-      <Route path = "/welcome" component = {WelcomeContainer} />
-      <Route path = "/app" component = {MainContainer} />
-    </div>
+      <div>
+        <Route path = "/welcome" component = {WelcomeContainer} />
+        <Route path = "/app" component = {MainContainer} />
+      </div>
     </HashRouter>,
     document.getElementById('app')
-    )
+  )
 }
 
 
