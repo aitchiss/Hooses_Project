@@ -33,7 +33,7 @@ class OwnerGroupsController < ApplicationController
 
     user_houses = OwnerGroup.where({:user_id => params[:user_id]})
 
-    #return back a list of all that users houses - seems most useful option?
+    #return back a list of all that user's houses - seems most useful option?
     render json: user_houses.as_json({
       include: {
         house:{

@@ -23,6 +23,10 @@ devise_for :users
 
     ## HOUSES
     resources :houses, defaults: {format: :json}
+
+    ## TOPICS
+    resources :topics, defaults: {format: :json}
+
   end
 
 
