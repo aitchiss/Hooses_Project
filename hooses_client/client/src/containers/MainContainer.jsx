@@ -17,52 +17,51 @@ class MainContainer extends React.Component {
 
 
 
-render(){
-
-return (
-
-<div className="main-content">
-  <NavBar/>
-
-  <div className="container-responsive">
-
-  <div className="row">
-
-  <div className="col-md-3">
-    <MyHouses/>
-    <CoOwners/>
-  </div>
-  
-
-  <div className="col-md-7">
-
-  <AddressTitle/>
-  <OptionTabBar/>
+  render(){
 
 
 
 
-  </div>
-  
+    return (
+
+      <div className="main-content">
+      <NavBar/>
+
+      <div className="container-responsive">
+
+      <div className="row">
+
+      <div className="col-md-2">
+      <MyHouses/>
+      <CoOwners/>
+      </div>
 
 
-  <div className="col-md-2">
-  <Profile/>
+      <div className="col-md-8">
+
+      <AddressTitle/>
+      <OptionTabBar/>
+
+      </div>
 
 
-  </div>
 
-  
-  </div>
+      <div className="col-md-2">
+      <Profile/>
+
+      </div>
 
 
-  </div>
+      </div>
 
-  </div>
 
-);
+      </div>
 
-}
+      </div>
+
+      );
+
+  }
 
 }
 
