@@ -1,15 +1,14 @@
 import React from 'react'
 import AjaxRequest from '../services/AjaxRequest.js'
+import Topic from './Topic.jsx'
 
 class Topics extends React.Component{
 
 
 constructor(props){
   super(props)
-  console.log("topics props user_id", props.user_id)
-
-
   this.state = {
+    topics: []
   }
 }
 
@@ -20,17 +19,17 @@ componentDidMount(){
 
     if(!res.error){
       console.log('topics list:', res)
+      this.setState({topics: res})
     }
-
  })
-
 }
 
-
-
-
-
   render(){
+
+    let topics = this.state.topics.map((topic, index) => {
+      return <Topic key={index} title={topic.title}/>
+    })
+
 
     return(
 
@@ -40,7 +39,7 @@ componentDidMount(){
         </div>
 
         <div className="panel-body">
-          the list of topics goes in here by scrolling through the array of topics. We can further subdivide boostrap's grid to give the layout we need for this
+        {topics}
         </div>
       </div>
     )

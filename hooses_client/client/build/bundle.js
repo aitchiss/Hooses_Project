@@ -12324,6 +12324,10 @@ var _AjaxRequest = __webpack_require__(30);
 
 var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
 
+var _Topic = __webpack_require__(237);
+
+var _Topic2 = _interopRequireDefault(_Topic);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12340,27 +12344,34 @@ var Topics = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Topics.__proto__ || Object.getPrototypeOf(Topics)).call(this, props));
 
-    console.log("topics props user_id", props.user_id);
-
-    _this.state = {};
+    _this.state = {
+      topics: []
+    };
     return _this;
   }
 
   _createClass(Topics, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       var req = new _AjaxRequest2.default();
 
       req.get('http://localhost:8000/api/houses/15/topics/', function (err, res) {
 
         if (!res.error) {
           console.log('topics list:', res);
+          _this2.setState({ topics: res });
         }
       });
     }
   }, {
     key: 'render',
     value: function render() {
+
+      var topics = this.state.topics.map(function (topic, index) {
+        return _react2.default.createElement(_Topic2.default, { key: index, title: topic.title });
+      });
 
       return _react2.default.createElement(
         'div',
@@ -12377,7 +12388,7 @@ var Topics = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'panel-body' },
-          'the list of topics goes in here by scrolling through the array of topics. We can further subdivide boostrap\'s grid to give the layout we need for this'
+          topics
         )
       );
     }
@@ -26732,6 +26743,38 @@ window.onload = function () {
 //     document.getElementById('app')
 //   );
 // };
+
+/***/ }),
+/* 237 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Topic = function Topic(props) {
+
+  return _react2.default.createElement(
+    "div",
+    { className: "topic" },
+    _react2.default.createElement(
+      "p",
+      null,
+      props.title
+    )
+  );
+};
+
+exports.default = Topic;
 
 /***/ })
 /******/ ]);
