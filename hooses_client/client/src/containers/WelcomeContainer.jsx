@@ -11,6 +11,8 @@ class WelcomeContainer extends React.Component {
       email: '',
       password:''
     }
+
+
   }
 
 handleOnChangeEmail(event){
@@ -52,12 +54,11 @@ req.post('http://localhost:8000/users/sign_in.json', JSON.stringify(userData), (
   console.log("we're in ajax request")
 
   if(!res.error){
-    console.log("response :", res)
-    req.get("http://localhost:8000/api/users/", (err2,res2) => {
-      console.log(res2);
-      console.log(err2);
-    });
+    this.props.userSignIn(res)
   }
+
+
+
 
 } )
 

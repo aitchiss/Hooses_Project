@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import ReactDOM from 'react-dom'
 import WelcomeContainer from './containers/WelcomeContainer.jsx'
 import MainContainer from './containers/MainContainer.jsx'
+import HomeContainer from './containers/HomeContainer.jsx'
 import { HashRouter, Route, IndexRoute } from 'react-router-dom'
 
 
@@ -10,8 +11,7 @@ window.onload = () => {
   render(
     <HashRouter>
       <div>
-        <Route path = "/welcome" component = {WelcomeContainer} />
-        <Route path = "/app" component = {MainContainer} />
+        <Route path = "/" component = {HomeContainer} />
       </div>
     </HashRouter>,
     document.getElementById('app')
