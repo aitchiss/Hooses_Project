@@ -22,10 +22,14 @@ devise_for :users
     get '/owner_groups/house/:id' => 'owner_groups#show_users'
 
     ## HOUSES
-    resources :houses, defaults: {format: :json}
+    resources :houses, defaults: {format: :json} do
 
-    ## TOPICS
-    resources :topics, defaults: {format: :json}
+        ## TOPICS
+        resources :topics, defaults: {format: :json}
+
+
+    end
+
 
     ##MESSAGES
     resources :messages, defaults: {format: :json}

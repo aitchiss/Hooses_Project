@@ -5,7 +5,6 @@ class Profile extends React.Component{
 
   constructor(props){
     super(props)
-    console.log('Profile', props)
     this.state = {
       first_name: '',
       last_name:'',
@@ -16,9 +15,8 @@ class Profile extends React.Component{
   }
 
   componentDidMount(){
-    var url = 'http://localhost:8000/api/users/' + this.props.user_id
     var req = new AjaxRequest()
-    req.get(url, (err, res) => {
+    req.get('http://localhost:8000/api/users/' + this.props.user_id, (err, res) => {
 
       if(!res.error){
 
@@ -28,7 +26,6 @@ class Profile extends React.Component{
           address: res.profiles[0].address,
           email: res.email,
           image: res.profiles[0].url
-       
         })
 
       }

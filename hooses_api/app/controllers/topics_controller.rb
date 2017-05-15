@@ -2,6 +2,15 @@ class TopicsController < ApplicationController
 
   ## A LIST OF ALL TOPICS ASSOCIATED WITH A HOUSE IS GIVEN THROUGH THE HOUSE ROUTE, THE TOPICS ROUTE GIVES A TOPIC, PLUS ALL THE MESSAGES RELATED TO IT
 
+def index
+topics = Topic.where({
+  house_id: params[:house_id]
+  })
+  render json: topics
+end
+
+
+
   def show
     topic = Topic.find(params[:id])
 
