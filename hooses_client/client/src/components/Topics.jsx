@@ -12,14 +12,17 @@ constructor(props){
   }
 }
 
+// componentDidUpdate(prevProps, prevState){
+  
+// }
+
 componentDidMount(){
  var req = new AjaxRequest()
 
- req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/topics', (err, res) => {
+ req.get('http://localhost:8000/api/houses/' + this.props.house_id, (err, res) => {
 
     if(!res.error){
-      console.log('topics list:', res)
-      this.setState({topics: res})
+      this.setState({topics: res.topics})
     }
  })
 }

@@ -11,7 +11,7 @@ class OptionTabBar extends React.Component {
   constructor(props){
     super(props)
 
-      console.log('OptionTabBar props = ', props)
+      console.log('OptionTabBar props = ', props) //why null for house_id?
     
     this.state = {
       selectedView: 'KitchenTable'
