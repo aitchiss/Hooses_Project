@@ -11990,6 +11990,10 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(108);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12007,11 +12011,39 @@ var Profile = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
 
     console.log('Profile', props);
-    _this.state = {};
+    _this.state = {
+      first_name: '',
+      last_name: '',
+      address: '',
+      email: '',
+      image: ''
+    };
     return _this;
   }
 
   _createClass(Profile, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var url = 'http://localhost:8000/api/users/' + this.props.user_id;
+      var req = new _AjaxRequest2.default();
+      req.get(url, function (err, res) {
+
+        if (!res.error) {
+
+          _this2.setState({
+            first_name: res.profiles[0].first_name,
+            last_name: res.profiles[0].last_name,
+            address: res.profiles[0].address,
+            email: res.email,
+            image: res.profiles[0].url
+
+          });
+        }
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
 
@@ -12039,7 +12071,8 @@ var Profile = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'panel-body' },
-          'Welcome \'Name\''
+          'Welcome ',
+          this.state.first_name
         )
       );
     }
