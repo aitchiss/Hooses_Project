@@ -34,11 +34,29 @@ const userData = {
 console.log(userData)
 
 const req = new AjaxRequest()
+
+// var myHeaders = new Headers();
+// myHeaders.append("Content-Type", "application/json");
+
+// fetch("http://127.0.0.1:8000/users/sign_in.json", {
+//   credentials: 'include',
+//   method: 'POST',
+//   body: JSON.stringify(userData),
+//   headers: myHeaders
+// }).then((resp) => {
+//   console.log(resp);
+// });
+
+
 req.post('http://localhost:8000/users/sign_in.json', JSON.stringify(userData), (err, res) => {
   console.log("we're in ajax request")
 
   if(!res.error){
-    console.log(res)
+    console.log("response :", res)
+    req.get("http://localhost:8000/api/users/", (err2,res2) => {
+      console.log(res2);
+      console.log(err2);
+    });
   }
 
 } )

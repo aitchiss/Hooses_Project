@@ -23,7 +23,6 @@ class AjaxRequest {
     const xhr = new XMLHttpRequest()
     xhr.open("POST", url)
     xhr.setRequestHeader("Content-Type", "application/json")
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "*")
     xhr.withCredentials = true
 
     xhr.onload = () => {

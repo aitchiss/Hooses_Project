@@ -4375,3 +4375,700 @@ Processing by Devise::SessionsController#create as JSON
 Completed 201 Created in 190ms (Views: 0.5ms | ActiveRecord: 12.3ms)
 
 
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:10:10 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2017-05-15 12:10:10.294398"], ["sign_in_count", 2], ["updated_at", "2017-05-15 12:10:10.295741"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 142ms (Views: 0.4ms | ActiveRecord: 3.2ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:11:17 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:11:17.769909"], ["last_sign_in_at", "2017-05-15 12:10:10.294398"], ["sign_in_count", 3], ["updated_at", "2017-05-15 12:11:17.770550"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 135ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:11:28 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:11:28.547668"], ["last_sign_in_at", "2017-05-15 12:11:17.769909"], ["sign_in_count", 4], ["updated_at", "2017-05-15 12:11:28.548313"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 135ms (Views: 0.4ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:11:30 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:11:30.724209"], ["last_sign_in_at", "2017-05-15 12:11:28.547668"], ["sign_in_count", 5], ["updated_at", "2017-05-15 12:11:30.724835"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 137ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:11:43 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:11:43.155662"], ["last_sign_in_at", "2017-05-15 12:11:30.724209"], ["sign_in_count", 6], ["updated_at", "2017-05-15 12:11:43.156428"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 140ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:13:53 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:13:53.549428"], ["last_sign_in_at", "2017-05-15 12:11:43.155662"], ["sign_in_count", 7], ["updated_at", "2017-05-15 12:13:53.550141"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 141ms (Views: 0.4ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:14:00 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:14:01.072076"], ["last_sign_in_at", "2017-05-15 12:13:53.549428"], ["sign_in_count", 8], ["updated_at", "2017-05-15 12:14:01.072734"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 138ms (Views: 0.4ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:14:48 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com23", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com23", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com23"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.6ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:15:01 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:15:01.990643"], ["last_sign_in_at", "2017-05-15 12:14:01.072076"], ["sign_in_count", 9], ["updated_at", "2017-05-15 12:15:01.991313"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 140ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:16:16 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:16:16.454189"], ["last_sign_in_at", "2017-05-15 12:15:01.990643"], ["sign_in_count", 10], ["updated_at", "2017-05-15 12:16:16.454897"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 142ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:16:43 +0100
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 17]]
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 18]]
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 16]]
+Completed 200 OK in 36ms (Views: 0.4ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:18:44 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:19:16 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:19:16.721264"], ["last_sign_in_at", "2017-05-15 12:16:16.454189"], ["sign_in_count", 11], ["updated_at", "2017-05-15 12:19:16.722006"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 166ms (Views: 0.4ms | ActiveRecord: 12.5ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2017-05-15 13:20:24 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.1.0) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.2) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.0) lib/rails/engine.rb:522:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:20:30 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:21:29 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:21:29.488389"], ["last_sign_in_at", "2017-05-15 12:19:16.721264"], ["sign_in_count", 12], ["updated_at", "2017-05-15 12:21:29.489028"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 139ms (Views: 0.4ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:21:29 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:25:59 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:26:00.061987"], ["last_sign_in_at", "2017-05-15 12:21:29.488389"], ["sign_in_count", 13], ["updated_at", "2017-05-15 12:26:00.062723"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 140ms (Views: 0.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:26:00 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:26:29 +0100
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:26:30.249000"], ["last_sign_in_at", "2017-05-15 12:26:00.061987"], ["sign_in_count", 14], ["updated_at", "2017-05-15 12:26:30.249980"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 170ms (Views: 0.6ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:26:30 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:28:36 +0100
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:28:36.582554"], ["last_sign_in_at", "2017-05-15 12:26:30.249000"], ["sign_in_count", 15], ["updated_at", "2017-05-15 12:28:36.583801"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 164ms (Views: 0.5ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:28:36 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:33:26 +0100
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:33:40 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:33:49 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:33:49.947853"], ["last_sign_in_at", "2017-05-15 12:28:36.582554"], ["sign_in_count", 16], ["updated_at", "2017-05-15 12:33:49.949424"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 202ms (Views: 0.8ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:33:49 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:38:10 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:38:16 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:38:17.035831"], ["last_sign_in_at", "2017-05-15 12:33:49.947853"], ["sign_in_count", 17], ["updated_at", "2017-05-15 12:38:17.036486"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 145ms (Views: 0.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:38:17 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:41:09 +0100
+Processing by Devise::SessionsController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:41:20 +0100
+Processing by Devise::SessionsController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:41:22 +0100
+Processing by Devise::SessionsController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:41:41 +0100
+Processing by Devise::SessionsController#create as JSON
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:43:48 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:43:48.884097"], ["last_sign_in_at", "2017-05-15 12:38:17.035831"], ["sign_in_count", 18], ["updated_at", "2017-05-15 12:43:48.884783"], ["id", 16]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 139ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:47:02 +0100
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (undefined method `skip_before_filter' for ApplicationController:Class
+Did you mean?  skip_before_action):
+  
+app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:47:05 +0100
+  
+ActionController::RoutingError (undefined method `skip_before_filter' for ApplicationController:Class
+Did you mean?  skip_before_action):
+  
+app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:47:14 +0100
+  
+ActionController::RoutingError (undefined method `skip_before_filter' for ApplicationController:Class
+Did you mean?  skip_before_action):
+  
+app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:47:39 +0100
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:6:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:49:32 +0100
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:8:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:50:07 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (undefined method `skip_before_filter' for ApplicationController:Class
+Did you mean?  skip_before_action):
+  
+app/controllers/application_controller.rb:9:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:51:46 +0100
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ArgumentError (Before process_action callback :verify_authenticity_token has not been defined):
+  
+app/controllers/application_controller.rb:9:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:53:09 +0100
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:8:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:53:40 +0100
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant ActionController::BASE):
+  
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:54:07 +0100
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (undefined method `protect_from_forgery' for ApplicationController:Class):
+  
+app/controllers/application_controller.rb:8:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:54:58 +0100
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (undefined method `skip_before_filter' for ApplicationController:Class
+Did you mean?  skip_before_action):
+  
+app/controllers/application_controller.rb:9:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:55:41 +0100
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (undefined method `skip_before_filter' for ApplicationController:Class
+Did you mean?  skip_before_action):
+  
+app/controllers/application_controller.rb:9:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:1:in `<top (required)>'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:55:52 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+HTTP Origin header (http://localhost:3000) didn't match request.base_url (http://127.0.0.1:8000)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `flash=' for #<ActionDispatch::Request:0x007fcc5d7a4c80>):
+  
+actionpack (5.1.0) lib/action_controller/metal/request_forgery_protection.rb:150:in `handle_unverified_request'
+actionpack (5.1.0) lib/action_controller/metal/request_forgery_protection.rb:227:in `handle_unverified_request'
+/Users/user/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/bundler/gems/devise-5e014ab60725/lib/devise/controllers/helpers.rb:253:in `handle_unverified_request'
+actionpack (5.1.0) lib/action_controller/metal/request_forgery_protection.rb:222:in `verify_authenticity_token'
+activesupport (5.1.0) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.0) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
+actionpack (5.1.0) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.1.0) lib/active_support/callbacks.rb:198:in `block in halting'
+activesupport (5.1.0) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.0) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.0) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.0) lib/active_support/callbacks.rb:130:in `run_callbacks'
+actionpack (5.1.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.0) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.0) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.0) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.0) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.0) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.0) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.0) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.0) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.0) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.0) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.0) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.0) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.0) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.0) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.1.0) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.0) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.0) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.0) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.2) lib/rack/etag.rb:25:in `call'
+rack (2.0.2) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.2) lib/rack/head.rb:12:in `call'
+activerecord (5.1.0) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.0) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.0) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.2) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.0) lib/rails/engine.rb:522:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:57:00 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+HTTP Origin header (http://localhost:3000) didn't match request.base_url (http://127.0.0.1:8000)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `flash=' for #<ActionDispatch::Request:0x007fcc5d3db090>):
+  
+actionpack (5.1.0) lib/action_controller/metal/request_forgery_protection.rb:150:in `handle_unverified_request'
+actionpack (5.1.0) lib/action_controller/metal/request_forgery_protection.rb:227:in `handle_unverified_request'
+/Users/user/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/bundler/gems/devise-5e014ab60725/lib/devise/controllers/helpers.rb:253:in `handle_unverified_request'
+actionpack (5.1.0) lib/action_controller/metal/request_forgery_protection.rb:222:in `verify_authenticity_token'
+activesupport (5.1.0) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.0) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
+actionpack (5.1.0) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.1.0) lib/active_support/callbacks.rb:198:in `block in halting'
+activesupport (5.1.0) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.0) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.0) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.0) lib/active_support/callbacks.rb:130:in `run_callbacks'
+actionpack (5.1.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.0) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.0) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.0) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.0) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.0) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.0) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.0) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.0) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.0) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.0) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.0) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.0) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.0) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+actionpack (5.1.0) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.1.0) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.0) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.0) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.0) lib/action_dispatch/routing/route_set.rb:832:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.2) lib/rack/etag.rb:25:in `call'
+rack (2.0.2) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.2) lib/rack/head.rb:12:in `call'
+activerecord (5.1.0) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.0) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.0) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.2) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.0) lib/rails/engine.rb:522:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:58:07 +0100
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:58:20 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:58:20.245053"], ["last_sign_in_at", "2017-05-15 12:43:48.884097"], ["sign_in_count", 19], ["updated_at", "2017-05-15 12:58:20.246080"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 193ms (Views: 0.5ms | ActiveRecord: 12.2ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:58:54 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:58:54.745061"], ["last_sign_in_at", "2017-05-15 12:58:20.245053"], ["sign_in_count", 20], ["updated_at", "2017-05-15 12:58:54.745760"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 149ms (Views: 0.4ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:59:43 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 13:59:52 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 12:59:52.261376"], ["last_sign_in_at", "2017-05-15 12:58:54.745061"], ["sign_in_count", 21], ["updated_at", "2017-05-15 12:59:52.262091"], ["id", 16]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 148ms (Views: 0.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 13:59:52 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:02:01 +0100
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:02:07 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 13:02:08.081812"], ["last_sign_in_at", "2017-05-15 12:59:52.261376"], ["sign_in_count", 22], ["updated_at", "2017-05-15 13:02:08.083098"], ["id", 16]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 211ms (Views: 0.5ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 14:02:08 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:03:46 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:03:52 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 13:03:52.692296"], ["last_sign_in_at", "2017-05-15 13:02:08.081812"], ["sign_in_count", 23], ["updated_at", "2017-05-15 13:03:52.693960"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 191ms (Views: 0.5ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 14:03:52 +0100
+Processing by UsersController#index as JSON
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:04:55 +0100
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 13ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:04:56 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:05:05 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 13:05:05.692391"], ["last_sign_in_at", "2017-05-15 13:03:52.692296"], ["sign_in_count", 24], ["updated_at", "2017-05-15 13:05:05.694389"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 230ms (Views: 0.5ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 14:05:05 +0100
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProfile Load (3.6ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 17]]
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 18]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 16]]
+Completed 200 OK in 84ms (Views: 0.3ms | ActiveRecord: 14.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:08:52 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 201 Created in 23ms (Views: 0.5ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 14:08:53 +0100
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 17]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 18]]
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 16]]
+Completed 200 OK in 34ms (Views: 0.4ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:10:45 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-05-15 13:10:46.063337"], ["last_sign_in_at", "2017-05-15 13:05:05.692391"], ["sign_in_count", 25], ["updated_at", "2017-05-15 13:10:46.064169"], ["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 148ms (Views: 0.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/users/" for 127.0.0.1 at 2017-05-15 14:10:46 +0100
+Processing by UsersController#index as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 17]]
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 18]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 16]]
+Completed 200 OK in 12ms (Views: 0.8ms | ActiveRecord: 1.9ms)
+
+
