@@ -13,7 +13,7 @@ class KitchenTable extends React.Component{
         </div>
 
         <div className="panel-body">
-          This is where the blog stuff goes - see bootstrap media layout
+          * NO BLOG TABLE/MESSAGES CREATED IN SEEDS * (ps see bootstrap media layout)
         </div>
       </div>
     )

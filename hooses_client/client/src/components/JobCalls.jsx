@@ -12,7 +12,7 @@ class JobCalls extends React.Component{
         </div>
 
         <div className="panel-body">
-          the list of job calls goes in here!!
+          * NOT FOR MVP * 
         </div>
 
       </div>

@@ -1,7 +1,6 @@
 import React from 'react'
 
-class Expenditure extends React.Component{
-
+class Documents extends React.Component{
 
   render(){
 
@@ -9,11 +8,11 @@ class Expenditure extends React.Component{
 
       <div className="panel panel-default">
         <div className="panel-heading">
-         <div className="panel-title">Expenditure</div>
+         <div className="panel-title">Documents</div>
         </div>
 
         <div className="panel-body">
-          * ONLY IN MVP IF TIME ALLOWS * 
+          * NOT FOR MVP * 
         </div>
       </div>
       )
@@ -21,4 +20,4 @@ class Expenditure extends React.Component{
 
 }
 
-export default Expenditure
+export default Documents

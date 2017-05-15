@@ -3,6 +3,7 @@ import KitchenTable from './KitchenTable.jsx'
 import Topics from './Topics.jsx'
 import JobCalls from './JobCalls.jsx'
 import Expenditure from './Expenditure.jsx'
+import Documents from './Documents.jsx'
 
 
 class OptionTabBar extends React.Component {
@@ -32,7 +33,10 @@ class OptionTabBar extends React.Component {
   expenditure(){
     this.setState({selectedView: 'Expenditure'})
   }
-
+  
+  documents(){
+    this.setState({selectedView: 'Documents'})
+  }
 
   render () {
 
@@ -50,7 +54,10 @@ class OptionTabBar extends React.Component {
         break;
       case 'Expenditure':
         view = <Expenditure/>
-        break;        
+        break;              
+        case 'Documents':
+          view = <Documents/>
+          break;        
       default:
         view = <KitchenTable/>
     }
@@ -63,6 +70,7 @@ class OptionTabBar extends React.Component {
           <li><a onClick={this.topics.bind(this)}>Topics</a></li>
           <li><a onClick={this.jobCalls.bind(this)}>Job Calls</a></li>
           <li><a onClick={this.expenditure.bind(this)}>Expenditure</a></li>
+          <li><a onClick={this.documents.bind(this)}>Documents</a></li>
         </ul>
 
         <div>{view}</div>

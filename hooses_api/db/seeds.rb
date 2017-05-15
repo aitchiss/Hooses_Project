@@ -127,9 +127,23 @@ t3 = Topic.create({
   })
 
 t4 = Topic.create({
-  user: u1,
+  user: u2,
   house: h3,
   title: "take your bins out",
+  status: "open"
+  })
+
+t5 = Topic.create({
+  user: u1,
+  house: h1,
+  title: "The roof is leaking",
+  status: "open"
+  })
+
+t6 = Topic.create({
+  user: u3,
+  house: h2,
+  title: "The seagulls are keeping me awake at night!",
   status: "open"
   })
 
@@ -162,3 +176,5 @@ m5 = Message.create({
   topic: t3,
   content: "sorry about that"
   })
+
+

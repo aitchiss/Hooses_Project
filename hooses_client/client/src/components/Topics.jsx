@@ -15,7 +15,7 @@ constructor(props){
 componentDidMount(){
  var req = new AjaxRequest()
 
- req.get('http://localhost:8000/api/houses/15/topics/', (err, res) => {
+ req.get('http://localhost:8000/api/houses/17/topics', (err, res) => {
 
     if(!res.error){
       console.log('topics list:', res)
