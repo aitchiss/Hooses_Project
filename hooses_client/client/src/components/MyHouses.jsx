@@ -8,7 +8,8 @@ class MyHouses extends React.Component{
     super(props)
     console.log('MyHouses', props)
     this.state = {
-      houses: []
+      houses: [],
+      currentSelection: null
     }
   }
 
@@ -16,11 +17,9 @@ class MyHouses extends React.Component{
     const req = new AjaxRequest()
     req.get('http://localhost:8000/api/owner_groups/user/' + this.props.user_id, (err, res) => {
       if (!res.error){
-        let houses = []
-        res.forEach((item) => {
-          houses.push(item.house)
-        })
-        this.setState({houses: houses})
+
+        this.setState({houses: res, currentSelection: res[0]})
+        this.props.setHouseSelection(res[0])
       }
     })
   }
@@ -29,7 +28,7 @@ class MyHouses extends React.Component{
   render(){
 
     let houses = this.state.houses.map((house, index) => {
-      return <House key={index} address={house.address} postcode={house.post_code}/>
+      return <House key={index} address={house.house.address} postcode={house.house.post_code}/>
     })
     
 

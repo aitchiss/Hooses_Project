@@ -11,7 +11,15 @@ class MainContainer extends React.Component {
 
   constructor(props){
     super(props)
-    this.state = {}
+    this.state = {
+      houseSelection: null,
+      currentAddress: '',
+      currentPostCode: ''
+    }
+  }
+
+  setHouseSelection(house){
+    this.setState({houseSelection: house, currentAddress: house.house.address, currentPostCode: house.house.post_code})
   }
 
 
@@ -27,12 +35,12 @@ class MainContainer extends React.Component {
           <div className="row">
 
             <div className="col-md-2">
-              <MyHouses user_id={this.props.user.id}/>
+              <MyHouses user_id={this.props.user.id} setHouseSelection={this.setHouseSelection.bind(this)}/>
               <CoOwners user_id={this.props.user.id}/>
             </div>
 
           <div className="col-md-8">
-            <AddressTitle user_id={this.props.user.id}/>
+            <AddressTitle user_id={this.props.user.id} title={this.state.currentAddress} postcode={this.state.currentPostCode}/>
             <OptionTabBar user_id={this.props.user.id}/>
           </div>
 

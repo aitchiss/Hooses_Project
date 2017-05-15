@@ -5340,3 +5340,204 @@ Processing by OwnerGroupsController#show_houses as */*
 Completed 200 OK in 22ms (Views: 1.7ms | ActiveRecord: 2.4ms)
 
 
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:19:33 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 11ms (Views: 0.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:19:33 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (1.9ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 0.7ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:20:23 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 12ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:20:23 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (1.0ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.7ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 22ms (Views: 1.0ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:21:26 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 13ms (Views: 2.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:21:26 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.8ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:21:50 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 15ms (Views: 0.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:21:50 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.8ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.5ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.6ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 0.7ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:23:41 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 50ms (Views: 3.6ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:23:44 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 13ms (Views: 1.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:24:09 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 25ms (Views: 7.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:24:09 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.7ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.5ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 21ms (Views: 1.3ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:24:27 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 10ms (Views: 0.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:24:28 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (1.8ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 14ms (Views: 0.6ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:25:48 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 15ms (Views: 1.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:25:48 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:27:34 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 16ms (Views: 0.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:27:34 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 13ms (Views: 0.6ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:28:37 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 14ms (Views: 0.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:28:37 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 18ms (Views: 0.9ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:28:56 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 10ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:28:56 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (1.8ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 18ms (Views: 1.8ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 15:28:59 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+Completed 201 Created in 16ms (Views: 1.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/owner_groups/user/8" for 127.0.0.1 at 2017-05-15 15:28:59 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.7ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 8]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 2.1ms)
+
+

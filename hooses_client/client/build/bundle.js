@@ -7378,11 +7378,20 @@ var MainContainer = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (MainContainer.__proto__ || Object.getPrototypeOf(MainContainer)).call(this, props));
 
-    _this.state = {};
+    _this.state = {
+      houseSelection: null,
+      currentAddress: '',
+      currentPostCode: ''
+    };
     return _this;
   }
 
   _createClass(MainContainer, [{
+    key: 'setHouseSelection',
+    value: function setHouseSelection(house) {
+      this.setState({ houseSelection: house, currentAddress: house.house.address, currentPostCode: house.house.post_code });
+    }
+  }, {
     key: 'render',
     value: function render() {
 
@@ -7399,13 +7408,13 @@ var MainContainer = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'col-md-2' },
-              _react2.default.createElement(_MyHouses2.default, { user_id: this.props.user.id }),
+              _react2.default.createElement(_MyHouses2.default, { user_id: this.props.user.id, setHouseSelection: this.setHouseSelection.bind(this) }),
               _react2.default.createElement(_CoOwners2.default, { user_id: this.props.user.id })
             ),
             _react2.default.createElement(
               'div',
               { className: 'col-md-8' },
-              _react2.default.createElement(_AddressTitle2.default, { user_id: this.props.user.id }),
+              _react2.default.createElement(_AddressTitle2.default, { user_id: this.props.user.id, title: this.state.currentAddress, postcode: this.state.currentPostCode }),
               _react2.default.createElement(_OptionTabBar2.default, { user_id: this.props.user.id })
             ),
             _react2.default.createElement(
@@ -11534,6 +11543,10 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _House = __webpack_require__(236);
+
+var _House2 = _interopRequireDefault(_House);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11552,19 +11565,22 @@ var AddressTitle = function (_React$Component) {
   }
 
   _createClass(AddressTitle, [{
-    key: "render",
+    key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-default" },
+        'div',
+        { className: 'panel panel-default' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "Address"
+            'div',
+            { className: 'panel-title' },
+            'Current property: ',
+            this.props.title,
+            ' ',
+            this.props.postcode
           )
         )
       );
@@ -11888,7 +11904,8 @@ var MyHouses = function (_React$Component) {
 
     console.log('MyHouses', props);
     _this.state = {
-      houses: []
+      houses: [],
+      currentSelection: null
     };
     return _this;
   }
@@ -11901,11 +11918,9 @@ var MyHouses = function (_React$Component) {
       var req = new _AjaxRequest2.default();
       req.get('http://localhost:8000/api/owner_groups/user/' + this.props.user_id, function (err, res) {
         if (!res.error) {
-          var houses = [];
-          res.forEach(function (item) {
-            houses.push(item.house);
-          });
-          _this2.setState({ houses: houses });
+
+          _this2.setState({ houses: res, currentSelection: res[0] });
+          _this2.props.setHouseSelection(res[0]);
         }
       });
     }
@@ -11914,7 +11929,7 @@ var MyHouses = function (_React$Component) {
     value: function render() {
 
       var houses = this.state.houses.map(function (house, index) {
-        return _react2.default.createElement(_House2.default, { key: index, address: house.address, postcode: house.post_code });
+        return _react2.default.createElement(_House2.default, { key: index, address: house.house.address, postcode: house.house.post_code });
       });
 
       return _react2.default.createElement(
