@@ -5086,3 +5086,48 @@ Processing by Devise::SessionsController#create as JSON
 Completed 201 Created in 19ms (Views: 1.1ms | ActiveRecord: 0.7ms)
 
 
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:51:04 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 201 Created in 19ms (Views: 1.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:54:01 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 201 Created in 9ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:55:19 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"rob@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 201 Created in 16ms (Views: 2.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:55:36 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 201 Created in 12ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:57:06 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 201 Created in 9ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 14:57:35 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "sue@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", "2017-05-15 13:57:35.394553"], ["last_sign_in_at", "2017-05-15 13:57:35.394553"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2017-05-15 13:57:35.395187"], ["id", 17]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 146ms (Views: 0.3ms | ActiveRecord: 3.0ms)
+
+

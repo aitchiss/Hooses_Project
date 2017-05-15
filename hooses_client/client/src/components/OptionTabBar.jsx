@@ -9,6 +9,11 @@ class OptionTabBar extends React.Component {
 
   constructor(props){
     super(props)
+
+      console.log('OPtionTabBar', props)
+    
+
+
     this.state = {
       selectedView: 'KitchenTable'
     }

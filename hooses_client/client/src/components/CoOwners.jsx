@@ -1,6 +1,12 @@
 import React from 'react'
 
 class CoOwners extends React.Component{
+  constructor(props){
+    super(props)
+    console.log('CoOwners', props)
+    this.state = {}
+  }
+
 
 
   render(){

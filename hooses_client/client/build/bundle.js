@@ -11023,7 +11023,6 @@ var MainContainer = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (MainContainer.__proto__ || Object.getPrototypeOf(MainContainer)).call(this, props));
 
-    console.log(props);
     _this.state = {};
     return _this;
   }
@@ -11045,19 +11044,19 @@ var MainContainer = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'col-md-2' },
-              _react2.default.createElement(_MyHouses2.default, null),
-              _react2.default.createElement(_CoOwners2.default, null)
+              _react2.default.createElement(_MyHouses2.default, { user_id: this.props.user.id }),
+              _react2.default.createElement(_CoOwners2.default, { user_id: this.props.user.id })
             ),
             _react2.default.createElement(
               'div',
               { className: 'col-md-8' },
-              _react2.default.createElement(_AddressTitle2.default, null),
-              _react2.default.createElement(_OptionTabBar2.default, null)
+              _react2.default.createElement(_AddressTitle2.default, { user_id: this.props.user.id }),
+              _react2.default.createElement(_OptionTabBar2.default, { user_id: this.props.user.id })
             ),
             _react2.default.createElement(
               'div',
               { className: 'col-md-2' },
-              _react2.default.createElement(_Profile2.default, null)
+              _react2.default.createElement(_Profile2.default, { user_id: this.props.user.id })
             )
           )
         )
@@ -11160,6 +11159,9 @@ var WelcomeContainer = function (_React$Component) {
         console.log("we're in ajax request");
 
         if (!res.error) {
+
+          console.log('response', res);
+
           _this2.props.userSignIn(res);
         }
       });
@@ -11385,41 +11387,45 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var CoOwners = function (_React$Component) {
   _inherits(CoOwners, _React$Component);
 
-  function CoOwners() {
+  function CoOwners(props) {
     _classCallCheck(this, CoOwners);
 
-    return _possibleConstructorReturn(this, (CoOwners.__proto__ || Object.getPrototypeOf(CoOwners)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (CoOwners.__proto__ || Object.getPrototypeOf(CoOwners)).call(this, props));
+
+    console.log('CoOwners', props);
+    _this.state = {};
+    return _this;
   }
 
   _createClass(CoOwners, [{
-    key: "render",
+    key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-success" },
+        'div',
+        { className: 'panel panel-success' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "Owners \xB7 ",
+            'div',
+            { className: 'panel-title' },
+            'Owners \xB7 ',
             _react2.default.createElement(
-              "small",
+              'small',
               null,
               _react2.default.createElement(
-                "a",
-                { href: "#" },
-                "edit"
+                'a',
+                { href: '#' },
+                'edit'
               )
             )
           )
         ),
         _react2.default.createElement(
-          "div",
-          { className: "panel-body" },
-          "pics and names goes in here ... see thumbnails"
+          'div',
+          { className: 'panel-body' },
+          'pics and names goes in here ... see thumbnails'
         )
       );
     }
@@ -11650,54 +11656,58 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var MyHouses = function (_React$Component) {
   _inherits(MyHouses, _React$Component);
 
-  function MyHouses() {
+  function MyHouses(props) {
     _classCallCheck(this, MyHouses);
 
-    return _possibleConstructorReturn(this, (MyHouses.__proto__ || Object.getPrototypeOf(MyHouses)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (MyHouses.__proto__ || Object.getPrototypeOf(MyHouses)).call(this, props));
+
+    console.log('MyHouses', props);
+    _this.state = {};
+    return _this;
   }
 
   _createClass(MyHouses, [{
-    key: "render",
+    key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-success" },
+        'div',
+        { className: 'panel panel-success' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "My Houses \xB7 ",
+            'div',
+            { className: 'panel-title' },
+            'My Houses \xB7 ',
             _react2.default.createElement(
-              "small",
+              'small',
               null,
               _react2.default.createElement(
-                "a",
-                { href: "#" },
-                "edit"
+                'a',
+                { href: '#' },
+                'edit'
               )
             )
           )
         ),
         _react2.default.createElement(
-          "div",
-          { className: "panel-body" },
+          'div',
+          { className: 'panel-body' },
           _react2.default.createElement(
-            "div",
+            'div',
             null,
-            "House 1"
+            'House 1'
           ),
           _react2.default.createElement(
-            "div",
+            'div',
             null,
-            "House 2"
+            'House 2'
           ),
           _react2.default.createElement(
-            "div",
+            'div',
             null,
-            "House 3"
+            'House 3'
           )
         )
       );
@@ -11855,6 +11865,8 @@ var OptionTabBar = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (OptionTabBar.__proto__ || Object.getPrototypeOf(OptionTabBar)).call(this, props));
 
+    console.log('OPtionTabBar', props);
+
     _this.state = {
       selectedView: 'KitchenTable'
     };
@@ -11989,41 +12001,45 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Profile = function (_React$Component) {
   _inherits(Profile, _React$Component);
 
-  function Profile() {
+  function Profile(props) {
     _classCallCheck(this, Profile);
 
-    return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+
+    console.log('Profile', props);
+    _this.state = {};
+    return _this;
   }
 
   _createClass(Profile, [{
-    key: "render",
+    key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-default" },
+        'div',
+        { className: 'panel panel-default' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "Profile \xB7 ",
+            'div',
+            { className: 'panel-title' },
+            'Profile \xB7 ',
             _react2.default.createElement(
-              "small",
+              'small',
               null,
               _react2.default.createElement(
-                "a",
-                { href: "#" },
-                "edit"
+                'a',
+                { href: '#' },
+                'edit'
               )
             )
           )
         ),
         _react2.default.createElement(
-          "div",
-          { className: "panel-body" },
-          "Welcome 'Name'"
+          'div',
+          { className: 'panel-body' },
+          'Welcome \'Name\''
         )
       );
     }

@@ -11,10 +11,8 @@ class MainContainer extends React.Component {
 
   constructor(props){
     super(props)
-    console.log(props)
     this.state = {}
   }
-
 
 
   render(){
@@ -29,18 +27,17 @@ class MainContainer extends React.Component {
           <div className="row">
 
             <div className="col-md-2">
-              <MyHouses/>
-              <CoOwners/>
+              <MyHouses user_id={this.props.user.id}/>
+              <CoOwners user_id={this.props.user.id}/>
             </div>
 
-
           <div className="col-md-8">
-            <AddressTitle/>
-            <OptionTabBar/>
+            <AddressTitle user_id={this.props.user.id}/>
+            <OptionTabBar user_id={this.props.user.id}/>
           </div>
 
           <div className="col-md-2">
-            <Profile/>
+            <Profile user_id={this.props.user.id}/>
           </div>
         </div>
       </div>
@@ -48,18 +45,6 @@ class MainContainer extends React.Component {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
