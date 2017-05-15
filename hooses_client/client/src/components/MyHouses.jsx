@@ -6,7 +6,6 @@ class MyHouses extends React.Component{
 
   constructor(props){
     super(props)
-    console.log('MyHouses', props)
     this.state = {
       houses: [],
       currentSelection: null
@@ -33,7 +32,13 @@ class MyHouses extends React.Component{
   render(){
 
     let houses = this.state.houses.map((house, index) => {
-      return <House key={index} index={index} address={house.house.address} postcode={house.house.post_code} clickHandler={this.houseClickHandler.bind(this)}/>
+
+      if (house === this.state.currentSelection){
+        return <House key={index} index={index} address={house.house.address} postcode={house.house.post_code} clickHandler={this.houseClickHandler.bind(this)} active={true}/>
+      } else {
+        return <House key={index} index={index} address={house.house.address} postcode={house.house.post_code} clickHandler={this.houseClickHandler.bind(this)} active={false}/>
+      }
+      
     })
     
 

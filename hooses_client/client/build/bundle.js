@@ -11644,7 +11644,6 @@ var CoOwners = function (_React$Component) {
       var _this2 = this;
 
       if (this.props.houseId !== this.state.currentHouseId) {
-        console.log('house id', this.props.houseId);
         var req = new _AjaxRequest2.default();
         req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, function (err, res) {
           if (!res.error) {
@@ -11930,7 +11929,6 @@ var MyHouses = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (MyHouses.__proto__ || Object.getPrototypeOf(MyHouses)).call(this, props));
 
-    console.log('MyHouses', props);
     _this.state = {
       houses: [],
       currentSelection: null
@@ -11964,7 +11962,12 @@ var MyHouses = function (_React$Component) {
       var _this3 = this;
 
       var houses = this.state.houses.map(function (house, index) {
-        return _react2.default.createElement(_House2.default, { key: index, index: index, address: house.house.address, postcode: house.house.post_code, clickHandler: _this3.houseClickHandler.bind(_this3) });
+
+        if (house === _this3.state.currentSelection) {
+          return _react2.default.createElement(_House2.default, { key: index, index: index, address: house.house.address, postcode: house.house.post_code, clickHandler: _this3.houseClickHandler.bind(_this3), active: true });
+        } else {
+          return _react2.default.createElement(_House2.default, { key: index, index: index, address: house.house.address, postcode: house.house.post_code, clickHandler: _this3.houseClickHandler.bind(_this3), active: false });
+        }
       });
 
       return _react2.default.createElement(
@@ -26787,7 +26790,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var House = function House(props) {
 
   var handleClick = function handleClick() {
-
     props.clickHandler(props.index);
   };
 

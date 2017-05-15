@@ -13,7 +13,6 @@ class CoOwners extends React.Component{
 
   componentDidUpdate(){
     if (this.props.houseId !== this.state.currentHouseId){
-      console.log('house id', this.props.houseId)
       const req = new AjaxRequest()
       req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, (err, res) => {
         if (!res.error){
