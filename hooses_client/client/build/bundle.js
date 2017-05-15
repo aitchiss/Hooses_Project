@@ -6,9 +6,9 @@
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
+/******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-/******/ 		}
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 98);
+/******/ 	return __webpack_require__(__webpack_require__.s = 234);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -7018,14 +7018,14 @@ Router.childContextTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Router);
+/* harmony default export */ __webpack_exports__["a"] = Router;
 
 /***/ }),
 /* 58 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp__ = __webpack_require__(127);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_path_to_regexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_path_to_regexp__);
 
 
@@ -7093,7 +7093,7 @@ var matchPath = function matchPath(pathname) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (matchPath);
+/* harmony default export */ __webpack_exports__["a"] = matchPath;
 
 /***/ }),
 /* 59 */
@@ -10459,7 +10459,7 @@ Link.contextTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Link);
+/* harmony default export */ __webpack_exports__["a"] = Link;
 
 /***/ }),
 /* 89 */
@@ -10603,7 +10603,7 @@ Route.childContextTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Route);
+/* harmony default export */ __webpack_exports__["a"] = Route;
 
 /***/ }),
 /* 90 */
@@ -10983,27 +10983,27 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _NavBar = __webpack_require__(105);
+var _NavBar = __webpack_require__(104);
 
 var _NavBar2 = _interopRequireDefault(_NavBar);
 
-var _MyHouses = __webpack_require__(104);
+var _MyHouses = __webpack_require__(103);
 
 var _MyHouses2 = _interopRequireDefault(_MyHouses);
 
-var _CoOwners = __webpack_require__(100);
+var _CoOwners = __webpack_require__(99);
 
 var _CoOwners2 = _interopRequireDefault(_CoOwners);
 
-var _AddressTitle = __webpack_require__(99);
+var _AddressTitle = __webpack_require__(98);
 
 var _AddressTitle2 = _interopRequireDefault(_AddressTitle);
 
-var _OptionTabBar = __webpack_require__(106);
+var _OptionTabBar = __webpack_require__(105);
 
 var _OptionTabBar2 = _interopRequireDefault(_OptionTabBar);
 
-var _Profile = __webpack_require__(107);
+var _Profile = __webpack_require__(106);
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
@@ -11086,6 +11086,10 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(108);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11102,62 +11106,98 @@ var WelcomeContainer = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (WelcomeContainer.__proto__ || Object.getPrototypeOf(WelcomeContainer)).call(this, props));
 
-    _this.state = {};
+    _this.state = {
+      email: '',
+      password: ''
+    };
     return _this;
   }
 
   _createClass(WelcomeContainer, [{
-    key: "render",
+    key: 'handleOnChangeEmail',
+    value: function handleOnChangeEmail(event) {
+      this.setState({ email: event.target.value });
+    }
+  }, {
+    key: 'handleOnChangePassword',
+    value: function handleOnChangePassword(event) {
+      this.setState({ password: event.target.value });
+    }
+  }, {
+    key: 'signIn',
+    value: function signIn(event) {
+      event.preventDefault();
+
+      var userData = {
+        user: {
+          email: this.state.email,
+          password: this.state.password
+        }
+      };
+
+      console.log(userData);
+
+      var req = new _AjaxRequest2.default();
+      req.post('http://localhost:8000/users/sign_in.json', JSON.stringify(userData), function (err, res) {
+        console.log("we're in ajax request");
+
+        if (!res.error) {
+          console.log(res);
+        }
+      });
+    }
+  }, {
+    key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
-        "div",
-        { className: "main-content" },
+        'div',
+        { className: 'main-content' },
         _react2.default.createElement(
-          "div",
-          { className: "container-responsive" },
+          'div',
+          { className: 'container-responsive' },
           _react2.default.createElement(
-            "div",
-            { className: "welcome-container" },
+            'div',
+            { className: 'welcome-container' },
             _react2.default.createElement(
-              "div",
-              { className: "hero-title" },
-              "care for shared property ... easily"
+              'div',
+              { className: 'hero-title' },
+              'care for shared property ... easily'
             ),
             _react2.default.createElement(
-              "form",
-              { className: "form-signin" },
+              'form',
+              { className: 'form-signin' },
               _react2.default.createElement(
-                "h2",
-                { className: "form-signin-heading" },
-                "Please sign in"
+                'h2',
+                { className: 'form-signin-heading' },
+                'Please sign in'
               ),
               _react2.default.createElement(
-                "label",
-                { className: "sr-only" },
-                "Email address"
+                'label',
+                { className: 'sr-only' },
+                'Email address'
               ),
-              _react2.default.createElement("input", { type: "email", id: "inputEmail", className: "form-control", placeholder: "Email address", required: true, autoFocus: true }),
+              _react2.default.createElement('input', { type: 'email', onChange: this.handleOnChangeEmail.bind(this), id: 'inputEmail', className: 'form-control', placeholder: 'Email address', required: true, autoFocus: true }),
               _react2.default.createElement(
-                "label",
-                { className: "sr-only" },
-                "Password"
+                'label',
+                { className: 'sr-only' },
+                'Password'
               ),
-              _react2.default.createElement("input", { type: "password", id: "inputPassword", className: "form-control", placeholder: "Password", required: true }),
+              _react2.default.createElement('input', { type: 'password', onChange: this.handleOnChangePassword.bind(this), id: 'inputPassword', className: 'form-control', placeholder: 'Password', required: true }),
               _react2.default.createElement(
-                "div",
-                { className: "checkbox" },
+                'div',
+                { className: 'checkbox' },
                 _react2.default.createElement(
-                  "label",
+                  'label',
                   null,
-                  _react2.default.createElement("input", { type: "checkbox", id: "remember-me", value: "remember-me" }),
-                  "Remember Me"
+                  _react2.default.createElement('input', { type: 'checkbox', id: 'remember-me', value: 'remember-me' }),
+                  'Remember Me'
                 )
               ),
               _react2.default.createElement(
-                "button",
-                { className: "btn btn-lg btn-primary btn-block", type: "submit" },
-                "Sign in"
+                'button',
+                { className: 'btn btn-lg btn-primary btn-block', onClick: this.signIn.bind(this), type: 'submit' },
+                'Sign in'
               )
             )
           )
@@ -11247,61 +11287,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 
 
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(96);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _WelcomeContainer = __webpack_require__(95);
-
-var _WelcomeContainer2 = _interopRequireDefault(_WelcomeContainer);
-
-var _MainContainer = __webpack_require__(94);
-
-var _MainContainer2 = _interopRequireDefault(_MainContainer);
-
-var _reactRouterDom = __webpack_require__(97);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.onload = function () {
-  (0, _reactDom.render)(_react2.default.createElement(
-    _reactRouterDom.HashRouter,
-    null,
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/welcome', component: _WelcomeContainer2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/app', component: _MainContainer2.default })
-    )
-  ), document.getElementById('app'));
-};
-
-// <Route path = "/welcome" component = {WelcomeContainer} />
-// <Route path = "/commuity" component = {CommunityContainer} />
-// <Route path = "/about" component = {AboutContainer} />
-// <Route path = "/logout" component = {LogOutContainer} />
-
-// <Route path = "/" component = {Footer} />
-
-
-// window.onload = function () {
-//   ReactDOM.render(
-//     <MainContainer/>,
-//     document.getElementById('app')
-//   );
-// };
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -11355,7 +11340,7 @@ var AddressTitle = function (_React$Component) {
 exports.default = AddressTitle;
 
 /***/ }),
-/* 100 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11428,7 +11413,7 @@ var CoOwners = function (_React$Component) {
 exports.default = CoOwners;
 
 /***/ }),
-/* 101 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11492,7 +11477,7 @@ var Expenditure = function (_React$Component) {
 exports.default = Expenditure;
 
 /***/ }),
-/* 102 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11556,7 +11541,7 @@ var JobCalls = function (_React$Component) {
 exports.default = JobCalls;
 
 /***/ }),
-/* 103 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11620,7 +11605,7 @@ var KitchenTable = function (_React$Component) {
 exports.default = KitchenTable;
 
 /***/ }),
-/* 104 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11707,7 +11692,7 @@ var MyHouses = function (_React$Component) {
 exports.default = MyHouses;
 
 /***/ }),
-/* 105 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11804,7 +11789,7 @@ var NavBar = function (_React$Component) {
 exports.default = NavBar;
 
 /***/ }),
-/* 106 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11820,19 +11805,19 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _KitchenTable = __webpack_require__(103);
+var _KitchenTable = __webpack_require__(102);
 
 var _KitchenTable2 = _interopRequireDefault(_KitchenTable);
 
-var _Topics = __webpack_require__(108);
+var _Topics = __webpack_require__(107);
 
 var _Topics2 = _interopRequireDefault(_Topics);
 
-var _JobCalls = __webpack_require__(102);
+var _JobCalls = __webpack_require__(101);
 
 var _JobCalls2 = _interopRequireDefault(_JobCalls);
 
-var _Expenditure = __webpack_require__(101);
+var _Expenditure = __webpack_require__(100);
 
 var _Expenditure2 = _interopRequireDefault(_Expenditure);
 
@@ -11959,7 +11944,7 @@ var OptionTabBar = function (_React$Component) {
 exports.default = OptionTabBar;
 
 /***/ }),
-/* 107 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12032,7 +12017,7 @@ var Profile = function (_React$Component) {
 exports.default = Profile;
 
 /***/ }),
-/* 108 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12094,6 +12079,88 @@ var Topics = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Topics;
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var AjaxRequest = function () {
+  function AjaxRequest() {
+    _classCallCheck(this, AjaxRequest);
+  }
+
+  _createClass(AjaxRequest, [{
+    key: "get",
+    value: function get(url, done) {
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+      xhr.open("GET", url);
+
+      xhr.onload = function () {
+        done(null, JSON.parse(xhr.response), xhr.status);
+      };
+
+      xhr.onerror = function () {
+        done(xhr.response);
+      };
+
+      xhr.send();
+    }
+  }, {
+    key: "post",
+    value: function post(url, payload, done) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", url);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
+      xhr.withCredentials = true;
+
+      xhr.onload = function () {
+        done(null, JSON.parse(xhr.response));
+      };
+
+      xhr.onerror = function () {
+        console.log('error');
+        done(xhr.response);
+      };
+
+      xhr.send(payload);
+    }
+  }, {
+    key: "delete",
+    value: function _delete(url, done) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("DELETE", url);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.withCredentials = true;
+
+      xhr.onload = function () {
+        done(null, xhr.status);
+      };
+
+      xhr.onerror = function () {
+        done(xhr.response);
+      };
+
+      xhr.send();
+    }
+  }]);
+
+  return AjaxRequest;
+}();
+
+exports.default = AjaxRequest;
 
 /***/ }),
 /* 109 */
@@ -13711,18 +13778,9 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
 /***/ }),
 /* 127 */
-/***/ (function(module, exports) {
-
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
-
-
-/***/ }),
-/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(127)
+var isarray = __webpack_require__(128)
 
 /**
  * Expose `pathToRegexp`.
@@ -14148,6 +14206,15 @@ function pathToRegexp (path, keys, options) {
 
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
+
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports) {
+
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
 
 
 /***/ }),
@@ -23762,7 +23829,7 @@ BrowserRouter.propTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (BrowserRouter);
+/* harmony default export */ __webpack_exports__["a"] = BrowserRouter;
 
 /***/ }),
 /* 202 */
@@ -23821,7 +23888,7 @@ HashRouter.propTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (HashRouter);
+/* harmony default export */ __webpack_exports__["a"] = HashRouter;
 
 /***/ }),
 /* 203 */
@@ -23907,7 +23974,7 @@ NavLink.defaultProps = {
   activeClassName: 'active'
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (NavLink);
+/* harmony default export */ __webpack_exports__["a"] = NavLink;
 
 /***/ }),
 /* 205 */
@@ -24039,7 +24106,7 @@ MemoryRouter.propTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (MemoryRouter);
+/* harmony default export */ __webpack_exports__["a"] = MemoryRouter;
 
 /***/ }),
 /* 214 */
@@ -24125,7 +24192,7 @@ Prompt.contextTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Prompt);
+/* harmony default export */ __webpack_exports__["a"] = Prompt;
 
 /***/ }),
 /* 215 */
@@ -24211,7 +24278,7 @@ Redirect.contextTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Redirect);
+/* harmony default export */ __webpack_exports__["a"] = Redirect;
 
 /***/ }),
 /* 216 */
@@ -24387,7 +24454,7 @@ StaticRouter.childContextTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (StaticRouter);
+/* harmony default export */ __webpack_exports__["a"] = StaticRouter;
 
 /***/ }),
 /* 217 */
@@ -24473,7 +24540,7 @@ Switch.propTypes = {
 };
 
 
-/* harmony default export */ __webpack_exports__["a"] = (Switch);
+/* harmony default export */ __webpack_exports__["a"] = Switch;
 
 /***/ }),
 /* 218 */
@@ -24518,7 +24585,7 @@ var withRouter = function withRouter(Component) {
   return __WEBPACK_IMPORTED_MODULE_2_hoist_non_react_statics___default()(C, Component);
 };
 
-/* harmony default export */ __webpack_exports__["a"] = (withRouter);
+/* harmony default export */ __webpack_exports__["a"] = withRouter;
 
 /***/ }),
 /* 219 */
@@ -26381,6 +26448,61 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
+
+/***/ }),
+/* 234 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(96);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _WelcomeContainer = __webpack_require__(95);
+
+var _WelcomeContainer2 = _interopRequireDefault(_WelcomeContainer);
+
+var _MainContainer = __webpack_require__(94);
+
+var _MainContainer2 = _interopRequireDefault(_MainContainer);
+
+var _reactRouterDom = __webpack_require__(97);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+window.onload = function () {
+  (0, _reactDom.render)(_react2.default.createElement(
+    _reactRouterDom.HashRouter,
+    null,
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/welcome', component: _WelcomeContainer2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/app', component: _MainContainer2.default })
+    )
+  ), document.getElementById('app'));
+};
+
+// <Route path = "/welcome" component = {WelcomeContainer} />
+// <Route path = "/commuity" component = {CommunityContainer} />
+// <Route path = "/about" component = {AboutContainer} />
+// <Route path = "/logout" component = {LogOutContainer} />
+
+// <Route path = "/" component = {Footer} />
+
+
+// window.onload = function () {
+//   ReactDOM.render(
+//     <MainContainer/>,
+//     document.getElementById('app')
+//   );
+// };
 
 /***/ })
 /******/ ]);
