@@ -24,6 +24,7 @@ class MainContainer extends React.Component {
   }
 
 
+
   render(){
 
     return (
@@ -36,7 +37,7 @@ class MainContainer extends React.Component {
           <div className="row">
 
             <div className="col-md-2">
-              <MyHouses user_id={this.props.user.id} setHouseSelection={this.setHouseSelection.bind(this)}/>
+              <MyHouses user_id={this.props.user.id} setHouseSelection={this.setHouseSelection.bind(this)} />
               <CoOwners user_id={this.props.user.id} houseId={this.state.houseId}/>
             </div>
 

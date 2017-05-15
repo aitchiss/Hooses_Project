@@ -24,11 +24,16 @@ class MyHouses extends React.Component{
     })
   }
 
+  houseClickHandler(index){
+    let house = this.state.houses[index]
+    this.props.setHouseSelection(house)
+  }
+
 
   render(){
 
     let houses = this.state.houses.map((house, index) => {
-      return <House key={index} address={house.house.address} postcode={house.house.post_code}/>
+      return <House key={index} index={index} address={house.house.address} postcode={house.house.post_code} clickHandler={this.houseClickHandler.bind(this)}/>
     })
     
 

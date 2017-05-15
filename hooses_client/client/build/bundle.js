@@ -11953,11 +11953,18 @@ var MyHouses = function (_React$Component) {
       });
     }
   }, {
+    key: 'houseClickHandler',
+    value: function houseClickHandler(index) {
+      var house = this.state.houses[index];
+      this.props.setHouseSelection(house);
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
 
       var houses = this.state.houses.map(function (house, index) {
-        return _react2.default.createElement(_House2.default, { key: index, address: house.house.address, postcode: house.house.post_code });
+        return _react2.default.createElement(_House2.default, { key: index, index: index, address: house.house.address, postcode: house.house.post_code, clickHandler: _this3.houseClickHandler.bind(_this3) });
       });
 
       return _react2.default.createElement(
@@ -26778,18 +26785,22 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var House = function House(props) {
-  console.log('house trying to create');
+
+  var handleClick = function handleClick() {
+
+    props.clickHandler(props.index);
+  };
 
   return _react2.default.createElement(
-    'div',
-    { className: 'house' },
+    "div",
+    { className: "house", onClick: handleClick.bind(undefined) },
     _react2.default.createElement(
-      'p',
+      "p",
       null,
       props.address,
-      ' ',
+      " ",
       props.postcode,
-      ' '
+      " "
     )
   );
 };
