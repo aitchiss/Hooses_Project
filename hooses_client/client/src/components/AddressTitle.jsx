@@ -1,4 +1,5 @@
 import React from 'react'
+import House from './House'
 
 class AddressTitle extends React.Component{
 
@@ -9,7 +10,8 @@ class AddressTitle extends React.Component{
 
       <div className="panel panel-default">
         <div className="panel-heading">
-         <div className="panel-title">Address</div>
+         <div className="panel-title">Current property: {this.props.title} {this.props.postcode}</div>
+          
         </div>
       </div>
     )
