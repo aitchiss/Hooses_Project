@@ -7461,6 +7461,7 @@ var MainContainer = function (_React$Component) {
 
     _this.state = {
       houseSelection: null,
+      house_id: null,
       currentAddress: '',
       currentPostCode: ''
     };
@@ -7470,7 +7471,7 @@ var MainContainer = function (_React$Component) {
   _createClass(MainContainer, [{
     key: 'setHouseSelection',
     value: function setHouseSelection(house) {
-      this.setState({ houseSelection: house, currentAddress: house.house.address, currentPostCode: house.house.post_code });
+      this.setState({ houseSelection: house, house_id: house.house_id, currentAddress: house.house.address, currentPostCode: house.house.post_code });
     }
   }, {
     key: 'render',
@@ -7496,7 +7497,7 @@ var MainContainer = function (_React$Component) {
               'div',
               { className: 'col-md-8' },
               _react2.default.createElement(_AddressTitle2.default, { user_id: this.props.user.id, title: this.state.currentAddress, postcode: this.state.currentPostCode }),
-              _react2.default.createElement(_OptionTabBar2.default, { user_id: this.props.user.id })
+              _react2.default.createElement(_OptionTabBar2.default, { user_id: this.props.user.id, house_id: this.state.house_id })
             ),
             _react2.default.createElement(
               'div',
@@ -11877,7 +11878,6 @@ var MyHouses = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (MyHouses.__proto__ || Object.getPrototypeOf(MyHouses)).call(this, props));
 
-    console.log('MyHouses', props);
     _this.state = {
       houses: [],
       currentSelection: null
@@ -12092,11 +12092,12 @@ var OptionTabBar = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (OptionTabBar.__proto__ || Object.getPrototypeOf(OptionTabBar)).call(this, props));
 
-    console.log('OptionTabBar', props);
+    console.log('OptionTabBar props = ', props);
 
     _this.state = {
       selectedView: 'KitchenTable'
     };
+
     return _this;
   }
 
@@ -12136,7 +12137,7 @@ var OptionTabBar = function (_React$Component) {
           view = _react2.default.createElement(_KitchenTable2.default, null);
           break;
         case 'Topics':
-          view = _react2.default.createElement(_Topics2.default, { user_id: this.props.user_id });
+          view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id });
           break;
         case 'JobCalls':
           view = _react2.default.createElement(_JobCalls2.default, null);
@@ -12378,7 +12379,7 @@ var Topics = function (_React$Component) {
 
       var req = new _AjaxRequest2.default();
 
-      req.get('http://localhost:8000/api/houses/17/topics', function (err, res) {
+      req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/topics', function (err, res) {
 
         if (!res.error) {
           console.log('topics list:', res);

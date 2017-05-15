@@ -6,7 +6,6 @@ class MyHouses extends React.Component{
 
   constructor(props){
     super(props)
-    console.log('MyHouses', props)
     this.state = {
       houses: [],
       currentSelection: null

@@ -11,11 +11,12 @@ class OptionTabBar extends React.Component {
   constructor(props){
     super(props)
 
-      console.log('OptionTabBar', props)
+      console.log('OptionTabBar props = ', props)
     
     this.state = {
       selectedView: 'KitchenTable'
     }
+  
   }
 
   kitchenTable(){
@@ -47,7 +48,7 @@ class OptionTabBar extends React.Component {
         view = <KitchenTable/>
         break;  
       case 'Topics':
-        view = <Topics user_id={this.props.user_id}/>
+        view = <Topics house_id={this.props.house_id}/>
         break;
       case 'JobCalls':
         view = <JobCalls/>
