@@ -26918,9 +26918,7 @@ var CoOwnerThumbnail = function CoOwnerThumbnail(props) {
     _react2.default.createElement(
       "p",
       null,
-      props.first_name,
-      " ",
-      props.last_name
+      props.first_name
     )
   );
 };
