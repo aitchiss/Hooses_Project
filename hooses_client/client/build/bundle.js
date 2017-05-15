@@ -12483,6 +12483,7 @@ var Topics = function (_React$Component) {
 
         if (!res.error) {
           _this2.setState({ topics: res.topics });
+          console.log(_this2.state.topics);
         }
       });
     }
