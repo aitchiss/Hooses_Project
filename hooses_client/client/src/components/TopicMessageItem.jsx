@@ -7,12 +7,17 @@ class TopicMessageItem extends React.Component {
   }
 
 render(){
+
+
   return (
-    <div>
-        {this.props.message}
+
+    <div className="panel-body">
+      {this.props.message}
     </div>
+
     )
 }
+
 
 }
 

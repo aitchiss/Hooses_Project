@@ -7,7 +7,6 @@ class Topic extends React.Component{
   }
 
 selectTopic(event){
-  console.log(event.target.value)
   this.props.setTopicThread(this.props.id)
 }
 

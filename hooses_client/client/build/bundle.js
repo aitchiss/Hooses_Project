@@ -12519,7 +12519,6 @@ var Topic = function (_React$Component) {
   _createClass(Topic, [{
     key: "selectTopic",
     value: function selectTopic(event) {
-      console.log(event.target.value);
       this.props.setTopicThread(this.props.id);
     }
   }, {
@@ -12593,11 +12592,12 @@ var TopicMessageItem = function (_React$Component) {
   }
 
   _createClass(TopicMessageItem, [{
-    key: 'render',
+    key: "render",
     value: function render() {
+
       return _react2.default.createElement(
-        'div',
-        null,
+        "div",
+        { className: "panel-body" },
         this.props.message
       );
     }
@@ -12650,6 +12650,7 @@ var TopicThread = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (TopicThread.__proto__ || Object.getPrototypeOf(TopicThread)).call(this, props));
 
     _this.state = {
+      topicTitle: '',
       messages: []
     };
     return _this;
@@ -12665,13 +12666,21 @@ var TopicThread = function (_React$Component) {
       req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/topics/' + this.props.topic_id, function (err, res) {
 
         if (!res.error) {
-          _this2.setState({ messages: res.messages });
+          _this2.setState({ topicTitle: res.title, messages: res.messages });
         }
       });
     }
   }, {
     key: 'render',
     value: function render() {
+
+      //   if(this.state.messages.length){
+      //     console.log('there are messages')
+      //   }else
+      //   {
+      //   console.log('there are no messages')
+      // }
+
 
       var messages = this.state.messages.map(function (message, index) {
         return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content });
@@ -12680,6 +12689,16 @@ var TopicThread = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'panel panel-default' },
+        _react2.default.createElement(
+          'div',
+          { className: 'panel-heading' },
+          _react2.default.createElement(
+            'div',
+            { className: 'panel-title' },
+            'Topic > ',
+            this.state.topicTitle
+          )
+        ),
         _react2.default.createElement(
           'div',
           { className: 'panel-body' },
@@ -12777,8 +12796,6 @@ var Topics = function (_React$Component) {
       var _this4 = this;
 
       var topics = this.state.topics.map(function (topic, index) {
-        console.log(topics);
-
         return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this4.props.setTopicThread });
       });
 

@@ -39,14 +39,11 @@ class Topics extends React.Component{
   render(){
 
     let topics = this.state.topics.map((topic, index) => {
-      console.log(topics)
-
      return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread}/>
     })
 
 
     return(
-
       <div className="panel panel-default">
         <div className="panel-heading">
           <div className="panel-title">Topics</div>
