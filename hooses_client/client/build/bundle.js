@@ -12026,6 +12026,11 @@ var KitchenTable = function (_React$Component) {
       }
     }
   }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.getNewMessages();
+    }
+  }, {
     key: 'getNewMessages',
     value: function getNewMessages() {
       var _this2 = this;
@@ -12048,8 +12053,6 @@ var KitchenTable = function (_React$Component) {
       var _this3 = this;
 
       if (e.which === 13) {
-        //create a message in the db
-        //re render
 
         var message = { kitchen_table_post: {
             user_id: this.state.user_id,

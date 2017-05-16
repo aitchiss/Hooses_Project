@@ -20,6 +20,10 @@ class KitchenTable extends React.Component{
     }
   }
 
+  componentDidMount(){
+    this.getNewMessages()
+  }
+
   getNewMessages(){
     const req = new AjaxRequest()
     req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, (err, res) => {
@@ -35,8 +39,6 @@ class KitchenTable extends React.Component{
 
   onMessageSubmit(e){
     if(e.which === 13){
-      //create a message in the db
-      //re render
 
       let message = { kitchen_table_post: {
         user_id: this.state.user_id,
