@@ -5869,6 +5869,7 @@ Completed 200 OK in 15ms (Views: 0.6ms | ActiveRecord: 2.1ms)
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("topic_id", "user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["topic_id", 11], ["user_id", 19], ["content", "sorry about that"], ["created_at", "2017-05-15 16:20:27.371845"], ["updated_at", "2017-05-15 16:20:27.371845"]]
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+<<<<<<< HEAD
 Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-15 18:28:15 +0100
   [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by Devise::SessionsController#create as JSON
@@ -7327,6 +7328,7 @@ Processing by HousesController#show as JSON
 Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 1.5ms)
 
 
+<<<<<<< HEAD
 Started GET "/api/houses/16" for 127.0.0.1 at 2017-05-16 07:05:30 +0100
 Processing by HousesController#show as JSON
   Parameters: {"id"=>"16"}
@@ -7460,3 +7462,8 @@ Processing by HousesController#show as JSON
 Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 1.3ms)
 
 
+=======
+=======
+  [1m[36mOwnerGroup Load (0.5ms)[0m  [1m[34mSELECT  "owner_groups".* FROM "owner_groups" LIMIT $1[0m  [["LIMIT", 11]]
+>>>>>>> feature/houses-info
+>>>>>>> 67ea6b8db2db1e9e78d66550ab0bde5e79f94bcf

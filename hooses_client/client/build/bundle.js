@@ -7491,7 +7491,7 @@ var MainContainer = function (_React$Component) {
               'div',
               { className: 'col-md-2' },
               _react2.default.createElement(_MyHouses2.default, { user_id: this.props.user.id, setHouseSelection: this.setHouseSelection.bind(this) }),
-              _react2.default.createElement(_CoOwners2.default, { user_id: this.props.user.id })
+              _react2.default.createElement(_CoOwners2.default, { user_id: this.props.user.id, houseId: this.state.house_id })
             ),
             _react2.default.createElement(
               'div',
@@ -7697,18 +7697,21 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var House = function House(props) {
-  console.log('house trying to create');
+
+  var handleClick = function handleClick() {
+    props.clickHandler(props.index);
+  };
 
   return _react2.default.createElement(
-    'div',
-    { className: 'house' },
+    "div",
+    { className: "house", onClick: handleClick.bind(undefined) },
     _react2.default.createElement(
-      'p',
+      "p",
       null,
       props.address,
-      ' ',
+      " ",
       props.postcode,
-      ' '
+      " "
     )
   );
 };
@@ -11590,6 +11593,14 @@ var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(30);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
+var _CoOwnerThumbnail = __webpack_require__(239);
+
+var _CoOwnerThumbnail2 = _interopRequireDefault(_CoOwnerThumbnail);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11606,14 +11617,35 @@ var CoOwners = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (CoOwners.__proto__ || Object.getPrototypeOf(CoOwners)).call(this, props));
 
-    console.log('CoOwners', props);
-    _this.state = {};
+    _this.state = {
+      owners: [],
+      currentHouseId: props.houseId
+    };
     return _this;
   }
 
   _createClass(CoOwners, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      var _this2 = this;
+
+      if (this.props.houseId !== this.state.currentHouseId) {
+        var req = new _AjaxRequest2.default();
+        req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, function (err, res) {
+          if (!res.error) {
+            _this2.setState({ owners: res[0].profiles, currentHouseId: _this2.props.houseId });
+          }
+        });
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
+
+      var coOwners = this.state.owners.map(function (owner, index) {
+
+        return _react2.default.createElement(_CoOwnerThumbnail2.default, { key: index, first_name: owner.first_name, last_name: owner.last_name, img: owner.image });
+      });
 
       return _react2.default.createElement(
         'div',
@@ -11639,7 +11671,7 @@ var CoOwners = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'panel-body' },
-          'pics and names goes in here ... see thumbnails'
+          coOwners
         )
       );
     }
@@ -11969,11 +12001,23 @@ var MyHouses = function (_React$Component) {
       });
     }
   }, {
+    key: 'houseClickHandler',
+    value: function houseClickHandler(index) {
+      var house = this.state.houses[index];
+      this.props.setHouseSelection(house);
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this3 = this;
 
       var houses = this.state.houses.map(function (house, index) {
-        return _react2.default.createElement(_House2.default, { key: index, address: house.house.address, postcode: house.house.post_code });
+
+        if (house === _this3.state.currentSelection) {
+          return _react2.default.createElement(_House2.default, { key: index, index: index, address: house.house.address, postcode: house.house.post_code, clickHandler: _this3.houseClickHandler.bind(_this3), active: true });
+        } else {
+          return _react2.default.createElement(_House2.default, { key: index, index: index, address: house.house.address, postcode: house.house.post_code, clickHandler: _this3.houseClickHandler.bind(_this3), active: false });
+        }
       });
 
       return _react2.default.createElement(
@@ -26913,6 +26957,39 @@ window.onload = function () {
 //     document.getElementById('app')
 //   );
 // };
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CoOwnerThumbnail = function CoOwnerThumbnail(props) {
+
+  return _react2.default.createElement(
+    "div",
+    { className: "co-owner-thumbnail" },
+    _react2.default.createElement("img", { src: props.img }),
+    _react2.default.createElement(
+      "p",
+      null,
+      props.first_name
+    )
+  );
+};
+
+exports.default = CoOwnerThumbnail;
 
 /***/ })
 /******/ ]);
