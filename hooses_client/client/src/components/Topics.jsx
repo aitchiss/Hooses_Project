@@ -17,7 +17,7 @@ class Topics extends React.Component{
     if (this.state.house_id !== this.props.house_id){
       var req = new AjaxRequest()
 
-      req.get('http://localhost:8000/api/houses/' + this.props.house_id, (err, res) => {
+      req.get('http://localhost:8000/api/houses/' + this.props.house_id + /topics/ + this.props.topic_id, (err, res) => {
          if(!res.error){
            this.setState({topics: res.topics, house_id: this.props.house_id})
          }

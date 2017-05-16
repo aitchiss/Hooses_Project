@@ -12574,6 +12574,10 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(21);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12592,13 +12596,63 @@ var TopicMessageItem = function (_React$Component) {
   }
 
   _createClass(TopicMessageItem, [{
-    key: "render",
+    key: 'render',
     value: function render() {
 
+      var dateTime = this.props.dateTime.toString();
+      var year = dateTime.substring(0, 4);
+      var month = dateTime.substring(5, 7);
+      var day = dateTime.substring(8, 10);
+      var time = dateTime.substring(11, 16);
+
+      // var req = new AjaxRequest()
+
+      // console.log('props = ', this.props)
+
+      // req.get('http://localhost:8000/api/users/' + this.props.user_id, (err, res) => {
+
+
+      //   if(!res.error){
+
+
+      //      const first_name = res.profiles[0].first_name
+      //      const last_name = res.profiles[0].last_name
+      //       const address = res.profiles[0].address
+      //       const email = res.email
+      //       const url = res.profiles[0].url
+      //   }
+      // })
+
+
       return _react2.default.createElement(
-        "div",
-        { className: "panel-body" },
-        this.props.message
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'topic-message-item-header' },
+          this.props.firstName,
+          ' ',
+          this.props.lastName,
+          ' posted: '
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'panel-body message-item' },
+          this.props.message
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'topic-message-item-footer' },
+          'Posted at ',
+          time,
+          ' on ',
+          day,
+          '-',
+          month,
+          '-',
+          year,
+          '.'
+        )
       );
     }
   }]);
@@ -12683,7 +12737,7 @@ var TopicThread = function (_React$Component) {
 
 
       var messages = this.state.messages.map(function (message, index) {
-        return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content });
+        return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content, dateTime: message.created_at, firstName: message.user.profiles[0].first_name, lastName: message.user.profiles[0].last_name });
       });
 
       return _react2.default.createElement(
@@ -12769,7 +12823,7 @@ var Topics = function (_React$Component) {
       if (this.state.house_id !== this.props.house_id) {
         var req = new _AjaxRequest2.default();
 
-        req.get('http://localhost:8000/api/houses/' + this.props.house_id, function (err, res) {
+        req.get('http://localhost:8000/api/houses/' + this.props.house_id + /topics/ + this.props.topic_id, function (err, res) {
           if (!res.error) {
             _this2.setState({ topics: res.topics, house_id: _this2.props.house_id });
           }

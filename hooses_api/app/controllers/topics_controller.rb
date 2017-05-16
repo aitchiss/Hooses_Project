@@ -17,9 +17,17 @@ end
     render json: topic.as_json({
       include: {
         messages: {
-          only: [:id, :user_id, :content, :created_at]
+          only: [:id, :user_id, :content, :created_at],
+          include: {
+            user: {
+             include: {
+              profiles: {
+              }
+            }
+          }
         }
       }
+    }
     })
 
   end
