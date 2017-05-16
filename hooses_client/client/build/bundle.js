@@ -7696,7 +7696,10 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var House = function House(props) {
+  var _React$createElement;
 
   var handleClick = function handleClick() {
     props.clickHandler(props.index);
@@ -7704,7 +7707,7 @@ var House = function House(props) {
 
   return _react2.default.createElement(
     "div",
-    { className: "house", onClick: handleClick.bind(undefined) },
+    (_React$createElement = { className: "house" }, _defineProperty(_React$createElement, "className", "correct-pointer"), _defineProperty(_React$createElement, "onClick", handleClick.bind(undefined)), _React$createElement),
     _react2.default.createElement(
       "p",
       null,

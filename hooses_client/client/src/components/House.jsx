@@ -10,7 +10,7 @@ const House = (props) => {
   
 
   return (
-    <div className="house" onClick={handleClick.bind(this)} >
+    <div className="house" className="correct-pointer" onClick={handleClick.bind(this)} >
       <p>{props.address} {props.postcode} </p>
     </div>
     )
