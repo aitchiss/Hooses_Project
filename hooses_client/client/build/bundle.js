@@ -27461,13 +27461,13 @@ var ProfileEditModal = function (_React$Component) {
                 "p",
                 null,
                 "First Name: ",
-                _react2.default.createElement("input", { type: "text", id: "first_name", onChange: this.onFirstNameChange.bind(this), defaultValue: this.props.first_name })
+                _react2.default.createElement("input", { type: "text", id: "first_name", onChange: this.onFirstNameChange.bind(this), placeholder: this.props.first_name })
               ),
               _react2.default.createElement(
                 "p",
                 null,
                 "Last Name: ",
-                _react2.default.createElement("input", { type: "text", id: "last_name", onChange: this.onLastNameChange.bind(this), defaultValue: this.props.last_name })
+                _react2.default.createElement("input", { type: "text", id: "last_name", onChange: this.onLastNameChange.bind(this), placeholder: this.props.last_name })
               )
             ),
             _react2.default.createElement(
