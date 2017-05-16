@@ -4,16 +4,29 @@ class ProfileEditModal extends React.Component{
 
   constructor(props){
     super(props)
+    console.log('props', props)
     this.state = {
       first_name: props.first_name,
-      last_name: props.last_name
+      last_name: props.last_name,
+      address: props.address
+    }
+  }
+
+  componentDidUpdate(){
+    if (this.props.first_name !== this.state.first_name){
+      this.setState({
+        first_name: this.props.first_name,
+        last_name: this.props.last_name,
+        address: this.props.address
+      })
     }
   }
 
   onSave(){
     let newData = {
       first_name: this.state.first_name,
-      last_name: this.state.last_name
+      last_name: this.state.last_name,
+      address: this.state.address
     }
 
     this.props.updateHandler(newData)
@@ -26,6 +39,11 @@ class ProfileEditModal extends React.Component{
   onLastNameChange(e){
     this.setState({last_name: e.target.value})
   }
+
+  onAddressChange(e){
+    this.setState({address: e.target.value})
+  }
+
 
   render(){
     return (
@@ -43,6 +61,7 @@ class ProfileEditModal extends React.Component{
               
               <p>First Name: <input type="text" id="first_name" onChange={this.onFirstNameChange.bind(this)} placeholder={this.props.first_name}></input></p>
               <p>Last Name: <input type="text" id="last_name" onChange={this.onLastNameChange.bind(this)} placeholder={this.props.last_name}></input></p>
+              <p>Address: <input type="text" id="last_name" onChange={this.onAddressChange.bind(this)} placeholder={this.props.address}></input></p>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" onClick={this.onSave.bind(this)} data-dismiss="modal">Save changes</button>

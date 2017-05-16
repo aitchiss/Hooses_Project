@@ -12639,6 +12639,7 @@ var Profile = function (_React$Component) {
             email: res.email,
             image: res.profiles[0].url
           });
+          console.log('state set');
         }
       });
     }
@@ -12647,12 +12648,15 @@ var Profile = function (_React$Component) {
     value: function updateProfileHandler(newData) {
       var _this3 = this;
 
+      console.log('calling');
       var req = new _AjaxRequest2.default();
       req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), function (err, res) {
         if (!res.error) {
+          console.log(res);
           _this3.setState({
             first_name: res.profiles[0].first_name,
-            last_name: res.profiles[0].last_name
+            last_name: res.profiles[0].last_name,
+            address: res.profiles[0].address
           });
         }
       });
@@ -12677,7 +12681,7 @@ var Profile = function (_React$Component) {
               'edit'
             )
           ),
-          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, updateHandler: this.updateProfileHandler.bind(this) })
+          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, address: this.state.address, updateHandler: this.updateProfileHandler.bind(this) })
         ),
         _react2.default.createElement(
           'div',
@@ -27392,96 +27396,121 @@ var ProfileEditModal = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (ProfileEditModal.__proto__ || Object.getPrototypeOf(ProfileEditModal)).call(this, props));
 
+    console.log('props', props);
     _this.state = {
       first_name: props.first_name,
-      last_name: props.last_name
+      last_name: props.last_name,
+      address: props.address
     };
     return _this;
   }
 
   _createClass(ProfileEditModal, [{
-    key: "onSave",
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      if (this.props.first_name !== this.state.first_name) {
+        this.setState({
+          first_name: this.props.first_name,
+          last_name: this.props.last_name,
+          address: this.props.address
+        });
+      }
+    }
+  }, {
+    key: 'onSave',
     value: function onSave() {
       var newData = {
         first_name: this.state.first_name,
-        last_name: this.state.last_name
+        last_name: this.state.last_name,
+        address: this.state.address
       };
 
       this.props.updateHandler(newData);
     }
   }, {
-    key: "onFirstNameChange",
+    key: 'onFirstNameChange',
     value: function onFirstNameChange(e) {
       this.setState({ first_name: e.target.value });
     }
   }, {
-    key: "onLastNameChange",
+    key: 'onLastNameChange',
     value: function onLastNameChange(e) {
       this.setState({ last_name: e.target.value });
     }
   }, {
-    key: "render",
+    key: 'onAddressChange',
+    value: function onAddressChange(e) {
+      this.setState({ address: e.target.value });
+    }
+  }, {
+    key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        "div",
-        { className: "modal fade", id: "editModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "editModalLabel", "aria-hidden": "true" },
+        'div',
+        { className: 'modal fade', id: 'editModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'editModalLabel', 'aria-hidden': 'true' },
         _react2.default.createElement(
-          "div",
-          { className: "modal-dialog", role: "document" },
+          'div',
+          { className: 'modal-dialog', role: 'document' },
           _react2.default.createElement(
-            "div",
-            { className: "modal-content" },
+            'div',
+            { className: 'modal-content' },
             _react2.default.createElement(
-              "div",
-              { className: "modal-header" },
+              'div',
+              { className: 'modal-header' },
               _react2.default.createElement(
-                "h5",
-                { className: "modal-title" },
-                "Edit Profile"
+                'h5',
+                { className: 'modal-title' },
+                'Edit Profile'
               ),
               _react2.default.createElement(
-                "button",
-                { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
+                'button',
+                { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
                 _react2.default.createElement(
-                  "span",
-                  { "aria-hidden": "true" },
-                  "\xD7"
+                  'span',
+                  { 'aria-hidden': 'true' },
+                  '\xD7'
                 )
               )
             ),
             _react2.default.createElement(
-              "div",
-              { className: "modal-body" },
+              'div',
+              { className: 'modal-body' },
               _react2.default.createElement(
-                "p",
+                'p',
                 null,
-                "Update your profile details:"
+                'Update your profile details:'
               ),
               _react2.default.createElement(
-                "p",
+                'p',
                 null,
-                "First Name: ",
-                _react2.default.createElement("input", { type: "text", id: "first_name", onChange: this.onFirstNameChange.bind(this), placeholder: this.props.first_name })
+                'First Name: ',
+                _react2.default.createElement('input', { type: 'text', id: 'first_name', onChange: this.onFirstNameChange.bind(this), placeholder: this.props.first_name })
               ),
               _react2.default.createElement(
-                "p",
+                'p',
                 null,
-                "Last Name: ",
-                _react2.default.createElement("input", { type: "text", id: "last_name", onChange: this.onLastNameChange.bind(this), placeholder: this.props.last_name })
+                'Last Name: ',
+                _react2.default.createElement('input', { type: 'text', id: 'last_name', onChange: this.onLastNameChange.bind(this), placeholder: this.props.last_name })
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                'Address: ',
+                _react2.default.createElement('input', { type: 'text', id: 'last_name', onChange: this.onAddressChange.bind(this), placeholder: this.props.address })
               )
             ),
             _react2.default.createElement(
-              "div",
-              { className: "modal-footer" },
+              'div',
+              { className: 'modal-footer' },
               _react2.default.createElement(
-                "button",
-                { type: "button", className: "btn btn-primary", onClick: this.onSave.bind(this), "data-dismiss": "modal" },
-                "Save changes"
+                'button',
+                { type: 'button', className: 'btn btn-primary', onClick: this.onSave.bind(this), 'data-dismiss': 'modal' },
+                'Save changes'
               ),
               _react2.default.createElement(
-                "button",
-                { type: "button", className: "btn btn-secondary", "data-dismiss": "modal" },
-                "Close"
+                'button',
+                { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
+                'Close'
               )
             )
           )
