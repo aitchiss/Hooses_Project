@@ -1,8 +1,7 @@
 import React from 'react'
 import AjaxRequest from '../services/AjaxRequest'
 import KitchenTableMessage from './KitchenTableMessage'
-import {ActionCable, Cable} from 'action-cable-react'
-import { CableMixin, ChannelMixin } from 'action-cable-react'
+
 
 
 class KitchenTable extends React.Component{
@@ -20,6 +19,8 @@ class KitchenTable extends React.Component{
   }
 
 
+
+
   componentDidUpdate(){
     
     if (this.props.house_id !== this.state.house_id){
@@ -31,12 +32,7 @@ class KitchenTable extends React.Component{
   componentDidMount(){
     
     this.getNewMessages()
-    // const actionCable = ActionCable.createConsumer('http://localhost:8000/cable')
-    // const cable = new Cable({
-    //   cableChannel: actionCable.subscriptions.create({channel: 'ChatChannel'}, ['messages'])
-    // })
 
-    // this.setState({actionCable: cable})
   }
 
 
@@ -84,6 +80,7 @@ class KitchenTable extends React.Component{
     return(
 
       <div className="panel panel-default">
+      
         <div className="panel-heading">
          <div className="panel-title">Kitchen Table</div>
         </div>
