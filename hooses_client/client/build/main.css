@@ -72,6 +72,11 @@ font-size: 90%;
   background-color:#FFFFFF;
 }
 
+.correct-pointer{
+  cursor: pointer; 
+  cursor: hand;
+}
+
 .panel-default>.panel-heading{
  background-color:#FFFFFF; 
 }

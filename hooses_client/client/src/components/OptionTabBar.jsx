@@ -66,7 +66,7 @@ class OptionTabBar extends React.Component {
     return (
 
       <div>
-        <ul className="nav nav-tabs">
+        <ul className="nav nav-tabs correct-pointer">
           <li><a onClick={this.kitchenTable.bind(this)}>Kitchen Table</a></li>
           <li><a onClick={this.topics.bind(this)}>Topics</a></li>
           <li><a onClick={this.jobCalls.bind(this)}>Job Calls</a></li>

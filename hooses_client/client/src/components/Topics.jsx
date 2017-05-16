@@ -23,7 +23,7 @@ componentDidMount(){
 
     if(!res.error){
       this.setState({topics: res.topics})
-      console.log(this.state.topics)
+      console.log('topics', this.state.topics)
     }
  })
 }
@@ -31,7 +31,7 @@ componentDidMount(){
   render(){
 
     let topics = this.state.topics.map((topic, index) => {
-     return <Topic key={index} title={topic.title}/>
+     return <Topic key={index} title={topic.title} status={topic.status}/>
     })
 
 
