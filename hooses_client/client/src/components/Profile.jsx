@@ -33,6 +33,13 @@ class Profile extends React.Component{
     })
   }
 
+  updateProfileHandler(newData){
+    const req = new AjaxRequest()
+    req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), (err, res) => {
+      console.log('doing something', res)
+    })
+  }
+
   render(){
 
     return(
@@ -42,7 +49,7 @@ class Profile extends React.Component{
       <div className="panel-title">Profile &#183; 
       <small data-toggle="modal" data-target="#editModal" >edit</small></div>
       
-      <ProfileEditModal />
+      <ProfileEditModal first_name={this.state.first_name} last_name={this.state.last_name} updateHandler={this.updateProfileHandler.bind(this)}/>
       </div>
 
       <div className="panel-body">

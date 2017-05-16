@@ -2117,6 +2117,25 @@ var AjaxRequest = function () {
       xhr.send(payload);
     }
   }, {
+    key: "put",
+    value: function put(url, payload, done) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("PUT", url);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.withCredentials = true;
+
+      xhr.onload = function () {
+        done(null, JSON.parse(xhr.response));
+      };
+
+      xhr.onerror = function () {
+        console.log('error');
+        done(xhr.response);
+      };
+
+      xhr.send(payload);
+    }
+  }, {
     key: "delete",
     value: function _delete(url, done) {
       var xhr = new XMLHttpRequest();
@@ -12624,6 +12643,14 @@ var Profile = function (_React$Component) {
       });
     }
   }, {
+    key: 'updateProfileHandler',
+    value: function updateProfileHandler(newData) {
+      var req = new _AjaxRequest2.default();
+      req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), function (err, res) {
+        console.log('doing something', res);
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
 
@@ -12643,7 +12670,7 @@ var Profile = function (_React$Component) {
               'edit'
             )
           ),
-          _react2.default.createElement(_ProfileEditModal2.default, null)
+          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, updateHandler: this.updateProfileHandler.bind(this) })
         ),
         _react2.default.createElement(
           'div',
@@ -27353,13 +27380,39 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ProfileEditModal = function (_React$Component) {
   _inherits(ProfileEditModal, _React$Component);
 
-  function ProfileEditModal() {
+  function ProfileEditModal(props) {
     _classCallCheck(this, ProfileEditModal);
 
-    return _possibleConstructorReturn(this, (ProfileEditModal.__proto__ || Object.getPrototypeOf(ProfileEditModal)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (ProfileEditModal.__proto__ || Object.getPrototypeOf(ProfileEditModal)).call(this, props));
+
+    _this.state = {
+      first_name: props.first_name,
+      last_name: props.last_name
+    };
+    return _this;
   }
 
   _createClass(ProfileEditModal, [{
+    key: "onSave",
+    value: function onSave() {
+      var newData = {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name
+      };
+
+      this.props.updateHandler(newData);
+    }
+  }, {
+    key: "onFirstNameChange",
+    value: function onFirstNameChange(e) {
+      this.setState({ first_name: e.target.value });
+    }
+  }, {
+    key: "onLastNameChange",
+    value: function onLastNameChange(e) {
+      this.setState({ last_name: e.target.value });
+    }
+  }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
@@ -27395,7 +27448,19 @@ var ProfileEditModal = function (_React$Component) {
               _react2.default.createElement(
                 "p",
                 null,
-                "body text goes here."
+                "Update your profile details:"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "First Name: ",
+                _react2.default.createElement("input", { type: "text", id: "first_name", onChange: this.onFirstNameChange.bind(this), defaultValue: this.props.first_name })
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Last Name: ",
+                _react2.default.createElement("input", { type: "text", id: "last_name", onChange: this.onLastNameChange.bind(this), defaultValue: this.props.last_name })
               )
             ),
             _react2.default.createElement(
@@ -27403,7 +27468,7 @@ var ProfileEditModal = function (_React$Component) {
               { className: "modal-footer" },
               _react2.default.createElement(
                 "button",
-                { type: "button", className: "btn btn-primary" },
+                { type: "button", className: "btn btn-primary", onClick: this.onSave.bind(this) },
                 "Save changes"
               ),
               _react2.default.createElement(

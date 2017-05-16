@@ -39,6 +39,24 @@ class AjaxRequest {
 
   }
 
+  put(url, payload, done){
+    const xhr = new XMLHttpRequest()
+    xhr.open("PUT", url)
+    xhr.setRequestHeader("Content-Type", "application/json")
+    xhr.withCredentials = true
+
+    xhr.onload = () => {
+      done(null, JSON.parse(xhr.response))
+    }
+
+    xhr.onerror = () => {
+      console.log('error')
+      done(xhr.response)
+    }
+
+    xhr.send(payload)
+  }
+
 
   delete(url, done){
     const xhr = new XMLHttpRequest()
