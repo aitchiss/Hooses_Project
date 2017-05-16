@@ -32,7 +32,6 @@ class Topics extends React.Component{
 
       if(!res.error){
         this.setState({topics: res.topics})
-        console.log('topics', this.state.topics)
       }
    })
   }
@@ -40,7 +39,9 @@ class Topics extends React.Component{
   render(){
 
     let topics = this.state.topics.map((topic, index) => {
-     return <Topic key={index} title={topic.title} status={topic.status}/>
+      console.log(topics)
+
+     return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread}/>
     })
 
 

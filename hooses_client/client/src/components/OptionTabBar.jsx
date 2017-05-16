@@ -4,19 +4,17 @@ import Topics from './Topics.jsx'
 import JobCalls from './JobCalls.jsx'
 import Expenditure from './Expenditure.jsx'
 import Documents from './Documents.jsx'
+import TopicThread from './TopicThread.jsx'
 
 
 class OptionTabBar extends React.Component {
 
   constructor(props){
     super(props)
-
-      console.log('OptionTabBar props = ', props) //why null for house_id?
-    
     this.state = {
-      selectedView: 'KitchenTable'
-    }
-  
+      selectedView: 'KitchenTable',
+      topic_id: null
+    }  
   }
 
   kitchenTable(){
@@ -25,6 +23,10 @@ class OptionTabBar extends React.Component {
 
   topics(){
     this.setState({selectedView: 'Topics'})
+  }
+
+  topicThread(id){
+    this.setState({selectedView: 'TopicThread', topic_id: id})
   }
 
   jobCalls(){  
@@ -48,7 +50,10 @@ class OptionTabBar extends React.Component {
         view = <KitchenTable/>
         break;  
       case 'Topics':
-        view = <Topics house_id={this.props.house_id}/>
+        view = <Topics house_id={this.props.house_id} setTopicThread={this.topicThread.bind(this)}/>
+        break;
+      case 'TopicThread':
+        view = <TopicThread topic_id={this.state.topic_id} house_id={this.props.house_id}/>
         break;
       case 'JobCalls':
         view = <JobCalls/>

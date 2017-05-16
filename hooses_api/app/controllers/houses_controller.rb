@@ -11,7 +11,7 @@ class HousesController < ApplicationController
       except: [:created_at, :updated_at],
       include: {
         topics: {
-          only: [:title, :status]
+          only: [:id, :title, :status]
         }
       }
     })

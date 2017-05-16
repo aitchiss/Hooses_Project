@@ -33,7 +33,6 @@ class HomeContainer extends React.Component {
         view = <WelcomeContainer userSignIn={this.setUser.bind(this)}/>
       }
 
-
       return(
         <div>
         {view}
