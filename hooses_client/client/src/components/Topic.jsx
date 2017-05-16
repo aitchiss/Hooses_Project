@@ -7,8 +7,8 @@ class Topic extends React.Component{
   }
 
 
-onClickEvent(){
-console.log('topic clicked')
+onClickEvent(event){
+console.log('topic clicked : ', event.target.value )
 }
 
 
