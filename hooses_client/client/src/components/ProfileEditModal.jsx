@@ -9,7 +9,6 @@ class ProfileEditModal extends React.Component{
       first_name: props.first_name,
       last_name: props.last_name,
       address: props.address,
-      email: props.email
     }
   }
 
@@ -22,7 +21,6 @@ class ProfileEditModal extends React.Component{
         first_name: nextProps.first_name,
         last_name: nextProps.last_name,
         address: nextProps.address,
-        email: nextProps.email
       })
     }
   }
@@ -32,7 +30,6 @@ class ProfileEditModal extends React.Component{
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       address: this.state.address,
-      email: this.state.email
     }
 
 
@@ -51,9 +48,7 @@ class ProfileEditModal extends React.Component{
     this.setState({address: e.target.value})
   }
 
-  onEmailChange(e){
-    this.setState({email: e.target.value})
-  }
+ 
 
 
   render(){
@@ -73,7 +68,7 @@ class ProfileEditModal extends React.Component{
               <p>First Name: <input type="text" id="first_name" onChange={this.onFirstNameChange.bind(this)} placeholder={this.props.first_name}></input></p>
               <p>Last Name: <input type="text" id="last_name" onChange={this.onLastNameChange.bind(this)} placeholder={this.props.last_name}></input></p>
               <p>Address: <input type="text" id="address" onChange={this.onAddressChange.bind(this)} placeholder={this.props.address}></input></p>
-              <p>Email: <input type="text" id="email" onChange={this.onEmailChange.bind(this)} placeholder={this.props.email}></input></p>
+             
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" onClick={this.onSave.bind(this)} data-dismiss="modal">Save changes</button>

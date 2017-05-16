@@ -12655,8 +12655,8 @@ var Profile = function (_React$Component) {
           _this3.setState({
             first_name: res.profiles[0].first_name,
             last_name: res.profiles[0].last_name,
-            address: res.profiles[0].address,
-            email: res.profiles[0].email
+            address: res.profiles[0].address
+
           });
         }
       });
@@ -12681,7 +12681,7 @@ var Profile = function (_React$Component) {
               'edit'
             )
           ),
-          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, address: this.state.address, email: this.state.email, updateHandler: this.updateProfileHandler.bind(this) })
+          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, address: this.state.address, updateHandler: this.updateProfileHandler.bind(this) })
         ),
         _react2.default.createElement(
           'div',
@@ -27399,8 +27399,7 @@ var ProfileEditModal = function (_React$Component) {
     _this.state = {
       first_name: props.first_name,
       last_name: props.last_name,
-      address: props.address,
-      email: props.email
+      address: props.address
     };
     return _this;
   }
@@ -27415,8 +27414,7 @@ var ProfileEditModal = function (_React$Component) {
         this.setState({
           first_name: nextProps.first_name,
           last_name: nextProps.last_name,
-          address: nextProps.address,
-          email: nextProps.email
+          address: nextProps.address
         });
       }
     }
@@ -27426,8 +27424,7 @@ var ProfileEditModal = function (_React$Component) {
       var newData = {
         first_name: this.state.first_name,
         last_name: this.state.last_name,
-        address: this.state.address,
-        email: this.state.email
+        address: this.state.address
       };
 
       this.props.updateHandler(newData);
@@ -27446,11 +27443,6 @@ var ProfileEditModal = function (_React$Component) {
     key: 'onAddressChange',
     value: function onAddressChange(e) {
       this.setState({ address: e.target.value });
-    }
-  }, {
-    key: 'onEmailChange',
-    value: function onEmailChange(e) {
-      this.setState({ email: e.target.value });
     }
   }, {
     key: 'render',
@@ -27507,12 +27499,6 @@ var ProfileEditModal = function (_React$Component) {
                 null,
                 'Address: ',
                 _react2.default.createElement('input', { type: 'text', id: 'address', onChange: this.onAddressChange.bind(this), placeholder: this.props.address })
-              ),
-              _react2.default.createElement(
-                'p',
-                null,
-                'Email: ',
-                _react2.default.createElement('input', { type: 'text', id: 'email', onChange: this.onEmailChange.bind(this), placeholder: this.props.email })
               )
             ),
             _react2.default.createElement(
