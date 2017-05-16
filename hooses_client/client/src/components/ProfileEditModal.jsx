@@ -45,7 +45,7 @@ class ProfileEditModal extends React.Component{
               <p>Last Name: <input type="text" id="last_name" onChange={this.onLastNameChange.bind(this)} defaultValue={this.props.last_name}></input></p>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-primary" onClick={this.onSave.bind(this)}>Save changes</button>
+              <button type="button" className="btn btn-primary" onClick={this.onSave.bind(this)} data-dismiss="modal">Save changes</button>
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>

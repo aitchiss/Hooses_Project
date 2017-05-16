@@ -12645,9 +12645,16 @@ var Profile = function (_React$Component) {
   }, {
     key: 'updateProfileHandler',
     value: function updateProfileHandler(newData) {
+      var _this3 = this;
+
       var req = new _AjaxRequest2.default();
       req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), function (err, res) {
-        console.log('doing something', res);
+        if (!res.error) {
+          _this3.setState({
+            first_name: res.profiles[0].first_name,
+            last_name: res.profiles[0].last_name
+          });
+        }
       });
     }
   }, {
@@ -27468,7 +27475,7 @@ var ProfileEditModal = function (_React$Component) {
               { className: "modal-footer" },
               _react2.default.createElement(
                 "button",
-                { type: "button", className: "btn btn-primary", onClick: this.onSave.bind(this) },
+                { type: "button", className: "btn btn-primary", onClick: this.onSave.bind(this), "data-dismiss": "modal" },
                 "Save changes"
               ),
               _react2.default.createElement(

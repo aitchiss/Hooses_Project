@@ -36,7 +36,12 @@ class Profile extends React.Component{
   updateProfileHandler(newData){
     const req = new AjaxRequest()
     req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), (err, res) => {
-      console.log('doing something', res)
+      if(!res.error){
+        this.setState({
+          first_name: res.profiles[0].first_name,
+          last_name: res.profiles[0].last_name
+        })
+      }
     })
   }
 
