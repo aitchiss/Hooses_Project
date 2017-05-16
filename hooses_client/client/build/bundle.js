@@ -12286,6 +12286,8 @@ var OptionTabBar = function (_React$Component) {
 
       var view = void 0;
 
+      console.log('option tab bar :', this.props.house_id);
+
       switch (this.state.selectedView) {
         case 'KitchenTable':
           view = _react2.default.createElement(_KitchenTable2.default, null);
@@ -12605,25 +12607,6 @@ var TopicMessageItem = function (_React$Component) {
       var day = dateTime.substring(8, 10);
       var time = dateTime.substring(11, 16);
 
-      // var req = new AjaxRequest()
-
-      // console.log('props = ', this.props)
-
-      // req.get('http://localhost:8000/api/users/' + this.props.user_id, (err, res) => {
-
-
-      //   if(!res.error){
-
-
-      //      const first_name = res.profiles[0].first_name
-      //      const last_name = res.profiles[0].last_name
-      //       const address = res.profiles[0].address
-      //       const email = res.email
-      //       const url = res.profiles[0].url
-      //   }
-      // })
-
-
       return _react2.default.createElement(
         'div',
         null,
@@ -12822,8 +12805,7 @@ var Topics = function (_React$Component) {
 
       if (this.state.house_id !== this.props.house_id) {
         var req = new _AjaxRequest2.default();
-
-        req.get('http://localhost:8000/api/houses/' + this.props.house_id + /topics/ + this.props.topic_id, function (err, res) {
+        req.get('http://localhost:8000/api/houses/' + this.props.house_id, function (err, res) {
           if (!res.error) {
             _this2.setState({ topics: res.topics, house_id: _this2.props.house_id });
           }
@@ -12838,7 +12820,6 @@ var Topics = function (_React$Component) {
       var req = new _AjaxRequest2.default();
 
       req.get('http://localhost:8000/api/houses/' + this.props.house_id, function (err, res) {
-
         if (!res.error) {
           _this3.setState({ topics: res.topics });
         }
@@ -12848,6 +12829,8 @@ var Topics = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _this4 = this;
+
+      console.log('House_id in topics : ', this.props.house_id);
 
       var topics = this.state.topics.map(function (topic, index) {
         return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this4.props.setTopicThread });

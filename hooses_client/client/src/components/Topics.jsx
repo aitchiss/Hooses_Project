@@ -16,8 +16,7 @@ class Topics extends React.Component{
   componentDidUpdate(){
     if (this.state.house_id !== this.props.house_id){
       var req = new AjaxRequest()
-
-      req.get('http://localhost:8000/api/houses/' + this.props.house_id + /topics/ + this.props.topic_id, (err, res) => {
+      req.get('http://localhost:8000/api/houses/' + this.props.house_id, (err, res) => {
          if(!res.error){
            this.setState({topics: res.topics, house_id: this.props.house_id})
          }
@@ -29,7 +28,6 @@ class Topics extends React.Component{
    var req = new AjaxRequest()
 
    req.get('http://localhost:8000/api/houses/' + this.props.house_id, (err, res) => {
-
       if(!res.error){
         this.setState({topics: res.topics})
       }
@@ -37,6 +35,8 @@ class Topics extends React.Component{
   }
 
   render(){
+
+    console.log('House_id in topics : ',this.props.house_id)
 
     let topics = this.state.topics.map((topic, index) => {
      return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread}/>

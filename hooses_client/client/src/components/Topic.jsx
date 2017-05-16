@@ -12,6 +12,8 @@ selectTopic(event){
 
 render(){
 
+
+
   return (
     <div className="media correct-pointer" onClick={this.selectTopic.bind(this)}>
 

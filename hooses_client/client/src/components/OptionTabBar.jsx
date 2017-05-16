@@ -45,6 +45,8 @@ class OptionTabBar extends React.Component {
 
     let view;
 
+    console.log('option tab bar :', this.props.house_id)
+
     switch(this.state.selectedView) {
       case 'KitchenTable':
         view = <KitchenTable/>
