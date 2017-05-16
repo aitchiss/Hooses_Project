@@ -7,21 +7,50 @@ class KitchenTable extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      user_id: props.user_id,
       house_id: props.house_id,
-      messages: []
+      messages: [],
+      input: ''
     }
   }
 
   componentDidUpdate(){
     if (this.props.house_id !== this.state.house_id){
-      const req = new AjaxRequest()
-      req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, (err, res) => {
-        if (!res.error){
-          console.log(res)
-          this.setState({house_id: this.props.house_id, messages: res})
+      this.getNewMessages()
+    }
+  }
+
+  getNewMessages(){
+    const req = new AjaxRequest()
+    req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, (err, res) => {
+      if (!res.error){
+        this.setState({house_id: this.props.house_id, messages: res})
+      }
+    })
+  }
+
+  onMessageInputChange(e){
+    this.setState({input: e.target.value})
+  }
+
+  onMessageSubmit(e){
+    if(e.which === 13){
+      //create a message in the db
+      //re render
+
+      let message = { kitchen_table_post: {
+        user_id: this.state.user_id,
+        house_id: this.state.house_id,
+        content: this.state.input
         }
+      }
+
+      const req = new AjaxRequest()
+      req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), (err, res) => {
+        this.getNewMessages()
       })
     }
+    
   }
 
 
@@ -41,6 +70,7 @@ class KitchenTable extends React.Component{
         <div className="panel-body">
           {messages}
         </div>
+        <input id="kitchen-table-input" type="text" placeholder="post a message" onChange={this.onMessageInputChange.bind(this)} onKeyDown={this.onMessageSubmit.bind(this)}></input>
       </div>
     )
   }

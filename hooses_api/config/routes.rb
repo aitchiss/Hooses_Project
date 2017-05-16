@@ -36,6 +36,7 @@ devise_for :users
 
     ##KITCHEN TABLE POSTS
     get '/kitchen_table_posts/house/:id' => 'kitchen_table_posts#show'
+    post '/kitchen_table_posts' => 'kitchen_table_posts#create'
 
   end
 

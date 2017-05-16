@@ -12010,8 +12010,10 @@ var KitchenTable = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (KitchenTable.__proto__ || Object.getPrototypeOf(KitchenTable)).call(this, props));
 
     _this.state = {
+      user_id: props.user_id,
       house_id: props.house_id,
-      messages: []
+      messages: [],
+      input: ''
     };
     return _this;
   }
@@ -12019,15 +12021,46 @@ var KitchenTable = function (_React$Component) {
   _createClass(KitchenTable, [{
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
+      if (this.props.house_id !== this.state.house_id) {
+        this.getNewMessages();
+      }
+    }
+  }, {
+    key: 'getNewMessages',
+    value: function getNewMessages() {
       var _this2 = this;
 
-      if (this.props.house_id !== this.state.house_id) {
-        var req = new _AjaxRequest2.default();
-        req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, function (err, res) {
-          if (!res.error) {
-            console.log(res);
-            _this2.setState({ house_id: _this2.props.house_id, messages: res });
+      var req = new _AjaxRequest2.default();
+      req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, function (err, res) {
+        if (!res.error) {
+          _this2.setState({ house_id: _this2.props.house_id, messages: res });
+        }
+      });
+    }
+  }, {
+    key: 'onMessageInputChange',
+    value: function onMessageInputChange(e) {
+      this.setState({ input: e.target.value });
+    }
+  }, {
+    key: 'onMessageSubmit',
+    value: function onMessageSubmit(e) {
+      var _this3 = this;
+
+      if (e.which === 13) {
+        //create a message in the db
+        //re render
+
+        var message = { kitchen_table_post: {
+            user_id: this.state.user_id,
+            house_id: this.state.house_id,
+            content: this.state.input
           }
+        };
+
+        var req = new _AjaxRequest2.default();
+        req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), function (err, res) {
+          _this3.getNewMessages();
         });
       }
     }
@@ -12055,7 +12088,8 @@ var KitchenTable = function (_React$Component) {
           'div',
           { className: 'panel-body' },
           messages
-        )
+        ),
+        _react2.default.createElement('input', { id: 'kitchen-table-input', type: 'text', placeholder: 'post a message', onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })
       );
     }
   }]);
