@@ -1,5 +1,6 @@
 import React from 'react'
 import AjaxRequest from '../services/AjaxRequest.js'
+import ProfileEditModal from './ProfileEditModal'
 
 class Profile extends React.Component{
 
@@ -38,7 +39,10 @@ class Profile extends React.Component{
 
       <div className="panel panel-default">
       <div className="panel-heading">
-      <div className="panel-title">Profile &#183; <small><a href="#">edit</a></small></div>
+      <div className="panel-title">Profile &#183; 
+      <small data-toggle="modal" data-target="#editModal" >edit</small></div>
+      
+      <ProfileEditModal />
       </div>
 
       <div className="panel-body">

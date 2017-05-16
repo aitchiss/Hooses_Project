@@ -7443,6 +7443,10 @@ var _Profile = __webpack_require__(113);
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
+var _ProfileEditModal = __webpack_require__(243);
+
+var _ProfileEditModal2 = _interopRequireDefault(_ProfileEditModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12569,6 +12573,10 @@ var _AjaxRequest = __webpack_require__(17);
 
 var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
 
+var _ProfileEditModal = __webpack_require__(243);
+
+var _ProfileEditModal2 = _interopRequireDefault(_ProfileEditModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12628,17 +12636,14 @@ var Profile = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'panel-title' },
-            'Profile \xB7 ',
+            'Profile \xB7',
             _react2.default.createElement(
               'small',
-              null,
-              _react2.default.createElement(
-                'a',
-                { href: '#' },
-                'edit'
-              )
+              { 'data-toggle': 'modal', 'data-target': '#editModal' },
+              'edit'
             )
-          )
+          ),
+          _react2.default.createElement(_ProfileEditModal2.default, null)
         ),
         _react2.default.createElement(
           'div',
@@ -27319,6 +27324,104 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProfileEditModal = function (_React$Component) {
+  _inherits(ProfileEditModal, _React$Component);
+
+  function ProfileEditModal() {
+    _classCallCheck(this, ProfileEditModal);
+
+    return _possibleConstructorReturn(this, (ProfileEditModal.__proto__ || Object.getPrototypeOf(ProfileEditModal)).apply(this, arguments));
+  }
+
+  _createClass(ProfileEditModal, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "modal fade", id: "editModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "editModalLabel", "aria-hidden": "true" },
+        _react2.default.createElement(
+          "div",
+          { className: "modal-dialog", role: "document" },
+          _react2.default.createElement(
+            "div",
+            { className: "modal-content" },
+            _react2.default.createElement(
+              "div",
+              { className: "modal-header" },
+              _react2.default.createElement(
+                "h5",
+                { className: "modal-title" },
+                "Edit Profile"
+              ),
+              _react2.default.createElement(
+                "button",
+                { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
+                _react2.default.createElement(
+                  "span",
+                  { "aria-hidden": "true" },
+                  "\xD7"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "modal-body" },
+              _react2.default.createElement(
+                "p",
+                null,
+                "body text goes here."
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "modal-footer" },
+              _react2.default.createElement(
+                "button",
+                { type: "button", className: "btn btn-primary" },
+                "Save changes"
+              ),
+              _react2.default.createElement(
+                "button",
+                { type: "button", className: "btn btn-secondary", "data-dismiss": "modal" },
+                "Close"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ProfileEditModal;
+}(_react2.default.Component);
+
+exports.default = ProfileEditModal;
 
 /***/ })
 /******/ ]);

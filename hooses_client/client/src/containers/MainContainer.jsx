@@ -5,6 +5,7 @@ import CoOwners from '../components/CoOwners.jsx'
 import AddressTitle from '../components/AddressTitle.jsx'
 import OptionTabBar from '../components/OptionTabBar.jsx'
 import Profile from '../components/Profile.jsx'
+import ProfileEditModal from '../components/ProfileEditModal.jsx'
 
 
 class MainContainer extends React.Component {
@@ -53,6 +54,7 @@ class MainContainer extends React.Component {
 
           <div className="col-md-2">
             <Profile user_id={this.props.user.id}/>
+            
           </div>
         </div>
       </div>
