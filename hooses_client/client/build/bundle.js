@@ -11985,6 +11985,14 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(24);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
+var _KitchenTableMessage = __webpack_require__(240);
+
+var _KitchenTableMessage2 = _interopRequireDefault(_KitchenTableMessage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -11996,32 +12004,57 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var KitchenTable = function (_React$Component) {
   _inherits(KitchenTable, _React$Component);
 
-  function KitchenTable() {
+  function KitchenTable(props) {
     _classCallCheck(this, KitchenTable);
 
-    return _possibleConstructorReturn(this, (KitchenTable.__proto__ || Object.getPrototypeOf(KitchenTable)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (KitchenTable.__proto__ || Object.getPrototypeOf(KitchenTable)).call(this, props));
+
+    _this.state = {
+      house_id: props.house_id,
+      messages: []
+    };
+    return _this;
   }
 
   _createClass(KitchenTable, [{
-    key: "render",
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      var _this2 = this;
+
+      if (this.props.house_id !== this.state.house_id) {
+        var req = new _AjaxRequest2.default();
+        req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, function (err, res) {
+          if (!res.error) {
+            console.log(res);
+            _this2.setState({ house_id: _this2.props.house_id, messages: res });
+          }
+        });
+      }
+    }
+  }, {
+    key: 'render',
     value: function render() {
 
+      var messages = this.state.messages.map(function (msg, index) {
+        return _react2.default.createElement(_KitchenTableMessage2.default, { key: index, userName: msg.user.profiles[0].first_name, message: msg.content });
+      });
+
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-default" },
+        'div',
+        { className: 'panel panel-default' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "Kitchen Table"
+            'div',
+            { className: 'panel-title' },
+            'Kitchen Table'
           )
         ),
         _react2.default.createElement(
-          "div",
-          { className: "panel-body" },
-          "* NO BLOG TABLE/MESSAGES CREATED IN SEEDS * (ps see bootstrap media layout)"
+          'div',
+          { className: 'panel-body' },
+          messages
         )
       );
     }
@@ -12341,7 +12374,7 @@ var OptionTabBar = function (_React$Component) {
 
       switch (this.state.selectedView) {
         case 'KitchenTable':
-          view = _react2.default.createElement(_KitchenTable2.default, null);
+          view = _react2.default.createElement(_KitchenTable2.default, { house_id: this.props.house_id, user_id: this.props.user_id });
           break;
         case 'Topics':
           view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id });
@@ -27005,6 +27038,40 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var KitchenTableMessage = function KitchenTableMessage(props) {
+
+  return _react2.default.createElement(
+    "div",
+    { className: "kitchen-table-msg" },
+    _react2.default.createElement(
+      "p",
+      null,
+      props.userName,
+      ": ",
+      props.message
+    )
+  );
+};
+
+exports.default = KitchenTableMessage;
 
 /***/ })
 /******/ ]);

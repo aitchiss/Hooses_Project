@@ -7986,3 +7986,527 @@ FOREIGN KEY ("house_id")
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "kitchen_table_posts" ("content", "user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "yup - hello!"], ["user_id", 12], ["house_id", 11], ["created_at", "2017-05-16 08:44:39.378054"], ["updated_at", "2017-05-16 08:44:39.378054"]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-16 09:57:17 +0100
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 201 Created in 51ms (Views: 0.8ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/owner_groups/user/11" for 127.0.0.1 at 2017-05-16 09:57:17 +0100
+Processing by OwnerGroupsController#show_houses as */*
+Started GET "/api/users/11" for 127.0.0.1 at 2017-05-16 09:57:17 +0100
+  Parameters: {"id"=>"11"}
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[36mUser Load (12.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mHouse Load (1.7ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+Completed 200 OK in 79ms (Views: 0.4ms | ActiveRecord: 24.4ms)
+
+
+  [1m[36mProfile Load (0.9ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 11]]
+Started GET "/api/owner_groups/house/12" for 127.0.0.1 at 2017-05-16 09:57:17 +0100
+Processing by OwnerGroupsController#show_users as */*
+  Parameters: {"id"=>"12"}
+Completed 200 OK in 102ms (Views: 0.4ms | ActiveRecord: 46.8ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."house_id" = $1[0m  [["house_id", 12]]
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-16 09:57:37 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 201 Created in 15ms (Views: 1.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/owner_groups/user/11" for 127.0.0.1 at 2017-05-16 09:57:37 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"11"}
+Started GET "/api/users/11" for 127.0.0.1 at 2017-05-16 09:57:37 +0100
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (3.2ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[36mProfile Load (2.7ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 11]]
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 4.1ms)
+
+
+  [1m[36mHouse Load (4.0ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mHouse Load (1.0ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+Completed 200 OK in 30ms (Views: 1.2ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/api/kitchen_table_messages/house/12" for 127.0.0.1 at 2017-05-16 09:57:37 +0100
+  
+Started GET "/api/owner_groups/house/12" for 127.0.0.1 at 2017-05-16 09:57:37 +0100
+ActionController::RoutingError (No route matches [GET] "/api/kitchen_table_messages/house/12"):
+Processing by OwnerGroupsController#show_users as */*
+  
+  Parameters: {"id"=>"12"}
+actionpack (5.1.0) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.0) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.0) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.2) lib/rack/method_override.rb:22:in `call'
+rack (2.0.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.0) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.0) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.2) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.0) lib/rails/engine.rb:522:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (1.1ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."house_id" = $1[0m  [["house_id", 12]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-16 09:57:58 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 201 Created in 15ms (Views: 1.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/owner_groups/user/11" for 127.0.0.1 at 2017-05-16 09:57:58 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"11"}
+Started GET "/api/users/11" for 127.0.0.1 at 2017-05-16 09:57:58 +0100
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 11]]
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.6ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mHouse Load (1.9ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 5.0ms)
+
+
+  [1m[36mProfile Load (1.5ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 11]]
+Completed 200 OK in 17ms (Views: 0.4ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/owner_groups/house/12" for 127.0.0.1 at 2017-05-16 09:57:58 +0100
+Processing by OwnerGroupsController#show_users as */*
+Started GET "/api/kitchen_table_posts/house/12" for 127.0.0.1 at 2017-05-16 09:57:58 +0100
+  Parameters: {"id"=>"12"}
+Processing by KitchenTablePostsController#show as */*
+  [1m[36mUser Load (4.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Parameters: {"id"=>"12"}
+  [1m[36mOwnerGroup Load (1.4ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."house_id" = $1[0m  [["house_id", 12]]
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mProfile Load (6.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 12.7ms)
+
+
+  [1m[36mKitchenTablePost Load (1.5ms)[0m  [1m[34mSELECT "kitchen_table_posts".* FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."house_id" = $1[0m  [["house_id", 12]]
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/api/owner_groups/house/13" for 127.0.0.1 at 2017-05-16 09:58:09 +0100
+Started GET "/api/kitchen_table_posts/house/13" for 127.0.0.1 at 2017-05-16 09:58:09 +0100
+Processing by OwnerGroupsController#show_users as */*
+Processing by KitchenTablePostsController#show as */*
+  Parameters: {"id"=>"13"}
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (1.8ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."house_id" = $1[0m  [["house_id", 13]]
+  [1m[36mKitchenTablePost Load (2.7ms)[0m  [1m[34mSELECT "kitchen_table_posts".* FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."house_id" = $1[0m  [["house_id", 13]]
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 4.0ms)
+
+
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[36mProfile Load (0.6ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 11]]
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/api/houses/11" for 127.0.0.1 at 2017-05-16 09:58:22 +0100
+Processing by HousesController#show as JSON
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTopic Load (0.9ms)[0m  [1m[34mSELECT "topics".* FROM "topics" WHERE "topics"."house_id" = $1[0m  [["house_id", 11]]
+Completed 200 OK in 38ms (Views: 0.3ms | ActiveRecord: 10.1ms)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mKitchenTablePost Load (0.8ms)[0m  [1m[34mSELECT "kitchen_table_posts".* FROM "kitchen_table_posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 18]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 19]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 20]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 21]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTopic Load (0.6ms)[0m  [1m[34mSELECT "topics".* FROM "topics"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[31mDELETE FROM "topics" WHERE "topics"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "topics" WHERE "topics"."id" = $1[0m  [["id", 15]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "topics" WHERE "topics"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "topics" WHERE "topics"."id" = $1[0m  [["id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "topics" WHERE "topics"."id" = $1[0m  [["id", 18]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "topics" WHERE "topics"."id" = $1[0m  [["id", 19]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOwnerGroup Load (0.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "owner_groups" WHERE "owner_groups"."id" = $1[0m  [["id", 21]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "owner_groups" WHERE "owner_groups"."id" = $1[0m  [["id", 22]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "owner_groups" WHERE "owner_groups"."id" = $1[0m  [["id", 23]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "owner_groups" WHERE "owner_groups"."id" = $1[0m  [["id", 24]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "owner_groups" WHERE "owner_groups"."id" = $1[0m  [["id", 25]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "owner_groups" WHERE "owner_groups"."id" = $1[0m  [["id", 26]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "profiles" WHERE "profiles"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "profiles" WHERE "profiles"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "profiles" WHERE "profiles"."id" = $1[0m  [["id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHouse Load (0.6ms)[0m  [1m[34mSELECT "houses".* FROM "houses"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "houses" WHERE "houses"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "houses" WHERE "houses"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "houses" WHERE "houses"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rob@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "rob@gmail.com"], ["encrypted_password", "$2a$11$AfwdmvXShzM8iaWmQZ/.GeUrzd8VRi4kzATe.4LoKquF9h/Rt9pp2"], ["created_at", "2017-05-16 08:59:06.999104"], ["updated_at", "2017-05-16 08:59:06.999104"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sue@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "sue@gmail.com"], ["encrypted_password", "$2a$11$HiljO2Mc6UIaqfuP2Qn31Ok6DMi1z3HUORH5wAwsFGOHRAOXZqLSq"], ["created_at", "2017-05-16 08:59:07.131501"], ["updated_at", "2017-05-16 08:59:07.131501"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bill@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "bill@gmail.com"], ["encrypted_password", "$2a$11$d5UVIahQNwd9CScH4N/DAOojzoOQi36OrpxAhdeZMGXgkP.Tq8pje"], ["created_at", "2017-05-16 08:59:07.271721"], ["updated_at", "2017-05-16 08:59:07.271721"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "houses" ("address", "post_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["address", "23 Castle Terrace"], ["post_code", "EH3 7JX"], ["created_at", "2017-05-16 08:59:07.275222"], ["updated_at", "2017-05-16 08:59:07.275222"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "houses" ("address", "post_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["address", "99 High Street"], ["post_code", "EH9 7JX"], ["created_at", "2017-05-16 08:59:07.277494"], ["updated_at", "2017-05-16 08:59:07.277494"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "houses" ("address", "post_code", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["address", "23 The Shard"], ["post_code", "SW1 5EJ"], ["created_at", "2017-05-16 08:59:07.279219"], ["updated_at", "2017-05-16 08:59:07.279219"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "owner_groups" ("user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 13], ["house_id", 14], ["created_at", "2017-05-16 08:59:07.285816"], ["updated_at", "2017-05-16 08:59:07.285816"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "owner_groups" ("user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 14], ["house_id", 14], ["created_at", "2017-05-16 08:59:07.288509"], ["updated_at", "2017-05-16 08:59:07.288509"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "owner_groups" ("user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 14], ["house_id", 15], ["created_at", "2017-05-16 08:59:07.290937"], ["updated_at", "2017-05-16 08:59:07.290937"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "owner_groups" ("user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 15], ["house_id", 16], ["created_at", "2017-05-16 08:59:07.293208"], ["updated_at", "2017-05-16 08:59:07.293208"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "owner_groups" ("user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 13], ["house_id", 16], ["created_at", "2017-05-16 08:59:07.295459"], ["updated_at", "2017-05-16 08:59:07.295459"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "owner_groups" ("user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 15], ["house_id", 14], ["created_at", "2017-05-16 08:59:07.297708"], ["updated_at", "2017-05-16 08:59:07.297708"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "owner_groups" ("user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 14], ["house_id", 16], ["created_at", "2017-05-16 08:59:07.300380"], ["updated_at", "2017-05-16 08:59:07.300380"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "profiles" ("first_name", "last_name", "address", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "rob"], ["last_name", "brice"], ["address", "34 The Big Street"], ["image", "url_placeholder"], ["user_id", 13], ["created_at", "2017-05-16 08:59:07.303113"], ["updated_at", "2017-05-16 08:59:07.303113"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "profiles" ("first_name", "last_name", "address", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "sue"], ["last_name", "aitchison"], ["address", "21 Roller Street"], ["image", "url_placeholder"], ["user_id", 14], ["created_at", "2017-05-16 08:59:07.305418"], ["updated_at", "2017-05-16 08:59:07.305418"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "profiles" ("first_name", "last_name", "address", "image", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "bill"], ["last_name", "smith"], ["address", "101 Shard Street"], ["image", "url_placeholder"], ["user_id", 15], ["created_at", "2017-05-16 08:59:07.308093"], ["updated_at", "2017-05-16 08:59:07.308093"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "topics" ("user_id", "house_id", "title", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 13], ["house_id", 14], ["title", "leaky pipe"], ["status", "open"], ["created_at", "2017-05-16 08:59:07.311142"], ["updated_at", "2017-05-16 08:59:07.311142"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("user_id", "house_id", "title", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 14], ["house_id", 15], ["title", "roof repairs"], ["status", "open"], ["created_at", "2017-05-16 08:59:07.313817"], ["updated_at", "2017-05-16 08:59:07.313817"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("user_id", "house_id", "title", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 15], ["house_id", 16], ["title", "smelly drain"], ["status", "open"], ["created_at", "2017-05-16 08:59:07.316345"], ["updated_at", "2017-05-16 08:59:07.316345"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "topics" ("user_id", "house_id", "title", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 14], ["house_id", 16], ["title", "take your bins out"], ["status", "open"], ["created_at", "2017-05-16 08:59:07.318689"], ["updated_at", "2017-05-16 08:59:07.318689"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "topics" ("user_id", "house_id", "title", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 13], ["house_id", 14], ["title", "The roof is leaking"], ["status", "open"], ["created_at", "2017-05-16 08:59:07.321172"], ["updated_at", "2017-05-16 08:59:07.321172"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "topics" ("user_id", "house_id", "title", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 15], ["house_id", 15], ["title", "The seagulls are keeping me awake at night!"], ["status", "open"], ["created_at", "2017-05-16 08:59:07.323742"], ["updated_at", "2017-05-16 08:59:07.323742"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("topic_id", "user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["topic_id", 20], ["user_id", 13], ["content", "will somebody please help me sort this leaky pipe"], ["created_at", "2017-05-16 08:59:07.327158"], ["updated_at", "2017-05-16 08:59:07.327158"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("topic_id", "user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["topic_id", 20], ["user_id", 15], ["content", "I already called someone - don't worry"], ["created_at", "2017-05-16 08:59:07.329985"], ["updated_at", "2017-05-16 08:59:07.329985"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("topic_id", "user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["topic_id", 21], ["user_id", 14], ["content", "the roof has caved in - please send help"], ["created_at", "2017-05-16 08:59:07.332418"], ["updated_at", "2017-05-16 08:59:07.332418"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("topic_id", "user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["topic_id", 22], ["user_id", 15], ["content", "the bin situation is getting bad"], ["created_at", "2017-05-16 08:59:07.335111"], ["updated_at", "2017-05-16 08:59:07.335111"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("topic_id", "user_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["topic_id", 22], ["user_id", 13], ["content", "sorry about that"], ["created_at", "2017-05-16 08:59:07.337476"], ["updated_at", "2017-05-16 08:59:07.337476"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "kitchen_table_posts" ("content", "user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "hi guys, can you see this post?"], ["user_id", 13], ["house_id", 14], ["created_at", "2017-05-16 08:59:07.341031"], ["updated_at", "2017-05-16 08:59:07.341031"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "kitchen_table_posts" ("content", "user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "is anyone out there?"], ["user_id", 13], ["house_id", 14], ["created_at", "2017-05-16 08:59:07.343815"], ["updated_at", "2017-05-16 08:59:07.343815"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "kitchen_table_posts" ("content", "user_id", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "yup - hello!"], ["user_id", 15], ["house_id", 14], ["created_at", "2017-05-16 08:59:07.346194"], ["updated_at", "2017-05-16 08:59:07.346194"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-16 09:59:11 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+Completed 401 Unauthorized in 10ms (ActiveRecord: 1.5ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-16 09:59:21 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"sue@gmail.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "sue@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", "2017-05-16 08:59:21.178266"], ["last_sign_in_at", "2017-05-16 08:59:21.178266"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2017-05-16 08:59:21.179359"], ["id", 14]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 201 Created in 156ms (Views: 0.5ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/owner_groups/user/14" for 127.0.0.1 at 2017-05-16 09:59:21 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"14"}
+Started GET "/api/users/14" for 127.0.0.1 at 2017-05-16 09:59:21 +0100
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (1.6ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mHouse Load (2.2ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mProfile Load (2.7ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 14]]
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 8.3ms)
+
+
+  [1m[36mHouse Load (2.8ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.5ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 200 OK in 25ms (Views: 0.5ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/api/kitchen_table_posts/house/14" for 127.0.0.1 at 2017-05-16 09:59:21 +0100
+Processing by KitchenTablePostsController#show as */*
+  Parameters: {"id"=>"14"}
+Started GET "/api/owner_groups/house/14" for 127.0.0.1 at 2017-05-16 09:59:21 +0100
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+Processing by OwnerGroupsController#show_users as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mKitchenTablePost Load (1.1ms)[0m  [1m[34mSELECT "kitchen_table_posts".* FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."house_id" = $1[0m  [["house_id", 14]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.4ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."house_id" = $1[0m  [["house_id", 14]]
+  [1m[36mProfile Load (7.8ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.5ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 14]]
+  [1m[36mProfile Load (1.6ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE Profile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mProfile Load (4.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 15]]
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 14.1ms)
+
+
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.5ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 15]]
+Completed 200 OK in 39ms (Views: 0.6ms | ActiveRecord: 13.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-16 10:03:26 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+Completed 201 Created in 35ms (Views: 3.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/users/14" for 127.0.0.1 at 2017-05-16 10:03:26 +0100
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"14"}
+Started GET "/api/owner_groups/user/14" for 127.0.0.1 at 2017-05-16 10:03:26 +0100
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 14]]
+Completed 200 OK in 23ms (Views: 0.5ms | ActiveRecord: 4.2ms)
+
+
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.8ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mHouse Load (1.6ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.4ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 200 OK in 35ms (Views: 2.7ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/api/owner_groups/house/14" for 127.0.0.1 at 2017-05-16 10:03:26 +0100
+Processing by OwnerGroupsController#show_users as */*
+  Parameters: {"id"=>"14"}
+Started GET "/api/kitchen_table_posts/house/14" for 127.0.0.1 at 2017-05-16 10:03:26 +0100
+Processing by KitchenTablePostsController#show as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (1.9ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."house_id" = $1[0m  [["house_id", 14]]
+  [1m[36mKitchenTablePost Load (3.2ms)[0m  [1m[34mSELECT "kitchen_table_posts".* FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."house_id" = $1[0m  [["house_id", 14]]
+  [1m[36mProfile Load (2.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mProfile Load (2.9ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 14]]
+  [1m[36mProfile Load (1.9ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mProfile Load (2.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 15]]
+  [1m[36mCACHE Profile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 13]]
+Completed 200 OK in 31ms (Views: 0.6ms | ActiveRecord: 9.7ms)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProfile Load (0.7ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 15]]
+Completed 200 OK in 37ms (Views: 2.8ms | ActiveRecord: 9.8ms)
+
+
+Started POST "/users/sign_in.json" for 127.0.0.1 at 2017-05-16 10:03:45 +0100
+Processing by Devise::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+Completed 201 Created in 15ms (Views: 0.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/owner_groups/user/14" for 127.0.0.1 at 2017-05-16 10:03:45 +0100
+Processing by OwnerGroupsController#show_houses as */*
+  Parameters: {"id"=>"14"}
+Started GET "/api/users/14" for 127.0.0.1 at 2017-05-16 10:03:45 +0100
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (4.8ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mHouse Load (16.2ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mProfile Load (2.6ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 14]]
+  [1m[36mHouse Load (0.3ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 38ms (Views: 0.3ms | ActiveRecord: 14.2ms)
+
+
+  [1m[36mHouse Load (2.5ms)[0m  [1m[34mSELECT  "houses".* FROM "houses" WHERE "houses"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+Completed 200 OK in 50ms (Views: 0.9ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/api/owner_groups/house/14" for 127.0.0.1 at 2017-05-16 10:03:45 +0100
+Processing by OwnerGroupsController#show_users as */*
+  Parameters: {"id"=>"14"}
+Started GET "/api/kitchen_table_posts/house/14" for 127.0.0.1 at 2017-05-16 10:03:45 +0100
+Processing by KitchenTablePostsController#show as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mOwnerGroup Load (0.7ms)[0m  [1m[34mSELECT "owner_groups".* FROM "owner_groups" WHERE "owner_groups"."house_id" = $1[0m  [["house_id", 14]]
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[36mKitchenTablePost Load (1.8ms)[0m  [1m[34mSELECT "kitchen_table_posts".* FROM "kitchen_table_posts" WHERE "kitchen_table_posts"."house_id" = $1[0m  [["house_id", 14]]
+  [1m[36mProfile Load (2.8ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 14]]
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.7ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" INNER JOIN "users" ON "profiles"."user_id" = "users"."id" WHERE "users"."id" = $1[0m  [["id", 15]]
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 8.2ms)
+
+
+  [1m[36mProfile Load (1.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE Profile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 13]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProfile Load (1.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1[0m  [["user_id", 15]]
+Completed 200 OK in 34ms (Views: 1.1ms | ActiveRecord: 10.9ms)
+
+

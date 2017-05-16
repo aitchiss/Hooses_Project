@@ -56,6 +56,11 @@ house: h1
   })
 
 OwnerGroup.create({
+  user: u2,
+  house: h1
+  })
+
+OwnerGroup.create({
 user: u2,
 house: h2
   })

@@ -1,9 +1,35 @@
 import React from 'react'
+import AjaxRequest from '../services/AjaxRequest'
+import KitchenTableMessage from './KitchenTableMessage'
 
 class KitchenTable extends React.Component{
 
+  constructor(props){
+    super(props)
+    this.state = {
+      house_id: props.house_id,
+      messages: []
+    }
+  }
+
+  componentDidUpdate(){
+    if (this.props.house_id !== this.state.house_id){
+      const req = new AjaxRequest()
+      req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, (err, res) => {
+        if (!res.error){
+          console.log(res)
+          this.setState({house_id: this.props.house_id, messages: res})
+        }
+      })
+    }
+  }
+
 
   render(){
+
+    let messages = this.state.messages.map((msg, index) => {
+      return <KitchenTableMessage key={index} userName={msg.user.profiles[0].first_name} message={msg.content}/>
+    })
 
     return(
 
@@ -13,7 +39,7 @@ class KitchenTable extends React.Component{
         </div>
 
         <div className="panel-body">
-          * NO BLOG TABLE/MESSAGES CREATED IN SEEDS * (ps see bootstrap media layout)
+          {messages}
         </div>
       </div>
     )
