@@ -12061,6 +12061,7 @@ var KitchenTable = function (_React$Component) {
         var req = new _AjaxRequest2.default();
         req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), function (err, res) {
           _this3.getNewMessages();
+          document.getElementById('kitchen-table-input').value = "";
         });
       }
     }

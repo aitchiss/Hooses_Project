@@ -48,10 +48,12 @@ class KitchenTable extends React.Component{
       const req = new AjaxRequest()
       req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), (err, res) => {
         this.getNewMessages()
+        document.getElementById('kitchen-table-input').value = ""
       })
     }
     
   }
+
 
 
   render(){
