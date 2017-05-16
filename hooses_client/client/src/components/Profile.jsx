@@ -28,7 +28,7 @@ class Profile extends React.Component{
           email: res.email,
           image: res.profiles[0].url
         })
-        console.log('state set')
+        
       }
     })
   }
@@ -38,11 +38,12 @@ class Profile extends React.Component{
     const req = new AjaxRequest()
     req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), (err, res) => {
       if(!res.error){
-        console.log(res)
+        console.log('res', res)
         this.setState({
           first_name: res.profiles[0].first_name,
           last_name: res.profiles[0].last_name,
-          address: res.profiles[0].address
+          address: res.profiles[0].address,
+          email: res.profiles[0].email
         })
       }
     })
@@ -55,9 +56,9 @@ class Profile extends React.Component{
       <div className="panel panel-default">
       <div className="panel-heading">
       <div className="panel-title">Profile &#183; 
-      <small data-toggle="modal" data-target="#editModal" >edit</small></div>
+      <small data-toggle="modal" data-target="#editModal" className="correct-pointer" >edit</small></div>
       
-      <ProfileEditModal first_name={this.state.first_name} last_name={this.state.last_name} address={this.state.address} updateHandler={this.updateProfileHandler.bind(this)}/>
+      <ProfileEditModal first_name={this.state.first_name} last_name={this.state.last_name} address={this.state.address} email={this.state.email} updateHandler={this.updateProfileHandler.bind(this)}/>
       </div>
 
       <div className="panel-body">

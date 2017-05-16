@@ -4,20 +4,25 @@ class ProfileEditModal extends React.Component{
 
   constructor(props){
     super(props)
-    console.log('props', props)
+    
     this.state = {
       first_name: props.first_name,
       last_name: props.last_name,
-      address: props.address
+      address: props.address,
+      email: props.email
     }
   }
 
-  componentDidUpdate(){
-    if (this.props.first_name !== this.state.first_name){
+  componentWillReceiveProps(nextProps){
+    
+    if (this.props !== nextProps){
+      console.log('props updating')
+      
       this.setState({
-        first_name: this.props.first_name,
-        last_name: this.props.last_name,
-        address: this.props.address
+        first_name: nextProps.first_name,
+        last_name: nextProps.last_name,
+        address: nextProps.address,
+        email: nextProps.email
       })
     }
   }
@@ -26,8 +31,10 @@ class ProfileEditModal extends React.Component{
     let newData = {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
-      address: this.state.address
+      address: this.state.address,
+      email: this.state.email
     }
+
 
     this.props.updateHandler(newData)
   }
@@ -42,6 +49,10 @@ class ProfileEditModal extends React.Component{
 
   onAddressChange(e){
     this.setState({address: e.target.value})
+  }
+
+  onEmailChange(e){
+    this.setState({email: e.target.value})
   }
 
 
@@ -61,7 +72,8 @@ class ProfileEditModal extends React.Component{
               
               <p>First Name: <input type="text" id="first_name" onChange={this.onFirstNameChange.bind(this)} placeholder={this.props.first_name}></input></p>
               <p>Last Name: <input type="text" id="last_name" onChange={this.onLastNameChange.bind(this)} placeholder={this.props.last_name}></input></p>
-              <p>Address: <input type="text" id="last_name" onChange={this.onAddressChange.bind(this)} placeholder={this.props.address}></input></p>
+              <p>Address: <input type="text" id="address" onChange={this.onAddressChange.bind(this)} placeholder={this.props.address}></input></p>
+              <p>Email: <input type="text" id="email" onChange={this.onEmailChange.bind(this)} placeholder={this.props.email}></input></p>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" onClick={this.onSave.bind(this)} data-dismiss="modal">Save changes</button>

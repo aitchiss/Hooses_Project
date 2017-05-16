@@ -12639,7 +12639,6 @@ var Profile = function (_React$Component) {
             email: res.email,
             image: res.profiles[0].url
           });
-          console.log('state set');
         }
       });
     }
@@ -12652,11 +12651,12 @@ var Profile = function (_React$Component) {
       var req = new _AjaxRequest2.default();
       req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), function (err, res) {
         if (!res.error) {
-          console.log(res);
+          console.log('res', res);
           _this3.setState({
             first_name: res.profiles[0].first_name,
             last_name: res.profiles[0].last_name,
-            address: res.profiles[0].address
+            address: res.profiles[0].address,
+            email: res.profiles[0].email
           });
         }
       });
@@ -12677,11 +12677,11 @@ var Profile = function (_React$Component) {
             'Profile \xB7',
             _react2.default.createElement(
               'small',
-              { 'data-toggle': 'modal', 'data-target': '#editModal' },
+              { 'data-toggle': 'modal', 'data-target': '#editModal', className: 'correct-pointer' },
               'edit'
             )
           ),
-          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, address: this.state.address, updateHandler: this.updateProfileHandler.bind(this) })
+          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, address: this.state.address, email: this.state.email, updateHandler: this.updateProfileHandler.bind(this) })
         ),
         _react2.default.createElement(
           'div',
@@ -27396,23 +27396,27 @@ var ProfileEditModal = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (ProfileEditModal.__proto__ || Object.getPrototypeOf(ProfileEditModal)).call(this, props));
 
-    console.log('props', props);
     _this.state = {
       first_name: props.first_name,
       last_name: props.last_name,
-      address: props.address
+      address: props.address,
+      email: props.email
     };
     return _this;
   }
 
   _createClass(ProfileEditModal, [{
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      if (this.props.first_name !== this.state.first_name) {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+
+      if (this.props !== nextProps) {
+        console.log('props updating');
+
         this.setState({
-          first_name: this.props.first_name,
-          last_name: this.props.last_name,
-          address: this.props.address
+          first_name: nextProps.first_name,
+          last_name: nextProps.last_name,
+          address: nextProps.address,
+          email: nextProps.email
         });
       }
     }
@@ -27422,7 +27426,8 @@ var ProfileEditModal = function (_React$Component) {
       var newData = {
         first_name: this.state.first_name,
         last_name: this.state.last_name,
-        address: this.state.address
+        address: this.state.address,
+        email: this.state.email
       };
 
       this.props.updateHandler(newData);
@@ -27441,6 +27446,11 @@ var ProfileEditModal = function (_React$Component) {
     key: 'onAddressChange',
     value: function onAddressChange(e) {
       this.setState({ address: e.target.value });
+    }
+  }, {
+    key: 'onEmailChange',
+    value: function onEmailChange(e) {
+      this.setState({ email: e.target.value });
     }
   }, {
     key: 'render',
@@ -27496,7 +27506,13 @@ var ProfileEditModal = function (_React$Component) {
                 'p',
                 null,
                 'Address: ',
-                _react2.default.createElement('input', { type: 'text', id: 'last_name', onChange: this.onAddressChange.bind(this), placeholder: this.props.address })
+                _react2.default.createElement('input', { type: 'text', id: 'address', onChange: this.onAddressChange.bind(this), placeholder: this.props.address })
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                'Email: ',
+                _react2.default.createElement('input', { type: 'text', id: 'email', onChange: this.onEmailChange.bind(this), placeholder: this.props.email })
               )
             ),
             _react2.default.createElement(
