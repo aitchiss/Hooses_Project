@@ -40,5 +40,8 @@ devise_for :users
 
   end
 
+  mount ActionCable.server => '/cable'
+  
+
 
 end

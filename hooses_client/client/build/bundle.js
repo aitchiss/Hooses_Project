@@ -7463,8 +7463,10 @@ var MainContainer = function (_React$Component) {
       houseSelection: null,
       house_id: null,
       currentAddress: '',
-      currentPostCode: ''
+      currentPostCode: '',
+      actionCable: null
     };
+
     return _this;
   }
 
@@ -11993,6 +11995,8 @@ var _KitchenTableMessage = __webpack_require__(240);
 
 var _KitchenTableMessage2 = _interopRequireDefault(_KitchenTableMessage);
 
+var _actionCableReact = __webpack_require__(251);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -12017,12 +12021,14 @@ var KitchenTable = function (_React$Component) {
       messages: [],
       input: ''
     };
+
     return _this;
   }
 
   _createClass(KitchenTable, [{
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
+
       if (this.props.house_id !== this.state.house_id) {
         this.getNewMessages();
       }
@@ -12030,7 +12036,14 @@ var KitchenTable = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+
       this.getNewMessages();
+      // const actionCable = ActionCable.createConsumer('http://localhost:8000/cable')
+      // const cable = new Cable({
+      //   cableChannel: actionCable.subscriptions.create({channel: 'ChatChannel'}, ['messages'])
+      // })
+
+      // this.setState({actionCable: cable})
     }
   }, {
     key: 'getNewMessages',
@@ -12057,7 +12070,6 @@ var KitchenTable = function (_React$Component) {
       var _this3 = this;
 
       if (e.which === 13) {
-
         var message = { kitchen_table_post: {
             user_id: this.state.user_id,
             house_id: this.state.house_id,
@@ -27114,6 +27126,445 @@ var KitchenTableMessage = function KitchenTableMessage(props) {
 };
 
 exports.default = KitchenTableMessage;
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports) {
+
+module.exports={identifiers:{ping:"_ping"},message_types:{confirmation:"confirm_subscription",rejection:"reject_subscription"}};
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var EventEmitter,Subscription,extend=function(t,e){function i(){this.constructor=t}for(var n in e)hasProp.call(e,n)&&(t[n]=e[n]);return i.prototype=e.prototype,t.prototype=new i,t.__super__=e.prototype,t},hasProp={}.hasOwnProperty,indexOf=[].indexOf||function(t){for(var e=0,i=this.length;i>e;e++)if(e in this&&this[e]===t)return e;return-1};EventEmitter=__webpack_require__(253),Subscription=function(t){function e(t,e,i){this.subscriptions=t,null==e&&(e={}),this.actions=null!=i?i:[],this.identifier=JSON.stringify(e),this.subscriptions.add(this),this.consumer=this.subscriptions.consumer}return extend(e,t),e.prototype.perform=function(t,e){return null==e&&(e={}),e.action=t,this.send(e)},e.prototype.send=function(t){return this.consumer.send({command:"message",identifier:this.identifier,data:JSON.stringify(t)})},e.prototype.unsubscribe=function(){return this.subscriptions.remove(this)},e.prototype.connected=function(){return this.emit("connected")},e.prototype.disconnected=function(){return this.emit("disconnected")},e.prototype.rejected=function(){return this.emit("rejected")},e.prototype.received=function(t){var e;return e=t.action,indexOf.call(this.actions,e)>=0?this.emit(t.action,t):this.emit("received",t)},e}(EventEmitter),module.exports=Subscription;
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var ActionCable,Consumer;Consumer=__webpack_require__(246),ActionCable={createConsumer:function(e){return new Consumer(this.createWebSocketURL(e))},createWebSocketURL:function(e){var r;return e&&!/^wss?:/i.test(e)?(r=document.createElement("a"),r.href=e,r.href=r.href,r.protocol=r.protocol.replace("http","ws"),r.href):e}},module.exports=ActionCable;
+
+/***/ }),
+/* 244 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Connection,message_types,bind=function(t,e){return function(){return t.apply(e,arguments)}},slice=[].slice,indexOf=[].indexOf||function(t){for(var e=0,n=this.length;n>e;e++)if(e in this&&this[e]===t)return e;return-1};message_types=__webpack_require__(241).message_types,Connection=function(){function t(t){this.consumer=t,this.open=bind(this.open,this),this.open()}return t.reopenDelay=500,t.prototype.send=function(t){return this.isOpen()?(this.webSocket.send(JSON.stringify(t)),!0):!1},t.prototype.open=function(){if(this.webSocket&&!this.isState("closed"))throw new Error("Existing connection must be closed before opening");return this.webSocket=new WebSocket(this.consumer.url),this.installEventHandlers(),!0},t.prototype.close=function(){var t;return null!=(t=this.webSocket)?t.close():void 0},t.prototype.reopen=function(){if(this.isState("closed"))return this.open();try{return this.close()}finally{setTimeout(this.open,this.constructor.reopenDelay)}},t.prototype.isOpen=function(){return this.isState("open")},t.prototype.isState=function(){var t,e;return e=1<=arguments.length?slice.call(arguments,0):[],t=this.getState(),indexOf.call(e,t)>=0},t.prototype.getState=function(){var t,e,n;for(e in WebSocket)if(n=WebSocket[e],n===(null!=(t=this.webSocket)?t.readyState:void 0))return e.toLowerCase();return null},t.prototype.installEventHandlers=function(){var t,e;for(t in this.events)e=this.events[t].bind(this),this.webSocket["on"+t]=e},t.prototype.events={message:function(t){var e,n,s,i;switch(s=JSON.parse(t.data),e=s.identifier,n=s.message,i=s.type,i){case message_types.confirmation:return this.consumer.subscriptions.notify(e,"connected");case message_types.rejection:return this.consumer.subscriptions.reject(e);default:return this.consumer.subscriptions.notify(e,"received",n)}},open:function(){return this.disconnected=!1,this.consumer.subscriptions.reload()},close:function(){return this.disconnect()},error:function(){return this.disconnect()}},t.prototype.disconnect=function(){return this.disconnected?void 0:(this.disconnected=!0,this.consumer.subscriptions.notifyAll("disconnected"))},t.prototype.toJSON=function(){return{state:this.getState()}},t}(),module.exports=Connection;
+
+/***/ }),
+/* 245 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var ConnectionMonitor,INTERNAL,bind=function(t,n){return function(){return t.apply(n,arguments)}};INTERNAL=__webpack_require__(241),ConnectionMonitor=function(){function t(t){this.consumer=t,this.visibilityDidChange=bind(this.visibilityDidChange,this),this.consumer.subscriptions.add(this),this.start()}var n,e,i;return t.pollInterval={min:3,max:30},t.staleThreshold=6,t.prototype.identifier=INTERNAL.identifiers.ping,t.prototype.connected=function(){return this.reset(),this.pingedAt=e(),delete this.disconnectedAt},t.prototype.disconnected=function(){return this.disconnectedAt=e()},t.prototype.received=function(){return this.pingedAt=e()},t.prototype.reset=function(){return this.reconnectAttempts=0},t.prototype.start=function(){return this.reset(),delete this.stoppedAt,this.startedAt=e(),this.poll(),document.addEventListener("visibilitychange",this.visibilityDidChange)},t.prototype.stop=function(){return this.stoppedAt=e(),document.removeEventListener("visibilitychange",this.visibilityDidChange)},t.prototype.poll=function(){return setTimeout(function(t){return function(){return t.stoppedAt?void 0:(t.reconnectIfStale(),t.poll())}}(this),this.getInterval())},t.prototype.getInterval=function(){var t,e,i,o;return o=this.constructor.pollInterval,i=o.min,e=o.max,t=5*Math.log(this.reconnectAttempts+1),1e3*n(t,i,e)},t.prototype.reconnectIfStale=function(){return this.connectionIsStale()&&(this.reconnectAttempts++,!this.disconnectedRecently())?this.consumer.connection.reopen():void 0},t.prototype.connectionIsStale=function(){var t;return i(null!=(t=this.pingedAt)?t:this.startedAt)>this.constructor.staleThreshold},t.prototype.disconnectedRecently=function(){return this.disconnectedAt&&i(this.disconnectedAt)<this.constructor.staleThreshold},t.prototype.visibilityDidChange=function(){return"visible"===document.visibilityState?setTimeout(function(t){return function(){return t.connectionIsStale()||!t.consumer.connection.isOpen()?t.consumer.connection.reopen():void 0}}(this),200):void 0},t.prototype.toJSON=function(){var t,n;return n=this.getInterval(),t=this.connectionIsStale(),{startedAt:this.startedAt,stoppedAt:this.stoppedAt,pingedAt:this.pingedAt,reconnectAttempts:this.reconnectAttempts,connectionIsStale:t,interval:n}},e=function(){return(new Date).getTime()},i=function(t){return(e()-t)/1e3},n=function(t,n,e){return Math.max(n,Math.min(e,t))},t}(),module.exports=ConnectionMonitor;
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Connection,ConnectionMonitor,Consumer,Subscription,Subscriptions;Connection=__webpack_require__(244),ConnectionMonitor=__webpack_require__(245),Subscriptions=__webpack_require__(247),Subscription=__webpack_require__(242),Consumer=function(){function n(n){this.url=n,this.subscriptions=new Subscriptions(this),this.connection=new Connection(this),this.connectionMonitor=new ConnectionMonitor(this)}return n.prototype.send=function(n){return this.connection.send(n)},n.prototype.inspect=function(){return JSON.stringify(this,null,2)},n.prototype.toJSON=function(){return{url:this.url,subscriptions:this.subscriptions,connection:this.connection,connectionMonitor:this.connectionMonitor}},n}(),module.exports=Consumer;
+
+/***/ }),
+/* 247 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var INTERNAL,Subscription,Subscriptions,slice=[].slice;INTERNAL=__webpack_require__(241),Subscription=__webpack_require__(242),Subscriptions=function(){function t(t){this.consumer=t,this.subscriptions=[],this.history=[]}return t.prototype.create=function(t,i){var n,r;return n=t,r="object"==typeof n?n:{channel:n},new Subscription(this,r,i)},t.prototype.add=function(t){return this.subscriptions.push(t),this.notify(t,"initialized"),this.sendCommand(t,"subscribe")},t.prototype.remove=function(t){return this.forget(t),this.findAll(t.identifier).length?void 0:this.sendCommand(t,"unsubscribe")},t.prototype.reject=function(t){var i,n,r,e,s;for(r=this.findAll(t),e=[],i=0,n=r.length;n>i;i++)s=r[i],this.forget(s),e.push(this.notify(s,"rejected"));return e},t.prototype.forget=function(t){var i;return this.subscriptions=function(){var n,r,e,s;for(e=this.subscriptions,s=[],n=0,r=e.length;r>n;n++)i=e[n],i!==t&&s.push(i);return s}.call(this)},t.prototype.findAll=function(t){var i,n,r,e,s;for(r=this.subscriptions,e=[],i=0,n=r.length;n>i;i++)s=r[i],s.identifier===t&&e.push(s);return e},t.prototype.reload=function(){var t,i,n,r,e;for(n=this.subscriptions,r=[],t=0,i=n.length;i>t;t++)e=n[t],r.push(this.sendCommand(e,"subscribe"));return r},t.prototype.notifyAll=function(){var t,i,n,r,e,s,o;for(i=arguments[0],t=2<=arguments.length?slice.call(arguments,1):[],e=this.subscriptions,s=[],n=0,r=e.length;r>n;n++)o=e[n],s.push(this.notify.apply(this,[o,i].concat(slice.call(t))));return s},t.prototype.notify=function(){var t,i,n,r,e,s,o,u;for(o=arguments[0],i=arguments[1],t=3<=arguments.length?slice.call(arguments,2):[],u="string"==typeof o?this.findAll(o):[o],s=[],n=0,e=u.length;e>n;n++)o=u[n],"function"==typeof o[i]&&o[i].apply(o,t),"initialized"===i||"connected"===i||"disconnected"===i||"rejected"===i?(r=o.identifier,s.push(this.record({notification:{identifier:r,callbackName:i,args:t}}))):s.push(void 0);return s},t.prototype.sendCommand=function(t,i){var n;return n=t.identifier,n===INTERNAL.identifiers.ping?this.consumer.connection.isOpen():this.consumer.send({command:i,identifier:n})},t.prototype.record=function(t){return t.time=new Date,this.history=this.history.slice(-19),this.history.push(t)},t.prototype.toJSON=function(){var t;return{history:this.history,identifiers:function(){var i,n,r,e;for(r=this.subscriptions,e=[],i=0,n=r.length;n>i;i++)t=r[i],e.push(t.identifier);return e}.call(this)}},t}(),module.exports=Subscriptions;
+
+/***/ }),
+/* 248 */
+/***/ (function(module, exports) {
+
+var Cable;Cable=function(){function n(n){this.channels=n}return n.prototype.channel=function(n){return this.channels[n]},n.prototype.setChannel=function(n,e){return this.channels[n]=e},n}(),module.exports=Cable;
+
+/***/ }),
+/* 249 */
+/***/ (function(module, exports) {
+
+var CableMixin;CableMixin=function(t){return{componentWillMount:function(){var t;if(!(this.props.cable||this.context&&this.context.cable))throw t=this.constructor.displayName?" of "+this.constructor.displayName:"",new Error("Could not find cable on this.props or this.context"+t)},childContextTypes:{cable:t.PropTypes.object},contextTypes:{cable:t.PropTypes.object},getChildContext:function(){return{cable:this.getCable()}},getCable:function(){return this.props.cable||this.context&&this.context.cable}}},CableMixin.componentWillMount=function(){throw new Error("ActionCableReact.CableMixin is a function that takes React as a parameter and returns the mixin, e.g.: mixins: [ActionCableReact.CableMixin(React)]")},module.exports=CableMixin;
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var ChannelMixin,_capitalize;_capitalize=__webpack_require__(255),ChannelMixin=function(){var n;return n=Array.prototype.slice.call(arguments),{componentDidMount:function(){var e,t,i,l,h,c,a;for(i=this.props.cable||this.context.cable,this.mounted=!0,a=[],h=0,c=n.length;c>h;h++)l=n[h],i.channel(l)?(null!=this.handleConnected&&i.channel(l).on("connected",this.handleConnected),null!=this.handleDisconnected&&i.channel(l).on("disconnected",this.handleDisconnected),null!=this.handleDisconnected&&i.channel(l).on("rejected",this.handleDisconnected),null!=this.handleReceived&&i.channel(l).on("received",this.handleReceived),a.push(function(){var n,h,c,a;for(c=i.channel(l).actions,a=[],n=0,h=c.length;h>n;n++)e=c[n],t="handle"+_capitalize(e),null!=this[t]?a.push(i.channel(l).on(e,this[t])):a.push(void 0);return a}.call(this))):a.push(void 0);return a},componentWillUnmount:function(){var e,t,i,l,h,c,a;for(i=this.props.cable||this.context.cable,this.mounted=!1,a=[],h=0,c=n.length;c>h;h++)l=n[h],i.channel(l)?(null!=this.handleConnected&&i.channel(l).removeListener("connected",this.handleConnected),null!=this.handleDisconnected&&i.channel(l).removeListener("disconnected",this.handleDisconnected),null!=this.handleDisconnected&&i.channel(l).removeListener("rejected",this.handleDisconnected),null!=this.handleReceived&&i.channel(l).removeListener("received",this.handleReceived),a.push(function(){var n,h,c,a;for(c=i.channel(l).actions,a=[],n=0,h=c.length;h>n;n++)e=c[n],t="handle"+_capitalize(e),null!=this[t]?a.push(i.channel(l).removeListener(e,this[t])):a.push(void 0);return a}.call(this))):a.push(void 0);return a},perform:function(n,e,t){var i;return null==t&&(t={}),i=this.props.cable||this.context.cable,i.channel(n).perform(e,t)}}},ChannelMixin.componentWillMount=function(){throw new Error('ActionCableReact.ChannelMixin is a function that takes one or more store names as parameters and returns the mixin, e.g.: mixins: [ActionCableReact.ChannelMixin("Channel1", "Channel2")]')},module.exports=ChannelMixin;
+
+/***/ }),
+/* 251 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = {
+  ActionCable: __webpack_require__(243),
+  Cable: __webpack_require__(248),
+  CableMixin: __webpack_require__(249),
+  ChannelMixin: __webpack_require__(250),
+  version: __webpack_require__(252)
+};
+
+
+/***/ }),
+/* 252 */
+/***/ (function(module, exports) {
+
+module.exports = '0.1.1'
+
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var has = Object.prototype.hasOwnProperty;
+
+//
+// We store our EE objects in a plain object whose properties are event names.
+// If `Object.create(null)` is not supported we prefix the event names with a
+// `~` to make sure that the built-in object properties are not overridden or
+// used as an attack vector.
+// We also assume that `Object.create(null)` is available when the event name
+// is an ES6 Symbol.
+//
+var prefix = typeof Object.create !== 'function' ? '~' : false;
+
+/**
+ * Representation of a single EventEmitter function.
+ *
+ * @param {Function} fn Event handler to be called.
+ * @param {Mixed} context Context for function execution.
+ * @param {Boolean} [once=false] Only emit once
+ * @api private
+ */
+function EE(fn, context, once) {
+  this.fn = fn;
+  this.context = context;
+  this.once = once || false;
+}
+
+/**
+ * Minimal EventEmitter interface that is molded against the Node.js
+ * EventEmitter interface.
+ *
+ * @constructor
+ * @api public
+ */
+function EventEmitter() { /* Nothing to set */ }
+
+/**
+ * Hold the assigned EventEmitters by name.
+ *
+ * @type {Object}
+ * @private
+ */
+EventEmitter.prototype._events = undefined;
+
+/**
+ * Return an array listing the events for which the emitter has registered
+ * listeners.
+ *
+ * @returns {Array}
+ * @api public
+ */
+EventEmitter.prototype.eventNames = function eventNames() {
+  var events = this._events
+    , names = []
+    , name;
+
+  if (!events) return names;
+
+  for (name in events) {
+    if (has.call(events, name)) names.push(prefix ? name.slice(1) : name);
+  }
+
+  if (Object.getOwnPropertySymbols) {
+    return names.concat(Object.getOwnPropertySymbols(events));
+  }
+
+  return names;
+};
+
+/**
+ * Return a list of assigned event listeners.
+ *
+ * @param {String} event The events that should be listed.
+ * @param {Boolean} exists We only need to know if there are listeners.
+ * @returns {Array|Boolean}
+ * @api public
+ */
+EventEmitter.prototype.listeners = function listeners(event, exists) {
+  var evt = prefix ? prefix + event : event
+    , available = this._events && this._events[evt];
+
+  if (exists) return !!available;
+  if (!available) return [];
+  if (available.fn) return [available.fn];
+
+  for (var i = 0, l = available.length, ee = new Array(l); i < l; i++) {
+    ee[i] = available[i].fn;
+  }
+
+  return ee;
+};
+
+/**
+ * Emit an event to all registered event listeners.
+ *
+ * @param {String} event The name of the event.
+ * @returns {Boolean} Indication if we've emitted an event.
+ * @api public
+ */
+EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
+  var evt = prefix ? prefix + event : event;
+
+  if (!this._events || !this._events[evt]) return false;
+
+  var listeners = this._events[evt]
+    , len = arguments.length
+    , args
+    , i;
+
+  if ('function' === typeof listeners.fn) {
+    if (listeners.once) this.removeListener(event, listeners.fn, undefined, true);
+
+    switch (len) {
+      case 1: return listeners.fn.call(listeners.context), true;
+      case 2: return listeners.fn.call(listeners.context, a1), true;
+      case 3: return listeners.fn.call(listeners.context, a1, a2), true;
+      case 4: return listeners.fn.call(listeners.context, a1, a2, a3), true;
+      case 5: return listeners.fn.call(listeners.context, a1, a2, a3, a4), true;
+      case 6: return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
+    }
+
+    for (i = 1, args = new Array(len -1); i < len; i++) {
+      args[i - 1] = arguments[i];
+    }
+
+    listeners.fn.apply(listeners.context, args);
+  } else {
+    var length = listeners.length
+      , j;
+
+    for (i = 0; i < length; i++) {
+      if (listeners[i].once) this.removeListener(event, listeners[i].fn, undefined, true);
+
+      switch (len) {
+        case 1: listeners[i].fn.call(listeners[i].context); break;
+        case 2: listeners[i].fn.call(listeners[i].context, a1); break;
+        case 3: listeners[i].fn.call(listeners[i].context, a1, a2); break;
+        default:
+          if (!args) for (j = 1, args = new Array(len -1); j < len; j++) {
+            args[j - 1] = arguments[j];
+          }
+
+          listeners[i].fn.apply(listeners[i].context, args);
+      }
+    }
+  }
+
+  return true;
+};
+
+/**
+ * Register a new EventListener for the given event.
+ *
+ * @param {String} event Name of the event.
+ * @param {Function} fn Callback function.
+ * @param {Mixed} [context=this] The context of the function.
+ * @api public
+ */
+EventEmitter.prototype.on = function on(event, fn, context) {
+  var listener = new EE(fn, context || this)
+    , evt = prefix ? prefix + event : event;
+
+  if (!this._events) this._events = prefix ? {} : Object.create(null);
+  if (!this._events[evt]) this._events[evt] = listener;
+  else {
+    if (!this._events[evt].fn) this._events[evt].push(listener);
+    else this._events[evt] = [
+      this._events[evt], listener
+    ];
+  }
+
+  return this;
+};
+
+/**
+ * Add an EventListener that's only called once.
+ *
+ * @param {String} event Name of the event.
+ * @param {Function} fn Callback function.
+ * @param {Mixed} [context=this] The context of the function.
+ * @api public
+ */
+EventEmitter.prototype.once = function once(event, fn, context) {
+  var listener = new EE(fn, context || this, true)
+    , evt = prefix ? prefix + event : event;
+
+  if (!this._events) this._events = prefix ? {} : Object.create(null);
+  if (!this._events[evt]) this._events[evt] = listener;
+  else {
+    if (!this._events[evt].fn) this._events[evt].push(listener);
+    else this._events[evt] = [
+      this._events[evt], listener
+    ];
+  }
+
+  return this;
+};
+
+/**
+ * Remove event listeners.
+ *
+ * @param {String} event The event we want to remove.
+ * @param {Function} fn The listener that we need to find.
+ * @param {Mixed} context Only remove listeners matching this context.
+ * @param {Boolean} once Only remove once listeners.
+ * @api public
+ */
+EventEmitter.prototype.removeListener = function removeListener(event, fn, context, once) {
+  var evt = prefix ? prefix + event : event;
+
+  if (!this._events || !this._events[evt]) return this;
+
+  var listeners = this._events[evt]
+    , events = [];
+
+  if (fn) {
+    if (listeners.fn) {
+      if (
+           listeners.fn !== fn
+        || (once && !listeners.once)
+        || (context && listeners.context !== context)
+      ) {
+        events.push(listeners);
+      }
+    } else {
+      for (var i = 0, length = listeners.length; i < length; i++) {
+        if (
+             listeners[i].fn !== fn
+          || (once && !listeners[i].once)
+          || (context && listeners[i].context !== context)
+        ) {
+          events.push(listeners[i]);
+        }
+      }
+    }
+  }
+
+  //
+  // Reset the array, or remove it completely if we have no more listeners.
+  //
+  if (events.length) {
+    this._events[evt] = events.length === 1 ? events[0] : events;
+  } else {
+    delete this._events[evt];
+  }
+
+  return this;
+};
+
+/**
+ * Remove all listeners or only the listeners for the specified event.
+ *
+ * @param {String} event The event want to remove all listeners for.
+ * @api public
+ */
+EventEmitter.prototype.removeAllListeners = function removeAllListeners(event) {
+  if (!this._events) return this;
+
+  if (event) delete this._events[prefix ? prefix + event : event];
+  else this._events = prefix ? {} : Object.create(null);
+
+  return this;
+};
+
+//
+// Alias methods names because people roll like that.
+//
+EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+
+//
+// This function doesn't apply anymore.
+//
+EventEmitter.prototype.setMaxListeners = function setMaxListeners() {
+  return this;
+};
+
+//
+// Expose the prefix.
+//
+EventEmitter.prefixed = prefix;
+
+//
+// Expose the module.
+//
+if (true) {
+  module.exports = EventEmitter;
+}
+
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports) {
+
+/**
+ * lodash 3.0.1 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modern modularize exports="npm" -o ./`
+ * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Available under MIT license <https://lodash.com/license>
+ */
+
+/**
+ * Converts `value` to a string if it's not one. An empty string is returned
+ * for `null` or `undefined` values.
+ *
+ * @private
+ * @param {*} value The value to process.
+ * @returns {string} Returns the string.
+ */
+function baseToString(value) {
+  return value == null ? '' : (value + '');
+}
+
+module.exports = baseToString;
+
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * lodash 3.1.2 (Custom Build) <https://lodash.com/>
+ * Build: `lodash modern modularize exports="npm" -o ./`
+ * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+ * Based on Underscore.js 1.7.0 <http://underscorejs.org/LICENSE>
+ * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Available under MIT license <https://lodash.com/license>
+ */
+var baseToString = __webpack_require__(254);
+
+/**
+ * Capitalizes the first character of `string`.
+ *
+ * @static
+ * @memberOf _
+ * @category String
+ * @param {string} [string=''] The string to capitalize.
+ * @returns {string} Returns the capitalized string.
+ * @example
+ *
+ * _.capitalize('fred');
+ * // => 'Fred'
+ */
+function capitalize(string) {
+  string = baseToString(string);
+  return string && (string.charAt(0).toUpperCase() + string.slice(1));
+}
+
+module.exports = capitalize;
+
 
 /***/ })
 /******/ ]);

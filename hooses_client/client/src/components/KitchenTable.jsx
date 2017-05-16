@@ -1,28 +1,44 @@
 import React from 'react'
 import AjaxRequest from '../services/AjaxRequest'
 import KitchenTableMessage from './KitchenTableMessage'
+import {ActionCable, Cable} from 'action-cable-react'
+import { CableMixin, ChannelMixin } from 'action-cable-react'
+
 
 class KitchenTable extends React.Component{
 
   constructor(props){
     super(props)
+
     this.state = {
       user_id: props.user_id,
       house_id: props.house_id,
       messages: [],
       input: ''
     }
+
   }
 
+
   componentDidUpdate(){
+    
     if (this.props.house_id !== this.state.house_id){
       this.getNewMessages()
     }
   }
+  
 
   componentDidMount(){
+    
     this.getNewMessages()
+    // const actionCable = ActionCable.createConsumer('http://localhost:8000/cable')
+    // const cable = new Cable({
+    //   cableChannel: actionCable.subscriptions.create({channel: 'ChatChannel'}, ['messages'])
+    // })
+
+    // this.setState({actionCable: cable})
   }
+
 
   getNewMessages(){
     const req = new AjaxRequest()
@@ -41,7 +57,6 @@ class KitchenTable extends React.Component{
 
   onMessageSubmit(e){
     if(e.which === 13){
-
       let message = { kitchen_table_post: {
         user_id: this.state.user_id,
         house_id: this.state.house_id,
