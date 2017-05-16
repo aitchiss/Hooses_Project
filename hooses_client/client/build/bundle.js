@@ -7604,8 +7604,6 @@ var WelcomeContainer = function (_React$Component) {
 
 
       req.post('http://localhost:8000/users/sign_in.json', JSON.stringify(userData), function (err, res) {
-        console.log("we're in ajax request");
-
         if (!res.error) {
           _this2.props.userSignIn(res);
         }
@@ -12370,6 +12368,10 @@ var _Documents = __webpack_require__(105);
 
 var _Documents2 = _interopRequireDefault(_Documents);
 
+var _TopicThread = __webpack_require__(523);
+
+var _TopicThread2 = _interopRequireDefault(_TopicThread);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12386,12 +12388,10 @@ var OptionTabBar = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (OptionTabBar.__proto__ || Object.getPrototypeOf(OptionTabBar)).call(this, props));
 
-    console.log('OptionTabBar props = ', props); //why null for house_id?
-
     _this.state = {
-      selectedView: 'KitchenTable'
+      selectedView: 'KitchenTable',
+      topic_id: null
     };
-
     return _this;
   }
 
@@ -12404,6 +12404,11 @@ var OptionTabBar = function (_React$Component) {
     key: 'topics',
     value: function topics() {
       this.setState({ selectedView: 'Topics' });
+    }
+  }, {
+    key: 'topicThread',
+    value: function topicThread(id) {
+      this.setState({ selectedView: 'TopicThread', topic_id: id });
     }
   }, {
     key: 'jobCalls',
@@ -12431,7 +12436,10 @@ var OptionTabBar = function (_React$Component) {
           view = _react2.default.createElement(_KitchenTable2.default, { house_id: this.props.house_id, user_id: this.props.user_id });
           break;
         case 'Topics':
-          view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id });
+          view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id, setTopicThread: this.topicThread.bind(this) });
+          break;
+        case 'TopicThread':
+          view = _react2.default.createElement(_TopicThread2.default, { topic_id: this.state.topic_id, house_id: this.props.house_id });
           break;
         case 'JobCalls':
           view = _react2.default.createElement(_JobCalls2.default, null);
@@ -12654,34 +12662,34 @@ var Topic = function (_React$Component) {
   }
 
   _createClass(Topic, [{
-    key: 'onClickEvent',
-    value: function onClickEvent(event) {
-      console.log('topic clicked : ', event.target.value);
+    key: "selectTopic",
+    value: function selectTopic(event) {
+      this.props.setTopicThread(this.props.id);
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
 
       return _react2.default.createElement(
-        'div',
-        { className: 'media correct-pointer', onClick: this.onClickEvent.bind(this) },
+        "div",
+        { className: "media correct-pointer", onClick: this.selectTopic.bind(this) },
         _react2.default.createElement(
-          'div',
-          { className: 'media-left media-top' },
-          _react2.default.createElement('img', { className: 'media-object', src: '..', alt: '..' })
+          "div",
+          { className: "media-left media-top" },
+          _react2.default.createElement("img", { className: "media-object", src: "..", alt: ".." })
         ),
         _react2.default.createElement(
-          'div',
-          { className: 'media-body' },
+          "div",
+          { className: "media-body" },
           _react2.default.createElement(
-            'h4',
-            { className: 'media-heading' },
+            "h4",
+            { className: "media-heading" },
             this.props.title
           ),
           _react2.default.createElement(
-            'p',
-            { className: 'media-status' },
-            'Status : ',
+            "p",
+            { className: "media-status" },
+            "Status : ",
             this.props.status
           )
         )
@@ -12768,16 +12776,16 @@ var Topics = function (_React$Component) {
 
         if (!res.error) {
           _this3.setState({ topics: res.topics });
-          console.log('topics', _this3.state.topics);
         }
       });
     }
   }, {
     key: 'render',
     value: function render() {
+      var _this4 = this;
 
       var topics = this.state.topics.map(function (topic, index) {
-        return _react2.default.createElement(_Topic2.default, { key: index, title: topic.title, status: topic.status });
+        return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this4.props.setTopicThread });
       });
 
       return _react2.default.createElement(
@@ -27565,6 +27573,428 @@ function capitalize(string) {
 
 module.exports = capitalize;
 
+
+/***/ }),
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */,
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */,
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */,
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */,
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */,
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */,
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */,
+/* 414 */,
+/* 415 */,
+/* 416 */,
+/* 417 */,
+/* 418 */,
+/* 419 */,
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */,
+/* 426 */,
+/* 427 */,
+/* 428 */,
+/* 429 */,
+/* 430 */,
+/* 431 */,
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */,
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */,
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */,
+/* 463 */,
+/* 464 */,
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */,
+/* 469 */,
+/* 470 */,
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */,
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */,
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */,
+/* 488 */,
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */,
+/* 494 */,
+/* 495 */,
+/* 496 */,
+/* 497 */,
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */,
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */,
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TopicMessageItem = function (_React$Component) {
+  _inherits(TopicMessageItem, _React$Component);
+
+  function TopicMessageItem(props) {
+    _classCallCheck(this, TopicMessageItem);
+
+    return _possibleConstructorReturn(this, (TopicMessageItem.__proto__ || Object.getPrototypeOf(TopicMessageItem)).call(this, props));
+  }
+
+  _createClass(TopicMessageItem, [{
+    key: "render",
+    value: function render() {
+
+      return _react2.default.createElement(
+        "div",
+        { className: "panel-body" },
+        this.props.message
+      );
+    }
+  }]);
+
+  return TopicMessageItem;
+}(_react2.default.Component);
+
+exports.default = TopicMessageItem;
+
+/***/ }),
+/* 523 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _AjaxRequest = __webpack_require__(24);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
+var _TopicMessageItem = __webpack_require__(522);
+
+var _TopicMessageItem2 = _interopRequireDefault(_TopicMessageItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TopicThread = function (_React$Component) {
+  _inherits(TopicThread, _React$Component);
+
+  function TopicThread(props) {
+    _classCallCheck(this, TopicThread);
+
+    var _this = _possibleConstructorReturn(this, (TopicThread.__proto__ || Object.getPrototypeOf(TopicThread)).call(this, props));
+
+    _this.state = {
+      topicTitle: '',
+      messages: []
+    };
+    return _this;
+  }
+
+  _createClass(TopicThread, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var req = new _AjaxRequest2.default();
+
+      req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/topics/' + this.props.topic_id, function (err, res) {
+
+        if (!res.error) {
+          _this2.setState({ topicTitle: res.title, messages: res.messages });
+        }
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      //   if(this.state.messages.length){
+      //     console.log('there are messages')
+      //   }else
+      //   {
+      //   console.log('there are no messages')
+      // }
+
+
+      var messages = this.state.messages.map(function (message, index) {
+        return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content });
+      });
+
+      return _react2.default.createElement(
+        'div',
+        { className: 'panel panel-default' },
+        _react2.default.createElement(
+          'div',
+          { className: 'panel-heading' },
+          _react2.default.createElement(
+            'div',
+            { className: 'panel-title' },
+            'Topic > ',
+            this.state.topicTitle
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'panel-body' },
+          messages
+        )
+      );
+    }
+  }]);
+
+  return TopicThread;
+}(_react2.default.Component);
+
+exports.default = TopicThread;
 
 /***/ })
 /******/ ]);

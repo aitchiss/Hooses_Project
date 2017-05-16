@@ -6,18 +6,14 @@ class Topic extends React.Component{
     super(props)
   }
 
-
-onClickEvent(event){
-console.log('topic clicked : ', event.target.value )
+selectTopic(event){
+  this.props.setTopicThread(this.props.id)
 }
-
-
-
 
 render(){
 
   return (
-    <div className="media correct-pointer" onClick={this.onClickEvent.bind(this)}>
+    <div className="media correct-pointer" onClick={this.selectTopic.bind(this)}>
 
         <div className="media-left media-top">
               <img className="media-object" src=".." alt=".."/>
