@@ -7,6 +7,7 @@ import Documents from './Documents.jsx'
 import TopicThread from './TopicThread.jsx'
 
 
+
 class OptionTabBar extends React.Component {
 
   constructor(props){
@@ -43,13 +44,13 @@ class OptionTabBar extends React.Component {
 
   render () {
 
-    let view;
+    let view
 
     console.log('option tab bar :', this.props.house_id)
 
     switch(this.state.selectedView) {
       case 'KitchenTable':
-        view = <KitchenTable/>
+        view =  <KitchenTable house_id={this.props.house_id} user_id={this.props.user_id} />
         break;  
       case 'Topics':
         view = <Topics house_id={this.props.house_id} setTopicThread={this.topicThread.bind(this)}/>

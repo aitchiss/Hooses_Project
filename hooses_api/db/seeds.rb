@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+KitchenTablePost.destroy_all
 Message.destroy_all
 Topic.destroy_all
 OwnerGroup.destroy_all
@@ -52,6 +53,11 @@ h3 = House.create({
 OwnerGroup.create({
 user: u1,
 house: h1
+  })
+
+OwnerGroup.create({
+  user: u2,
+  house: h1
   })
 
 OwnerGroup.create({
@@ -175,6 +181,25 @@ m5 = Message.create({
   user: u1,
   topic: t3,
   content: "sorry about that"
+  })
+
+
+ktpost1 = KitchenTablePost.create({
+  user: u1,
+  house: h1,
+  content: "hi guys, can you see this post?"
+  })
+
+ktpost2 = KitchenTablePost.create({
+  user: u1,
+  house: h1,
+  content: "is anyone out there?"
+  })
+
+ktpost3 = KitchenTablePost.create({
+  user: u3,
+  house: h1,
+  content: "yup - hello!"
   })
 
 

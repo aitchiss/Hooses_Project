@@ -34,7 +34,14 @@ devise_for :users
     ##MESSAGES
     resources :messages, defaults: {format: :json}
 
+    ##KITCHEN TABLE POSTS
+    get '/kitchen_table_posts/house/:id' => 'kitchen_table_posts#show'
+    post '/kitchen_table_posts' => 'kitchen_table_posts#create'
+
   end
+
+  mount ActionCable.server => '/cable'
+  
 
 
 end

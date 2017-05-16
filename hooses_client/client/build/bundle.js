@@ -7463,8 +7463,10 @@ var MainContainer = function (_React$Component) {
       houseSelection: null,
       house_id: null,
       currentAddress: '',
-      currentPostCode: ''
+      currentPostCode: '',
+      actionCable: null
     };
+
     return _this;
   }
 
@@ -11983,7 +11985,17 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(17);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
+var _KitchenTableMessage = __webpack_require__(109);
+
+var _KitchenTableMessage2 = _interopRequireDefault(_KitchenTableMessage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11994,33 +12006,100 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var KitchenTable = function (_React$Component) {
   _inherits(KitchenTable, _React$Component);
 
-  function KitchenTable() {
+  function KitchenTable(props) {
     _classCallCheck(this, KitchenTable);
 
-    return _possibleConstructorReturn(this, (KitchenTable.__proto__ || Object.getPrototypeOf(KitchenTable)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (KitchenTable.__proto__ || Object.getPrototypeOf(KitchenTable)).call(this, props));
+
+    _this.state = {
+      user_id: props.user_id,
+      house_id: props.house_id,
+      messages: [],
+      input: ''
+    };
+
+    return _this;
   }
 
   _createClass(KitchenTable, [{
-    key: "render",
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+
+      if (this.props.house_id !== this.state.house_id) {
+        this.getNewMessages();
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+
+      this.getNewMessages();
+    }
+  }, {
+    key: 'getNewMessages',
+    value: function getNewMessages() {
+      var _this2 = this;
+
+      var req = new _AjaxRequest2.default();
+      req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, function (err, res) {
+        if (!res.error) {
+          _this2.setState({ house_id: _this2.props.house_id, messages: res });
+          var contentDiv = document.querySelector(".kitchen-table-msgs");
+          contentDiv.scrollTop = contentDiv.scrollHeight;
+        }
+      });
+    }
+  }, {
+    key: 'onMessageInputChange',
+    value: function onMessageInputChange(e) {
+      this.setState({ input: e.target.value });
+    }
+  }, {
+    key: 'onMessageSubmit',
+    value: function onMessageSubmit(e) {
+      var _this3 = this;
+
+      if (e.which === 13) {
+        var message = { kitchen_table_post: {
+            user_id: this.state.user_id,
+            house_id: this.state.house_id,
+            content: this.state.input
+          }
+        };
+
+        var req = new _AjaxRequest2.default();
+        req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), function (err, res) {
+          _this3.getNewMessages();
+          document.getElementById('kitchen-table-input').value = "";
+        });
+      }
+    }
+  }, {
+    key: 'render',
     value: function render() {
 
+      var messages = this.state.messages.map(function (msg, index) {
+        return _react2.default.createElement(_KitchenTableMessage2.default, { key: index, userName: msg.user.profiles[0].first_name, message: msg.content });
+      });
+
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-default" },
+        'div',
+        { className: 'panel panel-default' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "Kitchen Table"
+            'div',
+            { className: 'panel-title' },
+            'Kitchen Table'
           )
         ),
         _react2.default.createElement(
-          "div",
-          { className: "panel-body" },
-          "* NO BLOG TABLE/MESSAGES CREATED IN SEEDS * (ps see bootstrap media layout)"
-        )
+          'div',
+          _defineProperty({ className: 'panel-body' }, 'className', 'kitchen-table-msgs'),
+          messages
+        ),
+        _react2.default.createElement('input', { id: 'kitchen-table-input', type: 'text', placeholder: 'post a message', onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })
       );
     }
   }]);
@@ -12031,7 +12110,40 @@ var KitchenTable = function (_React$Component) {
 exports.default = KitchenTable;
 
 /***/ }),
-/* 109 */,
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var KitchenTableMessage = function KitchenTableMessage(props) {
+
+  return _react2.default.createElement(
+    "div",
+    { className: "kitchen-table-msg" },
+    _react2.default.createElement(
+      "p",
+      null,
+      props.userName,
+      ": ",
+      props.message
+    )
+  );
+};
+
+exports.default = KitchenTableMessage;
+
+/***/ }),
 /* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12349,7 +12461,7 @@ var OptionTabBar = function (_React$Component) {
 
       switch (this.state.selectedView) {
         case 'KitchenTable':
-          view = _react2.default.createElement(_KitchenTable2.default, null);
+          view = _react2.default.createElement(_KitchenTable2.default, { house_id: this.props.house_id, user_id: this.props.user_id });
           break;
         case 'Topics':
           view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id, setTopicThread: this.topicThread.bind(this) });

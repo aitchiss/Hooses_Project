@@ -153,6 +153,17 @@ font-size: 60px;
   border-top-right-radius: 0;
 }
 
+#kitchen-table-input{
+  width: 100%;
+  height: 50px;
+}
+
+.kitchen-table-msgs{
+  height: 200px;
+  overflow-y: scroll;
+  margin-left: 10px;
+}
+
 @media (max-width: 768px) {
     .navbar-nav>li{
     padding-top: 15px;

@@ -6,6 +6,7 @@ import AddressTitle from '../components/AddressTitle.jsx'
 import OptionTabBar from '../components/OptionTabBar.jsx'
 import Profile from '../components/Profile.jsx'
 
+
 class MainContainer extends React.Component {
 
 
@@ -15,13 +16,17 @@ class MainContainer extends React.Component {
       houseSelection: null,
       house_id: null,
       currentAddress: '',
-      currentPostCode: ''
+      currentPostCode: '',
+      actionCable: null
     }
+
   }
 
   setHouseSelection(house){
     this.setState({houseSelection: house, house_id: house.house_id,currentAddress: house.house.address, currentPostCode: house.house.post_code})
   }
+
+ 
 
 
 
@@ -43,7 +48,7 @@ class MainContainer extends React.Component {
 
           <div className="col-md-8">
             <AddressTitle user_id={this.props.user.id} title={this.state.currentAddress} postcode={this.state.currentPostCode}/>
-            <OptionTabBar user_id={this.props.user.id} house_id={this.state.house_id}/>
+            <OptionTabBar user_id={this.props.user.id} house_id={this.state.house_id} />
           </div>
 
           <div className="col-md-2">
