@@ -11995,6 +11995,8 @@ var _KitchenTableMessage2 = _interopRequireDefault(_KitchenTableMessage);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -12039,6 +12041,8 @@ var KitchenTable = function (_React$Component) {
       req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, function (err, res) {
         if (!res.error) {
           _this2.setState({ house_id: _this2.props.house_id, messages: res });
+          var contentDiv = document.querySelector(".kitchen-table-msgs");
+          contentDiv.scrollTop = contentDiv.scrollHeight;
         }
       });
     }
@@ -12090,7 +12094,7 @@ var KitchenTable = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'panel-body' },
+          _defineProperty({ className: 'panel-body' }, 'className', 'kitchen-table-msgs'),
           messages
         ),
         _react2.default.createElement('input', { id: 'kitchen-table-input', type: 'text', placeholder: 'post a message', onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })

@@ -29,6 +29,8 @@ class KitchenTable extends React.Component{
     req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, (err, res) => {
       if (!res.error){
         this.setState({house_id: this.props.house_id, messages: res})
+        const contentDiv = document.querySelector(".kitchen-table-msgs")
+        contentDiv.scrollTop = contentDiv.scrollHeight
       }
     })
   }
@@ -71,7 +73,7 @@ class KitchenTable extends React.Component{
          <div className="panel-title">Kitchen Table</div>
         </div>
 
-        <div className="panel-body">
+        <div className="panel-body" className="kitchen-table-msgs">
           {messages}
         </div>
         <input id="kitchen-table-input" type="text" placeholder="post a message" onChange={this.onMessageInputChange.bind(this)} onKeyDown={this.onMessageSubmit.bind(this)}></input>
