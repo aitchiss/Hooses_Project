@@ -68,6 +68,16 @@ font-size: 90%;
   padding: 10px;
 }
 
+.hero-title{
+text-align: center;
+font-size: 60px;
+}
+
+.welcome-body-content{
+  text-align: center;
+  color:DarkSeaGreen;
+}
+
 .white-background{
   background-color:#FFFFFF;
 }
@@ -81,6 +91,22 @@ font-size: 90%;
  background-color:#FFFFFF; 
 }
 
+.topic-message-item-header{
+  font-size: 90%;
+  color: #cdcdcd;
+}
+
+.topic-message-item-footer{
+  text-align: right;
+  font-size: 90%;
+  color: #cdcdcd;
+}
+.panel-body.message-item{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+
 .welcome-container{
   background: url("images/group.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -90,23 +116,13 @@ font-size: 90%;
   height: 500px;
 }
 
-.hero-title{
-text-align: center;
-font-size: 60px;
-}
-
-.welcome-body-content{
-  text-align: center;
-  color:DarkSeaGreen;
-}
-
 .form-signin {
   width: 330px;
   padding: 15px;
   margin: 0 auto;
   padding-bottom: 60px;
-
 }
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;

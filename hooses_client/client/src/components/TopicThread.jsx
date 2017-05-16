@@ -36,7 +36,7 @@ class TopicThread extends React.Component{
 
 
   let messages = this.state.messages.map((message, index) => {
-    return <TopicMessageItem key={index} message={message.content}/>
+    return <TopicMessageItem key={index} message={message.content} dateTime={message.created_at} firstName={message.user.profiles[0].first_name} lastName={message.user.profiles[0].last_name}/>
   })
 
   return(

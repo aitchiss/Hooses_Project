@@ -12345,6 +12345,8 @@ var OptionTabBar = function (_React$Component) {
 
       var view = void 0;
 
+      console.log('option tab bar :', this.props.house_id);
+
       switch (this.state.selectedView) {
         case 'KitchenTable':
           view = _react2.default.createElement(_KitchenTable2.default, null);
@@ -12633,6 +12635,10 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(17);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12651,13 +12657,44 @@ var TopicMessageItem = function (_React$Component) {
   }
 
   _createClass(TopicMessageItem, [{
-    key: "render",
+    key: 'render',
     value: function render() {
 
+      var dateTime = this.props.dateTime.toString();
+      var year = dateTime.substring(0, 4);
+      var month = dateTime.substring(5, 7);
+      var day = dateTime.substring(8, 10);
+      var time = dateTime.substring(11, 16);
+
       return _react2.default.createElement(
-        "div",
-        { className: "panel-body" },
-        this.props.message
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'topic-message-item-header' },
+          this.props.firstName,
+          ' ',
+          this.props.lastName,
+          ' posted: '
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'panel-body message-item' },
+          this.props.message
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'topic-message-item-footer' },
+          'Posted at ',
+          time,
+          ' on ',
+          day,
+          '-',
+          month,
+          '-',
+          year,
+          '.'
+        )
       );
     }
   }]);
@@ -12742,7 +12779,7 @@ var TopicThread = function (_React$Component) {
 
 
       var messages = this.state.messages.map(function (message, index) {
-        return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content });
+        return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content, dateTime: message.created_at, firstName: message.user.profiles[0].first_name, lastName: message.user.profiles[0].last_name });
       });
 
       return _react2.default.createElement(
@@ -12827,7 +12864,6 @@ var Topics = function (_React$Component) {
 
       if (this.state.house_id !== this.props.house_id) {
         var req = new _AjaxRequest2.default();
-
         req.get('http://localhost:8000/api/houses/' + this.props.house_id, function (err, res) {
           if (!res.error) {
             _this2.setState({ topics: res.topics, house_id: _this2.props.house_id });
@@ -12843,7 +12879,6 @@ var Topics = function (_React$Component) {
       var req = new _AjaxRequest2.default();
 
       req.get('http://localhost:8000/api/houses/' + this.props.house_id, function (err, res) {
-
         if (!res.error) {
           _this3.setState({ topics: res.topics });
         }
@@ -12853,6 +12888,8 @@ var Topics = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _this4 = this;
+
+      console.log('House_id in topics : ', this.props.house_id);
 
       var topics = this.state.topics.map(function (topic, index) {
         return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this4.props.setTopicThread });
