@@ -7664,6 +7664,11 @@ var WelcomeContainer = function (_React$Component) {
               )
             )
           )
+        ),
+        _react2.default.createElement(
+          'h2',
+          { className: 'welcome-body-content' },
+          'Lots more descriptive UVP content here'
         )
       );
     }
@@ -12425,8 +12430,8 @@ var Topic = function (_React$Component) {
 
   _createClass(Topic, [{
     key: 'onClickEvent',
-    value: function onClickEvent() {
-      console.log('topic clicked');
+    value: function onClickEvent(event) {
+      console.log('topic clicked : ', event.target.value);
     }
   }, {
     key: 'render',

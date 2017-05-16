@@ -105,6 +105,9 @@ req.post('http://localhost:8000/users/sign_in.json', JSON.stringify(userData), (
 
         </div>
       </div>
+
+          <h2 className='welcome-body-content'>Lots more descriptive UVP content here</h2>
+
     </div>
     );
 
