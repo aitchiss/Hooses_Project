@@ -27405,11 +27405,10 @@ var ProfileEditModal = function (_React$Component) {
   }
 
   _createClass(ProfileEditModal, [{
-    key: 'componentWillReceiveProps',
+    key: "componentWillReceiveProps",
     value: function componentWillReceiveProps(nextProps) {
 
       if (this.props !== nextProps) {
-        console.log('props updating');
 
         this.setState({
           first_name: nextProps.first_name,
@@ -27419,7 +27418,7 @@ var ProfileEditModal = function (_React$Component) {
       }
     }
   }, {
-    key: 'onSave',
+    key: "onSave",
     value: function onSave() {
       var newData = {
         first_name: this.state.first_name,
@@ -27430,89 +27429,89 @@ var ProfileEditModal = function (_React$Component) {
       this.props.updateHandler(newData);
     }
   }, {
-    key: 'onFirstNameChange',
+    key: "onFirstNameChange",
     value: function onFirstNameChange(e) {
       this.setState({ first_name: e.target.value });
     }
   }, {
-    key: 'onLastNameChange',
+    key: "onLastNameChange",
     value: function onLastNameChange(e) {
       this.setState({ last_name: e.target.value });
     }
   }, {
-    key: 'onAddressChange',
+    key: "onAddressChange",
     value: function onAddressChange(e) {
       this.setState({ address: e.target.value });
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        { className: 'modal fade', id: 'editModal', tabIndex: '-1', role: 'dialog', 'aria-labelledby': 'editModalLabel', 'aria-hidden': 'true' },
+        "div",
+        { className: "modal fade", id: "editModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "editModalLabel", "aria-hidden": "true" },
         _react2.default.createElement(
-          'div',
-          { className: 'modal-dialog', role: 'document' },
+          "div",
+          { className: "modal-dialog", role: "document" },
           _react2.default.createElement(
-            'div',
-            { className: 'modal-content' },
+            "div",
+            { className: "modal-content" },
             _react2.default.createElement(
-              'div',
-              { className: 'modal-header' },
+              "div",
+              { className: "modal-header" },
               _react2.default.createElement(
-                'h5',
-                { className: 'modal-title' },
-                'Edit Profile'
+                "h5",
+                { className: "modal-title" },
+                "Edit Profile"
               ),
               _react2.default.createElement(
-                'button',
-                { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-label': 'Close' },
+                "button",
+                { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
                 _react2.default.createElement(
-                  'span',
-                  { 'aria-hidden': 'true' },
-                  '\xD7'
+                  "span",
+                  { "aria-hidden": "true" },
+                  "\xD7"
                 )
               )
             ),
             _react2.default.createElement(
-              'div',
-              { className: 'modal-body' },
+              "div",
+              { className: "modal-body" },
               _react2.default.createElement(
-                'p',
+                "p",
                 null,
-                'Update your profile details:'
+                "Update your profile details:"
               ),
               _react2.default.createElement(
-                'p',
+                "p",
                 null,
-                'First Name: ',
-                _react2.default.createElement('input', { type: 'text', id: 'first_name', onChange: this.onFirstNameChange.bind(this), placeholder: this.props.first_name })
+                "First Name: ",
+                _react2.default.createElement("input", { type: "text", id: "first_name", onChange: this.onFirstNameChange.bind(this), placeholder: this.props.first_name })
               ),
               _react2.default.createElement(
-                'p',
+                "p",
                 null,
-                'Last Name: ',
-                _react2.default.createElement('input', { type: 'text', id: 'last_name', onChange: this.onLastNameChange.bind(this), placeholder: this.props.last_name })
+                "Last Name: ",
+                _react2.default.createElement("input", { type: "text", id: "last_name", onChange: this.onLastNameChange.bind(this), placeholder: this.props.last_name })
               ),
               _react2.default.createElement(
-                'p',
+                "p",
                 null,
-                'Address: ',
-                _react2.default.createElement('input', { type: 'text', id: 'address', onChange: this.onAddressChange.bind(this), placeholder: this.props.address })
+                "Address: ",
+                _react2.default.createElement("input", { type: "text", id: "address", onChange: this.onAddressChange.bind(this), placeholder: this.props.address })
               )
             ),
             _react2.default.createElement(
-              'div',
-              { className: 'modal-footer' },
+              "div",
+              { className: "modal-footer" },
               _react2.default.createElement(
-                'button',
-                { type: 'button', className: 'btn btn-primary', onClick: this.onSave.bind(this), 'data-dismiss': 'modal' },
-                'Save changes'
+                "button",
+                { type: "button", className: "btn btn-primary", onClick: this.onSave.bind(this), "data-dismiss": "modal" },
+                "Save changes"
               ),
               _react2.default.createElement(
-                'button',
-                { type: 'button', className: 'btn btn-secondary', 'data-dismiss': 'modal' },
-                'Close'
+                "button",
+                { type: "button", className: "btn btn-secondary", "data-dismiss": "modal" },
+                "Close"
               )
             )
           )

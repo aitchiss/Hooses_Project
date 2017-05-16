@@ -15,7 +15,7 @@ class ProfileEditModal extends React.Component{
   componentWillReceiveProps(nextProps){
     
     if (this.props !== nextProps){
-      console.log('props updating')
+      
       
       this.setState({
         first_name: nextProps.first_name,
