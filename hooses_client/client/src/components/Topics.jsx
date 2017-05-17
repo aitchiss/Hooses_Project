@@ -90,11 +90,13 @@ class Topics extends React.Component{
     })
 
     return(
-      <div className="panel panel-default">
+    <div className="panel panel-default">
         <div className="panel-heading">
           <div className="panel-title">Topics<i className="material-icons right" role="button" data-toggle="collapse" href="#collapseExample">add</i></div>
         </div>
 
+      <div className="panel-body">
+      
         <div className="collapse" id="collapseExample">
           <form id="newTopicForm">
             <div className="form-group">
@@ -104,14 +106,12 @@ class Topics extends React.Component{
             <div className="form-submit-icon"><i className="material-icons" role="button" type="submit" data-toggle="collapse" href="#collapseExample" onClick={this.saveNewTopic.bind(this)}>done</i></div>
 
             <div className="form-submit-icon"><i className="material-icons" role="button" type="reset" data-toggle="collapse" href="#collapseExample" onClick={this.clearNewTopic.bind(this)}>clear</i></div>
-
           </form>
         </div>
 
-        <div className="panel-body">
         {topics}
-        </div>
       </div>
+    </div>
     )
   }
 

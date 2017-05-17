@@ -16943,38 +16943,38 @@ var Topics = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'collapse', id: 'collapseExample' },
+          { className: 'panel-body' },
           _react2.default.createElement(
-            'form',
-            { id: 'newTopicForm' },
+            'div',
+            { className: 'collapse', id: 'collapseExample' },
             _react2.default.createElement(
-              'div',
-              { className: 'form-group' },
-              _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onChange: this.onNewTopicChange.bind(this) })
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'form-submit-icon' },
+              'form',
+              { id: 'newTopicForm' },
               _react2.default.createElement(
-                'i',
-                { className: 'material-icons', role: 'button', type: 'submit', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.saveNewTopic.bind(this) },
-                'done'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'form-submit-icon' },
+                'div',
+                { className: 'form-group' },
+                _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onChange: this.onNewTopicChange.bind(this) })
+              ),
               _react2.default.createElement(
-                'i',
-                { className: 'material-icons', role: 'button', type: 'reset', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.clearNewTopic.bind(this) },
-                'clear'
+                'div',
+                { className: 'form-submit-icon' },
+                _react2.default.createElement(
+                  'i',
+                  { className: 'material-icons', role: 'button', type: 'submit', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.saveNewTopic.bind(this) },
+                  'done'
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-submit-icon' },
+                _react2.default.createElement(
+                  'i',
+                  { className: 'material-icons', role: 'button', type: 'reset', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.clearNewTopic.bind(this) },
+                  'clear'
+                )
               )
             )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'panel-body' },
+          ),
           topics
         )
       );
