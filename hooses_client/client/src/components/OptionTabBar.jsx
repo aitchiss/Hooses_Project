@@ -64,7 +64,7 @@ class OptionTabBar extends React.Component {
         view = <JobCalls/>
         break;
       case 'Expenditure':
-        view = <Expenditure/>
+        view = <Expenditure house_id={this.props.house_id}/>
         break;              
         case 'Documents':
           view = <Documents/>
