@@ -7505,7 +7505,7 @@ var MainContainer = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'main-content' },
-        _react2.default.createElement(_NavBar2.default, null),
+        _react2.default.createElement(_NavBar2.default, { signOut: this.props.signOut }),
         _react2.default.createElement(
           'div',
           { className: 'container-responsive' },
@@ -11472,13 +11472,28 @@ var HomeContainer = function (_React$Component) {
       this.fetchUser();
     }
   }, {
+    key: 'signOut',
+    value: function signOut(event) {
+      var _this3 = this;
+
+      var req = new _AjaxRequest2.default();
+      req.delete('http://localhost:8000/users/sign_out.json', function (err, status) {
+        if (err) {
+          throw err;
+        }
+        if (status === 204) {
+          _this3.setUser(null);
+        }
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
 
       var view = void 0;
 
       if (this.state.currentUser) {
-        view = _react2.default.createElement(_MainContainer2.default, { user: this.state.currentUser });
+        view = _react2.default.createElement(_MainContainer2.default, { user: this.state.currentUser, signOut: this.signOut.bind(this) });
       } else {
 
         view = _react2.default.createElement(_WelcomeContainer2.default, { userSignIn: this.setUser.bind(this) });
@@ -12396,7 +12411,7 @@ var NavBar = function (_React$Component) {
             ),
             _react2.default.createElement(
               "li",
-              { className: "end-li" },
+              { className: "end-li correct-pointer", onClick: this.props.signOut },
               "Sign Out"
             )
           )

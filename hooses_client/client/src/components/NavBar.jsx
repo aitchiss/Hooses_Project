@@ -27,7 +27,7 @@ class NavBar extends React.Component {
           <ul className="nav navbar-nav navbar-right">
             <li>Community</li>
             <li>About</li>
-            <li className="end-li">Sign Out</li>
+            <li className="end-li correct-pointer" onClick={this.props.signOut}>Sign Out</li>
           </ul>
         </div>
        

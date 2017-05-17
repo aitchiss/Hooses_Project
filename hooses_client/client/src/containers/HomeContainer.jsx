@@ -19,7 +19,6 @@ class HomeContainer extends React.Component {
   }
 
   fetchUser(){
-    
     const req = new AjaxRequest()
    
     req.get('http://localhost:8000/api/users.json', (err, user, status) => {
@@ -40,13 +39,23 @@ class HomeContainer extends React.Component {
     this.fetchUser()
   }
 
+  signOut(event){
+    const req = new AjaxRequest()
+    req.delete('http://localhost:8000/users/sign_out.json', (err, status) => {
+      if(err) {throw err}
+      if(status === 204){
+        this.setUser(null)
+      }
+    })
+  }
+
 
   render(){
 
      let view;
 
       if(this.state.currentUser){
-        view = <MainContainer user={this.state.currentUser}/>
+        view = <MainContainer user={this.state.currentUser} signOut={this.signOut.bind(this)}/>
       }
       else
       {
