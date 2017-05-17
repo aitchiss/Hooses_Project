@@ -9,7 +9,9 @@ class Topics extends React.Component{
     super(props)
     this.state = {
       house_id: props.house_id,
-      topics: []
+      topics: [],
+      newTopic:'',
+      placeHolder:'enter new topic'
     }
   }
 
@@ -22,6 +24,50 @@ class Topics extends React.Component{
          }
       })
     }
+  }
+
+  onNewTopicChange(e){
+    this.setState({newTopic: e.target.value})
+  }
+
+  saveNewTopic(){
+
+    if(this.state.newTopic !== ''){
+
+        let newTopic = {
+          user_id: this.props.user_id,
+          house_id: this.state.house_id,
+          title: this.state.newTopic,
+          status: 'open'
+        }
+
+        console.log(newTopic)
+
+        const req = new AjaxRequest()
+          req.post('http://localhost:8000/api/topics.json', JSON.stringify(newTopic), (err, res) => {
+                if(!res.error){
+
+                  console.log('res', res)
+                  console.log('res.topic', res.topic)
+                  console.log('topics array', this.state.topics)
+
+                  const newTopicsArray = [...this.state.topics, res]
+
+                  this.setState({
+                    newTopic: '',
+                    topics: newTopicsArray
+                  })
+              }
+          })      
+        }
+        else {
+          console.log('cannot create an empty topic')
+        }
+
+  }
+
+  clearNewTopic(){
+   this.setState({newTopic: ''}) 
   }
 
   componentDidMount(){
@@ -40,11 +86,21 @@ class Topics extends React.Component{
       return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread}/>
     })
 
-
     return(
       <div className="panel panel-default">
         <div className="panel-heading">
-          <div className="panel-title">Topics<i className="material-icons right">add</i></div>
+          <div className="panel-title">Topics<i className="material-icons right" role="button" data-toggle="collapse" href="#collapseExample">add</i></div>
+        </div>
+
+        <div className="collapse" id="collapseExample">
+          <form>
+            <div className="form-group">
+              <input type="text" className="form-control" placeholder={this.state.placeHolder} onChange={this.onNewTopicChange.bind(this)}/>
+            </div>
+
+            <button type="submit" className="btn btn-default" onClick={this.saveNewTopic.bind(this)}>Submit</button>
+            <button type="reset" className="btn btn-default" onClick={this.clearNewTopic.bind(this)}>Clear</button>
+          </form>
         </div>
 
         <div className="panel-body">

@@ -16435,7 +16435,7 @@ var OptionTabBar = function (_React$Component) {
           view = _react2.default.createElement(_KitchenTable2.default, { house_id: this.props.house_id, user_id: this.props.user_id });
           break;
         case 'Topics':
-          view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id, setTopicThread: this.topicThread.bind(this) });
+          view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id, user_id: this.props.user_id, setTopicThread: this.topicThread.bind(this) });
           break;
         case 'TopicThread':
           view = _react2.default.createElement(_TopicThread2.default, { topic_id: this.state.topic_id, house_id: this.props.house_id, updateView: this.updateToTopicViewOnHouseChange.bind(this) });
@@ -16951,6 +16951,8 @@ var _Topic2 = _interopRequireDefault(_Topic);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -16967,7 +16969,9 @@ var Topics = function (_React$Component) {
 
     _this.state = {
       house_id: props.house_id,
-      topics: []
+      topics: [],
+      newTopic: '',
+      placeHolder: 'enter new topic'
     };
     return _this;
   }
@@ -16987,25 +16991,71 @@ var Topics = function (_React$Component) {
       }
     }
   }, {
+    key: 'onNewTopicChange',
+    value: function onNewTopicChange(e) {
+      this.setState({ newTopic: e.target.value });
+    }
+  }, {
+    key: 'saveNewTopic',
+    value: function saveNewTopic() {
+      var _this3 = this;
+
+      if (this.state.newTopic !== '') {
+
+        var newTopic = {
+          user_id: this.props.user_id,
+          house_id: this.state.house_id,
+          title: this.state.newTopic,
+          status: 'open'
+        };
+
+        console.log(newTopic);
+
+        var req = new _AjaxRequest2.default();
+        req.post('http://localhost:8000/api/topics.json', JSON.stringify(newTopic), function (err, res) {
+          if (!res.error) {
+
+            console.log('res', res);
+            console.log('res.topic', res.topic);
+            console.log('topics array', _this3.state.topics);
+
+            var newTopicsArray = [].concat(_toConsumableArray(_this3.state.topics), [res]);
+
+            _this3.setState({
+              newTopic: '',
+              topics: newTopicsArray
+            });
+          }
+        });
+      } else {
+        console.log('cannot create an empty topic');
+      }
+    }
+  }, {
+    key: 'clearNewTopic',
+    value: function clearNewTopic() {
+      this.setState({ newTopic: '' });
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var _this3 = this;
+      var _this4 = this;
 
       var req = new _AjaxRequest2.default();
 
       req.get('http://localhost:8000/api/houses/' + this.props.house_id, function (err, res) {
         if (!res.error) {
-          _this3.setState({ topics: res.topics });
+          _this4.setState({ topics: res.topics });
         }
       });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var topics = this.state.topics.map(function (topic, index) {
-        return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this4.props.setTopicThread });
+        return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this5.props.setTopicThread });
       });
 
       return _react2.default.createElement(
@@ -17020,8 +17070,31 @@ var Topics = function (_React$Component) {
             'Topics',
             _react2.default.createElement(
               'i',
-              { className: 'material-icons right' },
+              { className: 'material-icons right', role: 'button', 'data-toggle': 'collapse', href: '#collapseExample' },
               'add'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'collapse', id: 'collapseExample' },
+          _react2.default.createElement(
+            'form',
+            null,
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group' },
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: this.state.placeHolder, onChange: this.onNewTopicChange.bind(this) })
+            ),
+            _react2.default.createElement(
+              'button',
+              { type: 'submit', className: 'btn btn-default', onClick: this.saveNewTopic.bind(this) },
+              'Submit'
+            ),
+            _react2.default.createElement(
+              'button',
+              { type: 'reset', className: 'btn btn-default', onClick: this.clearNewTopic.bind(this) },
+              'Clear'
             )
           )
         ),

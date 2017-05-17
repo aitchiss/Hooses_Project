@@ -30,6 +30,7 @@ devise_for :users
 
     end
 
+    post '/topics' => 'topics#create'
 
     ##MESSAGES
     resources :messages, defaults: {format: :json}
