@@ -35,9 +35,6 @@ class LoginBox extends React.Component {
           this.setUser(null)
         }
 
-        console.log(user)
-
-
     })   
 
   }

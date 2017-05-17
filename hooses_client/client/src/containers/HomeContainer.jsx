@@ -1,6 +1,7 @@
 import React from 'react'
 import MainContainer from './MainContainer.jsx'
 import WelcomeContainer from './WelcomeContainer.jsx'
+import AjaxRequest from '../services/AjaxRequest'
 
 class HomeContainer extends React.Component {
 
@@ -17,7 +18,29 @@ class HomeContainer extends React.Component {
     this.setState({currentUser: user})
   }
 
+  fetchUser(){
+    
+    const req = new AjaxRequest()
+   
+    req.get('http://localhost:8000/api/users.json', (err, user, status) => {
+      if (err) { throw err }
 
+      console.log('fetched', user)
+
+      if (status === 200){
+        this.setState({
+          currentUser: user
+        })
+      } else if (status === 401){
+        this.setUser(null)
+      }
+    })
+  }
+
+
+  componentDidMount(){
+    this.fetchUser()
+  }
 
 
   render(){
