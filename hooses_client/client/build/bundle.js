@@ -15864,10 +15864,8 @@ var Expenditure = function (_React$Component) {
 
       var req = new _AjaxRequest2.default();
       req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/completed_jobs', function (err, res) {
-        console.log(res);
 
         var costs = [];
-
         var labels = [];
 
         res.forEach(function (item) {
@@ -35063,7 +35061,6 @@ var ExpensesChart = function () {
   _createClass(ExpensesChart, [{
     key: 'create',
     value: function create(div, data, categories) {
-      console.log(div, data, categories);
 
       var chart = new Highcharts.Chart({
         chart: {
@@ -35140,9 +35137,11 @@ var ExpenditureTable = function (_React$Component) {
       var rows = [];
 
       if (this.state.data) {
+        //put the items into date order first
         var data = this.state.data.sort(function (a, b) {
           return a.date - b.date;
         });
+
         rows = data.map(function (item, index) {
           return _react2.default.createElement(_ExpenditureRow2.default, { key: index, date: item.date, description: item.description, category: item.category, cost: item.cost });
         });

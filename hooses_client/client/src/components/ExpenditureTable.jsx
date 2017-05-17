@@ -24,9 +24,11 @@ class ExpenditureTable extends React.Component{
     let rows = []
 
     if (this.state.data){
+      //put the items into date order first
       let data = this.state.data.sort(function(a, b){
         return a.date - b.date
       })
+
       rows = data.map((item, index) => {
         return <ExpenditureRow key={index} date={item.date} description={item.description} category={item.category} cost={item.cost}/>
       })
