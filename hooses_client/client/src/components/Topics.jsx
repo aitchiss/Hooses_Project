@@ -83,6 +83,13 @@ class Topics extends React.Component{
    })
   }
 
+  detectEnterKeyPress(event){
+   if (event.key === 'Enter') {
+        this.saveNewTopic()
+        //need to collapse the panel too...laters!
+    }
+  }
+
   render(){
 
     let topics = this.state.topics.map((topic, index) => {
@@ -100,7 +107,7 @@ class Topics extends React.Component{
         <div className="collapse" id="collapseExample">
           <form id="newTopicForm">
             <div className="form-group">
-              <input type="text" className="form-control" id="formTextEntry" placeholder={this.state.placeHolder} onChange={this.onNewTopicChange.bind(this)}/>
+              <input type="text" className="form-control" id="formTextEntry" placeholder={this.state.placeHolder} onKeyPress={this.detectEnterKeyPress.bind(this)} onChange={this.onNewTopicChange.bind(this)}/>
             </div>
 
             <div className="form-submit-icon"><i className="material-icons" role="button" type="submit" data-toggle="collapse" href="#collapseExample" onClick={this.saveNewTopic.bind(this)}>done</i></div>

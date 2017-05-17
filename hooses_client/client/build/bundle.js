@@ -16948,6 +16948,14 @@ var Topics = function (_React$Component) {
       });
     }
   }, {
+    key: 'detectEnterKeyPress',
+    value: function detectEnterKeyPress(event) {
+      if (event.key === 'Enter') {
+        this.saveNewTopic();
+        //need to collapse the panel too...laters!
+      }
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this6 = this;
@@ -16985,7 +16993,7 @@ var Topics = function (_React$Component) {
               _react2.default.createElement(
                 'div',
                 { className: 'form-group' },
-                _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onChange: this.onNewTopicChange.bind(this) })
+                _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onKeyPress: this.detectEnterKeyPress.bind(this), onChange: this.onNewTopicChange.bind(this) })
               ),
               _react2.default.createElement(
                 'div',
