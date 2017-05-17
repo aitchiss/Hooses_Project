@@ -36,10 +36,8 @@ class Topics extends React.Component{
 
   render(){
 
-    console.log('House_id in topics : ',this.props.house_id)
-
     let topics = this.state.topics.map((topic, index) => {
-     return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread}/>
+      return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread}/>
     })
 
 

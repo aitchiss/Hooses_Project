@@ -20,7 +20,7 @@ render(){
   return (
     <div>
 
-      <div className="topic-message-item-header">{this.props.firstName} {this.props.lastName} posted: </div>
+      <div className="topic-message-item-header">{this.props.firstName} {this.props.lastName} :</div>
           <div className="panel-body message-item">
           {this.props.message}
           </div>

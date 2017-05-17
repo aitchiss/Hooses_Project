@@ -8,10 +8,16 @@ class TopicThread extends React.Component{
     super(props)
     this.state = {
       topicTitle: '',
+      house_id: null,
       messages: []
     }
   }
 
+  componentDidUpdate(){
+    if (this.state.house_id !== this.props.house_id){    
+      this.props.updateView();
+    }
+  }
 
   componentDidMount(){
    var req = new AjaxRequest()
@@ -19,7 +25,7 @@ class TopicThread extends React.Component{
    req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/topics/' + this.props.topic_id, (err, res) => {
 
     if(!res.error){
-      this.setState({topicTitle: res.title, messages: res.messages})
+      this.setState({topicTitle: res.title, house_id: this.props.house_id, messages: res.messages})
     }
   })
 

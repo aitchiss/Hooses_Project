@@ -29,6 +29,10 @@ class OptionTabBar extends React.Component {
     this.setState({selectedView: 'TopicThread', topic_id: id})
   }
 
+  updateToTopicViewOnHouseChange(){
+   this.setState({selectedView: 'Topics'}) 
+  }
+
   jobCalls(){  
     this.setState({selectedView: 'JobCalls'})
   }
@@ -45,8 +49,6 @@ class OptionTabBar extends React.Component {
 
     let view;
 
-    console.log('option tab bar :', this.props.house_id)
-
     switch(this.state.selectedView) {
       case 'KitchenTable':
         view = <KitchenTable/>
@@ -55,7 +57,7 @@ class OptionTabBar extends React.Component {
         view = <Topics house_id={this.props.house_id} setTopicThread={this.topicThread.bind(this)}/>
         break;
       case 'TopicThread':
-        view = <TopicThread topic_id={this.state.topic_id} house_id={this.props.house_id}/>
+        view = <TopicThread topic_id={this.state.topic_id} house_id={this.props.house_id} updateView={this.updateToTopicViewOnHouseChange.bind(this)}/>
         break;
       case 'JobCalls':
         view = <JobCalls/>
