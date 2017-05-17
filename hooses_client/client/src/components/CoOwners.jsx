@@ -16,7 +16,12 @@ class CoOwners extends React.Component{
       const req = new AjaxRequest()
       req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, (err, res) => {
         if (!res.error){
-          this.setState({owners: res[0].profiles, currentHouseId: this.props.houseId})
+          console.log('coowners', res)
+
+          let ownerProfiles = res.map((owner) => {
+            return owner.profiles[0]
+          })
+          this.setState({owners: ownerProfiles, currentHouseId: this.props.houseId})
           
         }
       })

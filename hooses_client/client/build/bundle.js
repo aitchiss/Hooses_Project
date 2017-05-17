@@ -15682,7 +15682,12 @@ var CoOwners = function (_React$Component) {
         var req = new _AjaxRequest2.default();
         req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, function (err, res) {
           if (!res.error) {
-            _this2.setState({ owners: res[0].profiles, currentHouseId: _this2.props.houseId });
+            console.log('coowners', res);
+
+            var ownerProfiles = res.map(function (owner) {
+              return owner.profiles[0];
+            });
+            _this2.setState({ owners: ownerProfiles, currentHouseId: _this2.props.houseId });
           }
         });
       }
