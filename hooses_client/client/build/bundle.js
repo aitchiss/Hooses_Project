@@ -16596,7 +16596,6 @@ var Profile = function (_React$Component) {
     value: function updateProfileHandler(newData) {
       var _this3 = this;
 
-      console.log('calling');
       var req = new _AjaxRequest2.default();
       req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), function (err, res) {
         if (!res.error) {
@@ -16605,7 +16604,6 @@ var Profile = function (_React$Component) {
             first_name: res.profiles[0].first_name,
             last_name: res.profiles[0].last_name,
             address: res.profiles[0].address
-
           });
         }
       });
