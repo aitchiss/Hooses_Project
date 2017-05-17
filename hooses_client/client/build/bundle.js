@@ -7713,6 +7713,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
@@ -7721,26 +7723,70 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var House = function House(props) {
-  var _React$createElement;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var handleClick = function handleClick() {
-    props.clickHandler(props.index);
-  };
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-  return _react2.default.createElement(
-    "div",
-    (_React$createElement = { className: "house" }, _defineProperty(_React$createElement, "className", "correct-pointer"), _defineProperty(_React$createElement, "onClick", handleClick.bind(undefined)), _React$createElement),
-    _react2.default.createElement(
-      "p",
-      null,
-      props.address,
-      " ",
-      props.postcode,
-      " "
-    )
-  );
-};
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var House = function (_React$Component) {
+  _inherits(House, _React$Component);
+
+  function House(props) {
+    _classCallCheck(this, House);
+
+    var _this = _possibleConstructorReturn(this, (House.__proto__ || Object.getPrototypeOf(House)).call(this, props));
+
+    _this.state = {
+      colour: 'black'
+    };
+    return _this;
+  }
+
+  _createClass(House, [{
+    key: 'handleClick',
+    value: function handleClick() {
+      this.props.clickHandler(this.props.index);
+    }
+  }, {
+    key: 'decideColour',
+    value: function decideColour(nextProps) {
+      if (nextProps.active) {
+        return '#3097D1';
+      } else {
+        return 'black';
+      }
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (this.props !== nextProps) {
+        var colour = this.decideColour(nextProps);
+        this.setState({ colour: colour });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _React$createElement;
+
+      return _react2.default.createElement(
+        'div',
+        (_React$createElement = { className: 'house' }, _defineProperty(_React$createElement, 'className', 'correct-pointer'), _defineProperty(_React$createElement, 'style', { color: this.state.colour }), _defineProperty(_React$createElement, 'onClick', this.handleClick.bind(this)), _React$createElement),
+        _react2.default.createElement(
+          'p',
+          null,
+          this.props.address,
+          ' ',
+          this.props.postcode,
+          ' '
+        )
+      );
+    }
+  }]);
+
+  return House;
+}(_react2.default.Component);
 
 exports.default = House;
 
@@ -12286,6 +12332,7 @@ var MyHouses = function (_React$Component) {
     value: function houseClickHandler(index) {
       var house = this.state.houses[index];
       this.props.setHouseSelection(house);
+      this.setState({ currentSelection: house });
     }
   }, {
     key: 'render',

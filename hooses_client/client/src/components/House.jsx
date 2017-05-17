@@ -1,19 +1,45 @@
 import React from 'react'
 
-const House = (props) => {
+class House extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      colour: 'black'
+    }
+  }
 
   
-  const handleClick = () => {
-    props.clickHandler(props.index)
+  handleClick(){
+    this.props.clickHandler(this.props.index)
+  }
+
+  decideColour(nextProps){
+    if (nextProps.active){
+      return '#3097D1'
+    } else {
+      return 'black'
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (this.props !== nextProps){
+      let colour = this.decideColour(nextProps)
+      this.setState({colour: colour})
+    }
   }
 
   
 
-  return (
-    <div className="house" className="correct-pointer" onClick={handleClick.bind(this)} >
-      <p>{props.address} {props.postcode} </p>
-    </div>
-    )
+  
+  render(){
+    return (
+      <div className="house" className="correct-pointer" style={{color: this.state.colour}} onClick={this.handleClick.bind(this)} >
+        <p>{this.props.address} {this.props.postcode} </p>
+      </div>
+      )
+  }
+  
 }
 
 export default House

@@ -26,6 +26,7 @@ class MyHouses extends React.Component{
   houseClickHandler(index){
     let house = this.state.houses[index]
     this.props.setHouseSelection(house)
+    this.setState({currentSelection: house})
   }
 
 
