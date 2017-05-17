@@ -1681,7 +1681,7 @@ var AjaxRequest = function () {
       xhr.withCredentials = true;
 
       xhr.onload = function () {
-        done(null, xhr.status);
+        done(null, JSON.parse(xhr.response));
       };
 
       xhr.onerror = function () {
@@ -16684,12 +16684,17 @@ var Topic = function (_React$Component) {
       this.props.setTopicThread(this.props.id);
     }
   }, {
+    key: "deleteTopic",
+    value: function deleteTopic() {
+      this.props.deleteTopic(this.props.id);
+    }
+  }, {
     key: "render",
     value: function render() {
 
       return _react2.default.createElement(
         "div",
-        { className: "media correct-pointer", onClick: this.selectTopic.bind(this) },
+        { className: "media correct-pointer" },
         _react2.default.createElement(
           "div",
           { className: "media-left media-top" },
@@ -16700,14 +16705,19 @@ var Topic = function (_React$Component) {
           { className: "media-body" },
           _react2.default.createElement(
             "h4",
-            { className: "media-heading" },
+            { className: "media-heading", onClick: this.selectTopic.bind(this) },
             this.props.title
           ),
           _react2.default.createElement(
             "p",
             { className: "media-status" },
             "Status : ",
-            this.props.status
+            this.props.status,
+            _react2.default.createElement(
+              "i",
+              { className: "material-icons right", role: "button", onClick: this.deleteTopic.bind(this) },
+              "delete"
+            )
           )
         )
       );
@@ -17009,18 +17019,10 @@ var Topics = function (_React$Component) {
           status: 'open'
         };
 
-        console.log(newTopic);
-
         var req = new _AjaxRequest2.default();
         req.post('http://localhost:8000/api/topics.json', JSON.stringify(newTopic), function (err, res) {
           if (!res.error) {
-
-            console.log('res', res);
-            console.log('res.topic', res.topic);
-            console.log('topics array', _this3.state.topics);
-
             var newTopicsArray = [].concat(_toConsumableArray(_this3.state.topics), [res]);
-
             _this3.setState({
               newTopic: '',
               topics: newTopicsArray
@@ -17037,25 +17039,42 @@ var Topics = function (_React$Component) {
       this.setState({ newTopic: '' });
     }
   }, {
+    key: 'deleteTopic',
+    value: function deleteTopic(id) {
+      var _this4 = this;
+
+      console.log('delete topic pressed', id);
+      var req = new _AjaxRequest2.default();
+
+      console.log('house_id', this.state.house_id, 'topic id', id);
+
+      req.delete('http://localhost:8000/api/houses/' + this.state.house_id + '/topics/' + id + '.json', function (err, res) {
+        if (!res.error) {
+          console.log('this is the response from the delete', res);
+          _this4.setState({ topics: res });
+        }
+      });
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var _this4 = this;
+      var _this5 = this;
 
       var req = new _AjaxRequest2.default();
 
       req.get('http://localhost:8000/api/houses/' + this.props.house_id, function (err, res) {
         if (!res.error) {
-          _this4.setState({ topics: res.topics });
+          _this5.setState({ topics: res.topics });
         }
       });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       var topics = this.state.topics.map(function (topic, index) {
-        return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this5.props.setTopicThread });
+        return _react2.default.createElement(_Topic2.default, { key: index, id: topic.id, title: topic.title, status: topic.status, setTopicThread: _this6.props.setTopicThread, deleteTopic: _this6.deleteTopic.bind(_this6) });
       });
 
       return _react2.default.createElement(

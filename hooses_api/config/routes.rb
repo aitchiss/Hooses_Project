@@ -31,6 +31,7 @@ devise_for :users
     end
 
     post '/topics' => 'topics#create'
+    # delete '/topics/:id' => 'topics#destroy'
 
     ##MESSAGES
     resources :messages, defaults: {format: :json}

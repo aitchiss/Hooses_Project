@@ -65,7 +65,7 @@ class AjaxRequest {
     xhr.withCredentials = true
 
     xhr.onload = () => {
-      done(null, xhr.status)
+      done(null, JSON.parse(xhr.response))
     } 
 
     xhr.onerror = () => {

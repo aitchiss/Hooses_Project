@@ -54,6 +54,11 @@ end
   def destroy
     topic = Topic.find(params[:id])
     topic.destroy!
+
+    topics = Topic.where({
+      house_id: params[:house_id]
+      })
+      render json: topics
   end
 
 

@@ -41,18 +41,10 @@ class Topics extends React.Component{
           status: 'open'
         }
 
-        console.log(newTopic)
-
         const req = new AjaxRequest()
           req.post('http://localhost:8000/api/topics.json', JSON.stringify(newTopic), (err, res) => {
                 if(!res.error){
-
-                  console.log('res', res)
-                  console.log('res.topic', res.topic)
-                  console.log('topics array', this.state.topics)
-
                   const newTopicsArray = [...this.state.topics, res]
-
                   this.setState({
                     newTopic: '',
                     topics: newTopicsArray
@@ -70,6 +62,21 @@ class Topics extends React.Component{
    this.setState({newTopic: ''}) 
   }
 
+  deleteTopic(id){
+    console.log('delete topic pressed', id)
+    const req = new AjaxRequest()
+
+    console.log('house_id', this.state.house_id, 'topic id', id)
+
+    req.delete('http://localhost:8000/api/houses/' + this.state.house_id + '/topics/' + id + '.json', (err, res) =>{
+      if(!res.error){
+          console.log('this is the response from the delete', res)
+          this.setState({topics: res})
+      }
+    })
+
+  }
+
   componentDidMount(){
    var req = new AjaxRequest()
 
@@ -83,7 +90,7 @@ class Topics extends React.Component{
   render(){
 
     let topics = this.state.topics.map((topic, index) => {
-      return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread}/>
+      return <Topic key={index} id={topic.id} title={topic.title} status={topic.status} setTopicThread={this.props.setTopicThread} deleteTopic={this.deleteTopic.bind(this)}/>
     })
 
     return(
