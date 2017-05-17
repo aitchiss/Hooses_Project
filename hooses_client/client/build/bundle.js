@@ -16707,19 +16707,51 @@ var TopicThread = function (_React$Component) {
       });
     }
   }, {
+    key: 'detectEnterKeyPress',
+    value: function detectEnterKeyPress(event) {
+      if (event.key === 'Enter') {
+        this.saveNewMessage();
+      }
+    }
+
+    //sortMessagesByTimeStamp(messages){
+    // let displayArray = []
+    // displayArray = messages
+
+    // displayArray.sort(function (var1,var2){
+    //   const a = new Date(var1.created_at)
+    //   const b = new Date(var2.created_at)
+    //   if (a < b) {
+    //     return 1
+    //   }
+    //   if (a > b) {
+    //     return -1
+    //   }
+    //   return 0
+    // })
+    // }
+
+
+  }, {
     key: 'render',
     value: function render() {
+      // *** TODO user feedback if there there are no messages
 
-      //   if(this.state.messages.length){
-      //     console.log('there are messages')
-      //   }else
-      //   {
-      //   console.log('there are no messages')
-      // }
+      // *** to be abstracted out ... but when I do its undefined
+      var displayArray = this.state.messages.slice();
+      displayArray.sort(function (var1, var2) {
+        var a = new Date(var1.created_at);
+        var b = new Date(var2.created_at);
+        if (a < b) {
+          return 1;
+        }
+        if (a > b) {
+          return -1;
+        }
+        return 0;
+      });
 
-      console.log('messages: ', this.state.messages);
-
-      var messages = this.state.messages.map(function (message, index) {
+      var messages = displayArray.map(function (message, index) {
         return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content, dateTime: message.created_at, firstName: message.user.profiles[0].first_name, lastName: message.user.profiles[0].last_name });
       });
 
@@ -16751,7 +16783,7 @@ var TopicThread = function (_React$Component) {
             _react2.default.createElement(
               'div',
               { className: 'form-group' },
-              _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onChange: this.onTopicMessageChange.bind(this) })
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onKeyPress: this.detectEnterKeyPress.bind(this), onChange: this.onTopicMessageChange.bind(this) })
             ),
             _react2.default.createElement(
               'div',

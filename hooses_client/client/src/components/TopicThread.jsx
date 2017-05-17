@@ -76,19 +76,48 @@ class TopicThread extends React.Component{
 
  }
 
- render(){
+ detectEnterKeyPress(event){
+  if (event.key === 'Enter') {
+       this.saveNewMessage()
+   }
+ }
 
-//   if(this.state.messages.length){
-//     console.log('there are messages')
-//   }else
-//   {
-//   console.log('there are no messages')
+ //sortMessagesByTimeStamp(messages){
+  // let displayArray = []
+  // displayArray = messages
+ 
+  // displayArray.sort(function (var1,var2){
+  //   const a = new Date(var1.created_at)
+  //   const b = new Date(var2.created_at)
+  //   if (a < b) {
+  //     return 1
+  //   }
+  //   if (a > b) {
+  //     return -1
+  //   }
+  //   return 0
+  // })
 // }
 
-console.log('messages: ', this.state.messages)
 
+ render(){
+// *** TODO user feedback if there there are no messages
 
-  let messages = this.state.messages.map((message, index) => {
+// *** to be abstracted out ... but when I do its undefined
+  let displayArray = this.state.messages.slice()
+  displayArray.sort(function (var1,var2){
+    const a = new Date(var1.created_at)
+    const b = new Date(var2.created_at)
+    if (a < b) {
+      return 1
+    }
+    if (a > b) {
+      return -1
+    }
+    return 0
+  })
+
+  let messages = displayArray.map((message, index) => {
     return <TopicMessageItem key={index} message={message.content} dateTime={message.created_at} firstName={message.user.profiles[0].first_name} lastName={message.user.profiles[0].last_name}/>
   })
 
@@ -104,7 +133,7 @@ console.log('messages: ', this.state.messages)
 
       <form id="topicMessageEntryForm">
           <div className="form-group">
-                <input type="text" className="form-control" id="formTextEntry" placeholder={this.state.placeHolder} onChange={this.onTopicMessageChange.bind(this)}/>
+                <input type="text" className="form-control" id="formTextEntry" placeholder={this.state.placeHolder} onKeyPress={this.detectEnterKeyPress.bind(this)} onChange={this.onTopicMessageChange.bind(this)}/>
               </div>
 
           <div className="form-submit-icon"><i className="material-icons" role="button" type="submit" data-toggle="collapse" href="#collapseExample" onClick={this.saveNewMessage.bind(this)}>local_post_office</i></div>
