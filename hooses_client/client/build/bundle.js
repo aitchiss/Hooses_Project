@@ -35209,26 +35209,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ExpenditureRow = function ExpenditureRow(props) {
 
+  var formattedDate = props.date.substring(0, 10);
+  var splitDate = formattedDate.split('-');
+  var correctDateOrder = splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0];
+
   return _react2.default.createElement(
-    "tr",
+    'tr',
     null,
     _react2.default.createElement(
-      "th",
-      { scope: "row" },
-      props.date
+      'th',
+      { scope: 'row' },
+      correctDateOrder
     ),
     _react2.default.createElement(
-      "td",
+      'td',
       null,
       props.description
     ),
     _react2.default.createElement(
-      "td",
+      'td',
       null,
       props.category
     ),
     _react2.default.createElement(
-      "td",
+      'td',
       null,
       props.cost / 100
     )
