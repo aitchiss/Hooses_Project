@@ -16,19 +16,22 @@ class CoOwners extends React.Component{
       const req = new AjaxRequest()
       req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, (err, res) => {
         if (!res.error){
-          this.setState({owners: res[0].profiles, currentHouseId: this.props.houseId})
+          
+          let ownerProfiles = res.map((owner) => {
+            return owner.profiles[0]
+          })
+          this.setState({owners: ownerProfiles, currentHouseId: this.props.houseId})
           
         }
       })
     }
-    
   }
+
 
 
 
   render(){
 
-    
     let coOwners = this.state.owners.map((owner, index) => {
 
       return <CoOwnerThumbnail key={index} first_name={owner.first_name} last_name={owner.last_name} img={owner.image} />
@@ -41,7 +44,7 @@ class CoOwners extends React.Component{
        <div className="panel-title">Owners &#183; <small><a href="#">edit</a></small></div>
       </div>
 
-      <div className="panel-body">
+      <div className="panel-body co-owners">
 
         {coOwners}
       </div>

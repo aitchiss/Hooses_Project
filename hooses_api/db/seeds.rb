@@ -92,7 +92,7 @@ Profile.create({
   first_name: 'rob',
   last_name:  'brice',
   address: '34 The Big Street',
-  image: 'url_placeholder'
+  image: 'avatar.png'
   })
 
 Profile.create({
@@ -100,7 +100,7 @@ Profile.create({
   first_name: 'sue',
   last_name:  'aitchison',
   address: '21 Roller Street',
-  image: 'url_placeholder'
+  image: 'avatar.png'
   })
 
 Profile.create({
@@ -108,7 +108,7 @@ Profile.create({
   first_name: 'bill',
   last_name:  'smith',
   address: '101 Shard Street',
-  image: 'url_placeholder'
+  image: 'avatar.png'
   })
 
 t1 = Topic.create({

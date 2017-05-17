@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var http = require('http').Server(app)
+var io = require('socket.io')(http)
 var path = require('path')
 
 app.get('/', function (req, res) {
@@ -8,10 +10,17 @@ app.get('/', function (req, res) {
 
 app.use(express.static('client/build'));
 
+io.on('connection', function(socket){
+  socket.on('kitchenTable', () => {
+    io.sockets.emit('kitchenTable')
+  })
 
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
+  
 
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+})
+
+http.listen(3000, function (){
+  console.log('app listening at 3000')
+})
+
+

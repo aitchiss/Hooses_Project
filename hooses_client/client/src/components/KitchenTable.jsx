@@ -1,6 +1,7 @@
 import React from 'react'
 import AjaxRequest from '../services/AjaxRequest'
 import KitchenTableMessage from './KitchenTableMessage'
+import io from 'socket.io-client'
 
 
 
@@ -16,9 +17,10 @@ class KitchenTable extends React.Component{
       input: ''
     }
 
+    this.socket = io("http://localhost:3000")
+
+    this.socket.on('kitchenTable', this.getNewMessages.bind(this))
   }
-
-
 
 
   componentDidUpdate(){
@@ -30,10 +32,9 @@ class KitchenTable extends React.Component{
   
 
   componentDidMount(){
-    
     this.getNewMessages()
-
   }
+
 
 
   getNewMessages(){
@@ -62,9 +63,15 @@ class KitchenTable extends React.Component{
 
       const req = new AjaxRequest()
       req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), (err, res) => {
-        this.getNewMessages()
+        
+        this.socket.emit('kitchenTable')
+        
         document.getElementById('kitchen-table-input').value = ""
       })
+
+
+
+      
     }
     
   }

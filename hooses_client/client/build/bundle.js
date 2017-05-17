@@ -7713,6 +7713,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
@@ -7721,26 +7723,70 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var House = function House(props) {
-  var _React$createElement;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var handleClick = function handleClick() {
-    props.clickHandler(props.index);
-  };
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-  return _react2.default.createElement(
-    "div",
-    (_React$createElement = { className: "house" }, _defineProperty(_React$createElement, "className", "correct-pointer"), _defineProperty(_React$createElement, "onClick", handleClick.bind(undefined)), _React$createElement),
-    _react2.default.createElement(
-      "p",
-      null,
-      props.address,
-      " ",
-      props.postcode,
-      " "
-    )
-  );
-};
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var House = function (_React$Component) {
+  _inherits(House, _React$Component);
+
+  function House(props) {
+    _classCallCheck(this, House);
+
+    var _this = _possibleConstructorReturn(this, (House.__proto__ || Object.getPrototypeOf(House)).call(this, props));
+
+    _this.state = {
+      colour: 'black'
+    };
+    return _this;
+  }
+
+  _createClass(House, [{
+    key: 'handleClick',
+    value: function handleClick() {
+      this.props.clickHandler(this.props.index);
+    }
+  }, {
+    key: 'decideColour',
+    value: function decideColour(nextProps) {
+      if (nextProps.active) {
+        return '#3097D1';
+      } else {
+        return 'black';
+      }
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (this.props !== nextProps) {
+        var colour = this.decideColour(nextProps);
+        this.setState({ colour: colour });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _React$createElement;
+
+      return _react2.default.createElement(
+        'div',
+        (_React$createElement = { className: 'house' }, _defineProperty(_React$createElement, 'className', 'correct-pointer'), _defineProperty(_React$createElement, 'style', { color: this.state.colour }), _defineProperty(_React$createElement, 'onClick', this.handleClick.bind(this)), _React$createElement),
+        _react2.default.createElement(
+          'p',
+          null,
+          this.props.address,
+          ' ',
+          this.props.postcode,
+          ' '
+        )
+      );
+    }
+  }]);
+
+  return House;
+}(_react2.default.Component);
 
 exports.default = House;
 
@@ -11669,7 +11715,7 @@ var CoOwnerThumbnail = function CoOwnerThumbnail(props) {
   return _react2.default.createElement(
     "div",
     { className: "co-owner-thumbnail" },
-    _react2.default.createElement("img", { src: props.img }),
+    _react2.default.createElement("img", { src: props.img, className: "owner-img" }),
     _react2.default.createElement(
       "p",
       null,
@@ -11737,7 +11783,11 @@ var CoOwners = function (_React$Component) {
         var req = new _AjaxRequest2.default();
         req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, function (err, res) {
           if (!res.error) {
-            _this2.setState({ owners: res[0].profiles, currentHouseId: _this2.props.houseId });
+
+            var ownerProfiles = res.map(function (owner) {
+              return owner.profiles[0];
+            });
+            _this2.setState({ owners: ownerProfiles, currentHouseId: _this2.props.houseId });
           }
         });
       }
@@ -11774,7 +11824,7 @@ var CoOwners = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'panel-body' },
+          { className: 'panel-body co-owners' },
           coOwners
         )
       );
@@ -12003,6 +12053,10 @@ var _KitchenTableMessage = __webpack_require__(243);
 
 var _KitchenTableMessage2 = _interopRequireDefault(_KitchenTableMessage);
 
+var _socket = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"socket.io-client\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+var _socket2 = _interopRequireDefault(_socket);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -12028,6 +12082,9 @@ var KitchenTable = function (_React$Component) {
       input: ''
     };
 
+    _this.socket = (0, _socket2.default)("http://localhost:3000");
+
+    _this.socket.on('kitchenTable', _this.getNewMessages.bind(_this));
     return _this;
   }
 
@@ -12042,7 +12099,6 @@ var KitchenTable = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-
       this.getNewMessages();
     }
   }, {
@@ -12079,7 +12135,9 @@ var KitchenTable = function (_React$Component) {
 
         var req = new _AjaxRequest2.default();
         req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), function (err, res) {
-          _this3.getNewMessages();
+
+          _this3.socket.emit('kitchenTable');
+
           document.getElementById('kitchen-table-input').value = "";
         });
       }
@@ -12186,6 +12244,7 @@ var MyHouses = function (_React$Component) {
     value: function houseClickHandler(index) {
       var house = this.state.houses[index];
       this.props.setHouseSelection(house);
+      this.setState({ currentSelection: house });
     }
   }, {
     key: 'render',
@@ -12603,7 +12662,6 @@ var Profile = function (_React$Component) {
     value: function updateProfileHandler(newData) {
       var _this3 = this;
 
-      console.log('calling');
       var req = new _AjaxRequest2.default();
       req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), function (err, res) {
         if (!res.error) {
@@ -12612,7 +12670,6 @@ var Profile = function (_React$Component) {
             first_name: res.profiles[0].first_name,
             last_name: res.profiles[0].last_name,
             address: res.profiles[0].address
-
           });
         }
       });

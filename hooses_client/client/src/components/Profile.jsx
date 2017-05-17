@@ -34,7 +34,7 @@ class Profile extends React.Component{
   }
 
   updateProfileHandler(newData){
-    console.log('calling')
+
     const req = new AjaxRequest()
     req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), (err, res) => {
       if(!res.error){
@@ -43,7 +43,6 @@ class Profile extends React.Component{
           first_name: res.profiles[0].first_name,
           last_name: res.profiles[0].last_name,
           address: res.profiles[0].address,
-          
         })
       }
     })

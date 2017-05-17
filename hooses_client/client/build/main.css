@@ -179,6 +179,21 @@ vertical-align: bottom;
   margin-left: 10px;
 }
 
+.co-owner-thumbnail{
+  width: 50px;
+  text-align: center;
+  
+}
+
+.owner-img {
+  width:40px;
+}
+
+.co-owners{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 768px) {
     .navbar-nav>li{
     padding-top: 15px;
