@@ -18,33 +18,7 @@ class LoginBox extends React.Component {
     this.setState({currentUser:user, favlist:[]})
   }
 
-  fetchUser(){
-    const req = new AjaxRequest()
-
-    // this is the route that devise creates for us
-    req.get(`${this.props.url}users.json`, (err, user, status) => {
-      if (err) { throw err }
-
-
-
-        if (status === 200){
-          this.setState({
-            currentUser: user
-          })
-        } else if( status === 401){
-          this.setUser(null)
-        }
-
-        console.log(user)
-
-
-    })   
-
-  }
-
-  componentDidMount(){
-    this.fetchUser()
-  }
+  
 
   render () {
       var mainDiv = <div>
