@@ -40,6 +40,11 @@ devise_for :users
     get '/kitchen_table_posts/house/:id' => 'kitchen_table_posts#show'
     post '/kitchen_table_posts' => 'kitchen_table_posts#create'
 
+    ##COMPLETED JOBS
+    get '/houses/:id/completed_jobs' => 'completed_jobs#index'
+
+
+
   end
 
   mount ActionCable.server => '/cable'

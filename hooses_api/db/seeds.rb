@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+CompletedJob.destroy_all
 KitchenTablePost.destroy_all
 Message.destroy_all
 Topic.destroy_all
@@ -201,5 +202,104 @@ ktpost3 = KitchenTablePost.create({
   house: h1,
   content: "yup - hello!"
   })
+
+CompletedJob.create({
+  house: h1,
+  description: "fix the ceiling leak",
+  category: "general repairs",
+  cost: 25000,
+  date: "2017-05-01"
+  })
+
+CompletedJob.create({
+  house: h1,
+  description: "broken front door",
+  category: "general repairs",
+  cost: 10000,
+  date: "2017-04-22"
+  })
+
+CompletedJob.create({
+  house: h1,
+  description: "fix gutter damage caused by pigeons",
+  category: "vermin issues",
+  cost: 43500,
+  date: "2017-02-10"
+  })
+
+CompletedJob.create({
+  house: h1,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-02-10"
+  })
+
+CompletedJob.create({
+  house: h1,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-01-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-02-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-01-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-03-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-04-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "garage drains blockage fixed",
+  category: "garage issues",
+  cost: 55000,
+  date: "2017-03-17"
+  })
+
+
+CompletedJob.create({
+  house: h3,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-02-10"
+  })
+
+CompletedJob.create({
+  house: h3,
+  description: "pest control called out for rat issue",
+  category: "vermin",
+  cost: 25000,
+  date: "2017-01-10"
+  })
+
+
 
 
