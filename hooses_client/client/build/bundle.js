@@ -16156,7 +16156,7 @@ var OptionTabBar = function (_React$Component) {
           view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id, user_id: this.props.user_id, setTopicThread: this.topicThread.bind(this) });
           break;
         case 'TopicThread':
-          view = _react2.default.createElement(_TopicThread2.default, { topic_id: this.state.topic_id, house_id: this.props.house_id, updateView: this.updateToTopicViewOnHouseChange.bind(this) });
+          view = _react2.default.createElement(_TopicThread2.default, { topic_id: this.state.topic_id, house_id: this.props.house_id, user_id: this.props.user_id, updateView: this.updateToTopicViewOnHouseChange.bind(this) });
           break;
         case 'JobCalls':
           view = _react2.default.createElement(_JobCalls2.default, null);
@@ -16560,6 +16560,8 @@ var _TopicMessageItem2 = _interopRequireDefault(_TopicMessageItem);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -16577,12 +16579,57 @@ var TopicThread = function (_React$Component) {
     _this.state = {
       topicTitle: '',
       house_id: null,
-      messages: []
+      messages: [],
+      placeHolder: 'please enter your message',
+      newMessage: ''
     };
     return _this;
   }
 
   _createClass(TopicThread, [{
+    key: 'onTopicMessageChange',
+    value: function onTopicMessageChange(e) {
+      this.setState({ newMessage: e.target.value });
+    }
+  }, {
+    key: 'saveNewMessage',
+    value: function saveNewMessage() {
+      var _this2 = this;
+
+      if (this.state.newMessage !== '') {
+
+        var newMessage = {
+          user_id: this.props.user_id,
+          topic_id: this.props.topic_id,
+          content: this.state.newMessage
+        };
+
+        console.log(newMessage);
+
+        var req = new _AjaxRequest2.default();
+        req.post('http://localhost:8000/api/messages.json', JSON.stringify(newMessage), function (err, res) {
+          if (!res.error) {
+
+            console.log(res);
+
+            var newMessagesArray = [].concat(_toConsumableArray(_this2.state.messages), [res]);
+            _this2.setState({
+              newMessages: '',
+              messages: newMessagesArray
+            });
+          }
+        });
+      } else {
+        console.log('cannot create an empty message');
+      }
+      document.getElementById("topicMessageEntryForm").reset();
+    }
+  }, {
+    key: 'clearNewMessage',
+    value: function clearNewMessage() {
+      document.getElementById("topicMessageEntryForm").reset();
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       if (this.state.house_id !== this.props.house_id) {
@@ -16592,14 +16639,14 @@ var TopicThread = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var _this2 = this;
+      var _this3 = this;
 
       var req = new _AjaxRequest2.default();
 
       req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/topics/' + this.props.topic_id, function (err, res) {
 
         if (!res.error) {
-          _this2.setState({ topicTitle: res.title, house_id: _this2.props.house_id, messages: res.messages });
+          _this3.setState({ topicTitle: res.title, house_id: _this3.props.house_id, messages: res.messages });
         }
       });
     }
@@ -16614,6 +16661,7 @@ var TopicThread = function (_React$Component) {
       //   console.log('there are no messages')
       // }
 
+      console.log('messages: ', this.state.messages);
 
       var messages = this.state.messages.map(function (message, index) {
         return _react2.default.createElement(_TopicMessageItem2.default, { key: index, message: message.content, dateTime: message.created_at, firstName: message.user.profiles[0].first_name, lastName: message.user.profiles[0].last_name });
@@ -16641,6 +16689,33 @@ var TopicThread = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'panel-body' },
+          _react2.default.createElement(
+            'form',
+            { id: 'topicMessageEntryForm' },
+            _react2.default.createElement(
+              'div',
+              { className: 'form-group' },
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onChange: this.onTopicMessageChange.bind(this) })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-submit-icon' },
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons', role: 'button', type: 'submit', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.saveNewMessage.bind(this) },
+                'local_post_office'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'form-submit-icon' },
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons', role: 'button', type: 'reset', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.clearNewMessage.bind(this) },
+                'clear'
+              )
+            )
+          ),
           messages
         )
       );
@@ -16750,11 +16825,13 @@ var Topics = function (_React$Component) {
       } else {
         console.log('cannot create an empty topic');
       }
+      document.getElementById("newTopicForm").reset();
     }
   }, {
     key: 'clearNewTopic',
     value: function clearNewTopic() {
       this.setState({ newTopic: '' });
+      document.getElementById("newTopicForm").reset();
     }
   }, {
     key: 'deleteTopic',
@@ -16763,12 +16840,8 @@ var Topics = function (_React$Component) {
 
       console.log('delete topic pressed', id);
       var req = new _AjaxRequest2.default();
-
-      console.log('house_id', this.state.house_id, 'topic id', id);
-
       req.delete('http://localhost:8000/api/houses/' + this.state.house_id + '/topics/' + id + '.json', function (err, res) {
         if (!res.error) {
-          console.log('this is the response from the delete', res);
           _this4.setState({ topics: res });
         }
       });
@@ -16817,21 +16890,29 @@ var Topics = function (_React$Component) {
           { className: 'collapse', id: 'collapseExample' },
           _react2.default.createElement(
             'form',
-            null,
+            { id: 'newTopicForm' },
             _react2.default.createElement(
               'div',
               { className: 'form-group' },
-              _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: this.state.placeHolder, onChange: this.onNewTopicChange.bind(this) })
+              _react2.default.createElement('input', { type: 'text', className: 'form-control', id: 'formTextEntry', placeholder: this.state.placeHolder, onChange: this.onNewTopicChange.bind(this) })
             ),
             _react2.default.createElement(
-              'button',
-              { type: 'submit', className: 'btn btn-default', onClick: this.saveNewTopic.bind(this) },
-              'Submit'
+              'div',
+              { className: 'form-submit-icon' },
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons', role: 'button', type: 'submit', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.saveNewTopic.bind(this) },
+                'done'
+              )
             ),
             _react2.default.createElement(
-              'button',
-              { type: 'reset', className: 'btn btn-default', onClick: this.clearNewTopic.bind(this) },
-              'Clear'
+              'div',
+              { className: 'form-submit-icon' },
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons', role: 'button', type: 'reset', 'data-toggle': 'collapse', href: '#collapseExample', onClick: this.clearNewTopic.bind(this) },
+                'clear'
+              )
             )
           )
         ),

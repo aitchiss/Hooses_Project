@@ -120,8 +120,6 @@ font-size: 60px;
 vertical-align: bottom;
 }
 
-
-
 .welcome-container{
   background: url("images/group.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -166,6 +164,12 @@ vertical-align: bottom;
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.form-submit-icon{
+  padding-left: 20px;
+  display: inline-block;
+
 }
 
 #kitchen-table-input{

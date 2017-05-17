@@ -9,8 +9,53 @@ class TopicThread extends React.Component{
     this.state = {
       topicTitle: '',
       house_id: null,
-      messages: []
+      messages: [],
+      placeHolder: 'please enter your message',
+      newMessage:''
     }
+  }
+
+  onTopicMessageChange(e){
+    this.setState({newMessage: e.target.value})
+  }
+
+  saveNewMessage(){
+
+    if(this.state.newMessage !== ''){
+
+        let newMessage = {
+          user_id: this.props.user_id,
+          topic_id: this.props.topic_id,
+          content: this.state.newMessage,
+        }
+
+        console.log(newMessage)
+
+
+        const req = new AjaxRequest()
+          req.post('http://localhost:8000/api/messages.json', JSON.stringify(newMessage), (err, res) => {
+                if(!res.error){
+
+                  console.log(res)
+
+                  const newMessagesArray = [...this.state.messages, res]
+                  this.setState({
+                    newMessages: '',
+                    messages: newMessagesArray
+                  })
+              }
+          }) 
+
+
+        }
+        else {
+          console.log('cannot create an empty message')
+        }
+        document.getElementById("topicMessageEntryForm").reset()
+  }
+
+  clearNewMessage(){
+    document.getElementById("topicMessageEntryForm").reset()
   }
 
   componentDidUpdate(){
@@ -40,6 +85,8 @@ class TopicThread extends React.Component{
 //   console.log('there are no messages')
 // }
 
+console.log('messages: ', this.state.messages)
+
 
   let messages = this.state.messages.map((message, index) => {
     return <TopicMessageItem key={index} message={message.content} dateTime={message.created_at} firstName={message.user.profiles[0].first_name} lastName={message.user.profiles[0].last_name}/>
@@ -48,13 +95,28 @@ class TopicThread extends React.Component{
   return(
 
     <div className="panel panel-default">
+
         <div className="panel-heading">
           <div className='panel-title'>Topic <i className="material-icons in-panel-text-title">chevron_right</i> {this.state.topicTitle}</div>
         </div>
+
       <div className="panel-body">
+
+      <form id="topicMessageEntryForm">
+          <div className="form-group">
+                <input type="text" className="form-control" id="formTextEntry" placeholder={this.state.placeHolder} onChange={this.onTopicMessageChange.bind(this)}/>
+              </div>
+
+          <div className="form-submit-icon"><i className="material-icons" role="button" type="submit" data-toggle="collapse" href="#collapseExample" onClick={this.saveNewMessage.bind(this)}>local_post_office</i></div>
+
+          <div className="form-submit-icon"><i className="material-icons" role="button" type="reset" data-toggle="collapse" href="#collapseExample" onClick={this.clearNewMessage.bind(this)}>clear</i></div>
+      </form>
+
         {messages}
       </div>
+
     </div>
+    
     )
 }
 

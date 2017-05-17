@@ -4,7 +4,13 @@ class MessagesController < ApplicationController
 
   def create
     message = Message.create(message_params)
-    render json: message
+    render json: message.as_json({
+        include: {
+          user: {
+           include: :profiles
+        }
+      }
+    })
 
   end
 

@@ -55,26 +55,22 @@ class Topics extends React.Component{
         else {
           console.log('cannot create an empty topic')
         }
-
+        document.getElementById("newTopicForm").reset()
   }
 
   clearNewTopic(){
    this.setState({newTopic: ''}) 
+   document.getElementById("newTopicForm").reset()
   }
 
   deleteTopic(id){
     console.log('delete topic pressed', id)
     const req = new AjaxRequest()
-
-    console.log('house_id', this.state.house_id, 'topic id', id)
-
     req.delete('http://localhost:8000/api/houses/' + this.state.house_id + '/topics/' + id + '.json', (err, res) =>{
       if(!res.error){
-          console.log('this is the response from the delete', res)
           this.setState({topics: res})
       }
     })
-
   }
 
   componentDidMount(){
@@ -100,13 +96,15 @@ class Topics extends React.Component{
         </div>
 
         <div className="collapse" id="collapseExample">
-          <form>
+          <form id="newTopicForm">
             <div className="form-group">
-              <input type="text" className="form-control" placeholder={this.state.placeHolder} onChange={this.onNewTopicChange.bind(this)}/>
+              <input type="text" className="form-control" id="formTextEntry" placeholder={this.state.placeHolder} onChange={this.onNewTopicChange.bind(this)}/>
             </div>
 
-            <button type="submit" className="btn btn-default" onClick={this.saveNewTopic.bind(this)}>Submit</button>
-            <button type="reset" className="btn btn-default" onClick={this.clearNewTopic.bind(this)}>Clear</button>
+            <div className="form-submit-icon"><i className="material-icons" role="button" type="submit" data-toggle="collapse" href="#collapseExample" onClick={this.saveNewTopic.bind(this)}>done</i></div>
+
+            <div className="form-submit-icon"><i className="material-icons" role="button" type="reset" data-toggle="collapse" href="#collapseExample" onClick={this.clearNewTopic.bind(this)}>clear</i></div>
+
           </form>
         </div>
 

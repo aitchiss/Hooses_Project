@@ -58,7 +58,7 @@ class OptionTabBar extends React.Component {
         view = <Topics house_id={this.props.house_id} user_id={this.props.user_id} setTopicThread={this.topicThread.bind(this)}/>
         break;
       case 'TopicThread':
-        view = <TopicThread topic_id={this.state.topic_id} house_id={this.props.house_id} updateView={this.updateToTopicViewOnHouseChange.bind(this)}/>
+        view = <TopicThread topic_id={this.state.topic_id} house_id={this.props.house_id} user_id={this.props.user_id} updateView={this.updateToTopicViewOnHouseChange.bind(this)}/>
         break;
       case 'JobCalls':
         view = <JobCalls/>
