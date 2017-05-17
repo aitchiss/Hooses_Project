@@ -15816,6 +15816,10 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(16);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -15834,25 +15838,33 @@ var Expenditure = function (_React$Component) {
   }
 
   _createClass(Expenditure, [{
-    key: "render",
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var req = new _AjaxRequest2.default();
+      req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/completed_jobs', function (err, res) {
+        console.log(res);
+      });
+    }
+  }, {
+    key: 'render',
     value: function render() {
 
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-default" },
+        'div',
+        { className: 'panel panel-default' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "Expenditure"
+            'div',
+            { className: 'panel-title' },
+            'Expenditure'
           )
         ),
         _react2.default.createElement(
-          "div",
-          { className: "panel-body" },
-          "* ONLY IN MVP IF TIME ALLOWS *"
+          'div',
+          { className: 'panel-body' },
+          '* ONLY IN MVP IF TIME ALLOWS *'
         )
       );
     }
@@ -16444,7 +16456,7 @@ var OptionTabBar = function (_React$Component) {
           view = _react2.default.createElement(_JobCalls2.default, null);
           break;
         case 'Expenditure':
-          view = _react2.default.createElement(_Expenditure2.default, null);
+          view = _react2.default.createElement(_Expenditure2.default, { house_id: this.props.house_id });
           break;
         case 'Documents':
           view = _react2.default.createElement(_Documents2.default, null);

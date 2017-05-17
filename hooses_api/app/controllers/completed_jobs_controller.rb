@@ -2,7 +2,7 @@ class CompletedJobsController < ApplicationController
 
   def index
 
-    jobs = CompletedJobs.where({:house_id => params[:id]})
+    jobs = CompletedJob.where({:house_id => params[:id]})
 
     render json: jobs
   end
