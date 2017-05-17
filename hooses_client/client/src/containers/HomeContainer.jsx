@@ -1,6 +1,7 @@
 import React from 'react'
 import MainContainer from './MainContainer.jsx'
 import WelcomeContainer from './WelcomeContainer.jsx'
+import AjaxRequest from '../services/AjaxRequest'
 
 class HomeContainer extends React.Component {
 
@@ -17,7 +18,36 @@ class HomeContainer extends React.Component {
     this.setState({currentUser: user})
   }
 
+  fetchUser(){
+    const req = new AjaxRequest()
+   
+    req.get('http://localhost:8000/api/users.json', (err, user, status) => {
+      if (err) { throw err }
 
+      if (status === 200){
+        this.setState({
+          currentUser: user
+        })
+      } else if (status === 401){
+        this.setUser(null)
+      }
+    })
+  }
+
+
+  componentDidMount(){
+    this.fetchUser()
+  }
+
+  signOut(event){
+    const req = new AjaxRequest()
+    req.delete('http://localhost:8000/users/sign_out.json', (err, status) => {
+      if(err) {throw err}
+      if(status === 204){
+        this.setUser(null)
+      }
+    })
+  }
 
 
   render(){
@@ -25,7 +55,7 @@ class HomeContainer extends React.Component {
      let view;
 
       if(this.state.currentUser){
-        view = <MainContainer user={this.state.currentUser}/>
+        view = <MainContainer user={this.state.currentUser} signOut={this.signOut.bind(this)}/>
       }
       else
       {

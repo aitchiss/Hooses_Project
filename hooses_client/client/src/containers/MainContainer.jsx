@@ -36,7 +36,7 @@ class MainContainer extends React.Component {
     return (
 
       <div className="main-content">
-        <NavBar/>
+        <NavBar signOut={this.props.signOut}/>
 
         <div className="container-responsive">
 
