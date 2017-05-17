@@ -15887,7 +15887,6 @@ var Expenditure = function (_React$Component) {
         var div = document.querySelector('#chart-area');
 
         var chart = new _ExpensesChart2.default();
-        console.log(div, costs, labels);
         chart.create(div, costs, labels);
 
         _this2.setState({ data: res });

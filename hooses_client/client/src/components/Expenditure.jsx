@@ -45,7 +45,6 @@ class Expenditure extends React.Component{
       const div = document.querySelector('#chart-area')
 
       const chart = new ExpensesChart()
-      console.log(div, costs, labels)
       chart.create(div, costs, labels)
 
       this.setState({data: res})
