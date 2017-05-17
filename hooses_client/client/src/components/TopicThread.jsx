@@ -49,7 +49,7 @@ class TopicThread extends React.Component{
 
     <div className="panel panel-default">
         <div className="panel-heading">
-          <div className='panel-title'>Topic > {this.state.topicTitle}</div>
+          <div className='panel-title'>Topic <i className="material-icons in-panel-text-title">chevron_right</i> {this.state.topicTitle}</div>
         </div>
       <div className="panel-body">
         {messages}

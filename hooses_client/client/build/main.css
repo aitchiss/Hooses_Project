@@ -106,6 +106,21 @@ font-size: 60px;
   padding-bottom: 0px;
 }
 
+.material-icons {
+  color: #3097D1;
+  font-size:22px;
+/*  color: rgba(255, 255, 0, 0.54)
+*/
+}
+
+.right{
+  float:right;
+}
+.in-panel-text-title{
+vertical-align: bottom;
+}
+
+
 
 .welcome-container{
   background: url("images/group.jpg") no-repeat center center fixed; 

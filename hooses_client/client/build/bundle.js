@@ -12865,7 +12865,13 @@ var TopicThread = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'panel-title' },
-            'Topic > ',
+            'Topic ',
+            _react2.default.createElement(
+              'i',
+              { className: 'material-icons in-panel-text-title' },
+              'chevron_right'
+            ),
+            ' ',
             this.state.topicTitle
           )
         ),
@@ -12976,7 +12982,12 @@ var Topics = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'panel-title' },
-            'Topics'
+            'Topics',
+            _react2.default.createElement(
+              'i',
+              { className: 'material-icons right' },
+              'add'
+            )
           )
         ),
         _react2.default.createElement(

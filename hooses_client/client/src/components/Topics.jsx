@@ -44,7 +44,7 @@ class Topics extends React.Component{
     return(
       <div className="panel panel-default">
         <div className="panel-heading">
-          <div className="panel-title">Topics</div>
+          <div className="panel-title">Topics<i className="material-icons right">add</i></div>
         </div>
 
         <div className="panel-body">
