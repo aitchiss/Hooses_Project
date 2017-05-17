@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+CompletedJob.destroy_all
 KitchenTablePost.destroy_all
 Message.destroy_all
 Topic.destroy_all
@@ -205,6 +206,7 @@ ktpost3 = KitchenTablePost.create({
 CompletedJob.create({
   house: h1,
   description: "fix the ceiling leak",
+  category: "general repairs",
   cost: 25000,
   date: "2017-05-01"
   })
@@ -212,6 +214,7 @@ CompletedJob.create({
 CompletedJob.create({
   house: h1,
   description: "broken front door",
+  category: "general repairs",
   cost: 10000,
   date: "2017-04-22"
   })
@@ -219,6 +222,7 @@ CompletedJob.create({
 CompletedJob.create({
   house: h1,
   description: "fix gutter damage caused by pigeons",
+  category: "vermin issues",
   cost: 43500,
   date: "2017-02-10"
   })

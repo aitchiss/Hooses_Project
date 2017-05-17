@@ -15820,6 +15820,10 @@ var _AjaxRequest = __webpack_require__(16);
 
 var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
 
+var _ExpensesChart = __webpack_require__(293);
+
+var _ExpensesChart2 = _interopRequireDefault(_ExpensesChart);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -15831,10 +15835,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Expenditure = function (_React$Component) {
   _inherits(Expenditure, _React$Component);
 
-  function Expenditure() {
+  function Expenditure(props) {
     _classCallCheck(this, Expenditure);
 
-    return _possibleConstructorReturn(this, (Expenditure.__proto__ || Object.getPrototypeOf(Expenditure)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Expenditure.__proto__ || Object.getPrototypeOf(Expenditure)).call(this, props));
+
+    _this.state = {
+      costData: {
+        name: 'cost',
+        data: []
+      }
+    };
+    return _this;
   }
 
   _createClass(Expenditure, [{
@@ -15843,6 +15855,37 @@ var Expenditure = function (_React$Component) {
       var req = new _AjaxRequest2.default();
       req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/completed_jobs', function (err, res) {
         console.log(res);
+
+        var costs = {
+          name: 'cost',
+          data: []
+        };
+
+        var labels = [];
+
+        res.forEach(function (item) {
+          if (labels.indexOf(item.category) === -1) {
+            labels.push(item.category);
+          }
+        });
+
+        labels.forEach(function (label) {
+          var total = 0;
+          res.forEach(function (item) {
+            if (item.category === label) {
+              total += item.cost / 100;
+            }
+          });
+          costs.data.push(total);
+        });
+
+        // this.setState({costData: {name: 'cost', data: costs}})
+
+        var div = document.querySelector('#chart-area');
+
+        var chart = new _ExpensesChart2.default();
+        console.log(div, costs, labels);
+        chart.create(div, costs, labels);
       });
     }
   }, {
@@ -15863,7 +15906,7 @@ var Expenditure = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'panel-body' },
+          { className: 'panel-body', id: 'chart-area' },
           '* ONLY IN MVP IF TIME ALLOWS *'
         )
       );
@@ -34986,6 +35029,58 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 /* (ignored) */
+
+/***/ }),
+/* 293 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ExpensesChart = function () {
+  function ExpensesChart() {
+    _classCallCheck(this, ExpensesChart);
+  }
+
+  _createClass(ExpensesChart, [{
+    key: 'create',
+    value: function create(div, data, categories) {
+      console.log(div, data, categories);
+
+      var chart = new Highcharts.Chart({
+        chart: {
+          type: 'column',
+          renderTo: div
+        },
+        title: {
+          text: 'expenses'
+        },
+        series: [data],
+        xAxis: {
+          categories: categories
+        }
+      });
+    }
+  }]);
+
+  return ExpensesChart;
+}();
+
+exports.default = ExpensesChart;
 
 /***/ })
 /******/ ]);
