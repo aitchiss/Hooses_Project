@@ -15682,7 +15682,6 @@ var CoOwners = function (_React$Component) {
         var req = new _AjaxRequest2.default();
         req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, function (err, res) {
           if (!res.error) {
-            console.log('coowners', res);
 
             var ownerProfiles = res.map(function (owner) {
               return owner.profiles[0];

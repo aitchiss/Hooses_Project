@@ -16,8 +16,7 @@ class CoOwners extends React.Component{
       const req = new AjaxRequest()
       req.get('http://localhost:8000/api/owner_groups/house/' + this.props.houseId, (err, res) => {
         if (!res.error){
-          console.log('coowners', res)
-
+          
           let ownerProfiles = res.map((owner) => {
             return owner.profiles[0]
           })
@@ -26,14 +25,13 @@ class CoOwners extends React.Component{
         }
       })
     }
-    
   }
+
 
 
 
   render(){
 
-    
     let coOwners = this.state.owners.map((owner, index) => {
 
       return <CoOwnerThumbnail key={index} first_name={owner.first_name} last_name={owner.last_name} img={owner.image} />
