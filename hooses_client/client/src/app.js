@@ -7,6 +7,7 @@ import HomeContainer from './containers/HomeContainer.jsx'
 import { HashRouter, Route, IndexRoute } from 'react-router-dom'
 
 
+
 window.onload = () => {
   render(
     <HashRouter>

@@ -2117,6 +2117,25 @@ var AjaxRequest = function () {
       xhr.send(payload);
     }
   }, {
+    key: "put",
+    value: function put(url, payload, done) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("PUT", url);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.withCredentials = true;
+
+      xhr.onload = function () {
+        done(null, JSON.parse(xhr.response));
+      };
+
+      xhr.onerror = function () {
+        console.log('error');
+        done(xhr.response);
+      };
+
+      xhr.send(payload);
+    }
+  }, {
     key: "delete",
     value: function _delete(url, done) {
       var xhr = new XMLHttpRequest();
@@ -7443,6 +7462,10 @@ var _Profile = __webpack_require__(111);
 
 var _Profile2 = _interopRequireDefault(_Profile);
 
+var _ProfileEditModal = __webpack_require__(242);
+
+var _ProfileEditModal2 = _interopRequireDefault(_ProfileEditModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -7463,8 +7486,10 @@ var MainContainer = function (_React$Component) {
       houseSelection: null,
       house_id: null,
       currentAddress: '',
-      currentPostCode: ''
+      currentPostCode: '',
+      actionCable: null
     };
+
     return _this;
   }
 
@@ -11925,7 +11950,17 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AjaxRequest = __webpack_require__(17);
+
+var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
+
+var _KitchenTableMessage = __webpack_require__(243);
+
+var _KitchenTableMessage2 = _interopRequireDefault(_KitchenTableMessage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -11936,33 +11971,100 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var KitchenTable = function (_React$Component) {
   _inherits(KitchenTable, _React$Component);
 
-  function KitchenTable() {
+  function KitchenTable(props) {
     _classCallCheck(this, KitchenTable);
 
-    return _possibleConstructorReturn(this, (KitchenTable.__proto__ || Object.getPrototypeOf(KitchenTable)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (KitchenTable.__proto__ || Object.getPrototypeOf(KitchenTable)).call(this, props));
+
+    _this.state = {
+      user_id: props.user_id,
+      house_id: props.house_id,
+      messages: [],
+      input: ''
+    };
+
+    return _this;
   }
 
   _createClass(KitchenTable, [{
-    key: "render",
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+
+      if (this.props.house_id !== this.state.house_id) {
+        this.getNewMessages();
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+
+      this.getNewMessages();
+    }
+  }, {
+    key: 'getNewMessages',
+    value: function getNewMessages() {
+      var _this2 = this;
+
+      var req = new _AjaxRequest2.default();
+      req.get('http://localhost:8000/api/kitchen_table_posts/house/' + this.props.house_id, function (err, res) {
+        if (!res.error) {
+          _this2.setState({ house_id: _this2.props.house_id, messages: res });
+          var contentDiv = document.querySelector(".kitchen-table-msgs");
+          contentDiv.scrollTop = contentDiv.scrollHeight;
+        }
+      });
+    }
+  }, {
+    key: 'onMessageInputChange',
+    value: function onMessageInputChange(e) {
+      this.setState({ input: e.target.value });
+    }
+  }, {
+    key: 'onMessageSubmit',
+    value: function onMessageSubmit(e) {
+      var _this3 = this;
+
+      if (e.which === 13) {
+        var message = { kitchen_table_post: {
+            user_id: this.state.user_id,
+            house_id: this.state.house_id,
+            content: this.state.input
+          }
+        };
+
+        var req = new _AjaxRequest2.default();
+        req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), function (err, res) {
+          _this3.getNewMessages();
+          document.getElementById('kitchen-table-input').value = "";
+        });
+      }
+    }
+  }, {
+    key: 'render',
     value: function render() {
 
+      var messages = this.state.messages.map(function (msg, index) {
+        return _react2.default.createElement(_KitchenTableMessage2.default, { key: index, userName: msg.user.profiles[0].first_name, message: msg.content });
+      });
+
       return _react2.default.createElement(
-        "div",
-        { className: "panel panel-default" },
+        'div',
+        { className: 'panel panel-default' },
         _react2.default.createElement(
-          "div",
-          { className: "panel-heading" },
+          'div',
+          { className: 'panel-heading' },
           _react2.default.createElement(
-            "div",
-            { className: "panel-title" },
-            "Kitchen Table"
+            'div',
+            { className: 'panel-title' },
+            'Kitchen Table'
           )
         ),
         _react2.default.createElement(
-          "div",
-          { className: "panel-body" },
-          "* NO BLOG TABLE/MESSAGES CREATED IN SEEDS * (ps see bootstrap media layout)"
-        )
+          'div',
+          _defineProperty({ className: 'panel-body' }, 'className', 'kitchen-table-msgs'),
+          messages
+        ),
+        _react2.default.createElement('input', { id: 'kitchen-table-input', type: 'text', placeholder: 'post a message', onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })
       );
     }
   }]);
@@ -12293,7 +12395,7 @@ var OptionTabBar = function (_React$Component) {
 
       switch (this.state.selectedView) {
         case 'KitchenTable':
-          view = _react2.default.createElement(_KitchenTable2.default, null);
+          view = _react2.default.createElement(_KitchenTable2.default, { house_id: this.props.house_id, user_id: this.props.user_id });
           break;
         case 'Topics':
           view = _react2.default.createElement(_Topics2.default, { house_id: this.props.house_id, setTopicThread: this.topicThread.bind(this) });
@@ -12401,6 +12503,10 @@ var _AjaxRequest = __webpack_require__(17);
 
 var _AjaxRequest2 = _interopRequireDefault(_AjaxRequest);
 
+var _ProfileEditModal = __webpack_require__(242);
+
+var _ProfileEditModal2 = _interopRequireDefault(_ProfileEditModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12448,6 +12554,25 @@ var Profile = function (_React$Component) {
       });
     }
   }, {
+    key: 'updateProfileHandler',
+    value: function updateProfileHandler(newData) {
+      var _this3 = this;
+
+      console.log('calling');
+      var req = new _AjaxRequest2.default();
+      req.put('http://localhost:8000/api/users/' + this.props.user_id + '/profile', JSON.stringify(newData), function (err, res) {
+        if (!res.error) {
+          console.log('res', res);
+          _this3.setState({
+            first_name: res.profiles[0].first_name,
+            last_name: res.profiles[0].last_name,
+            address: res.profiles[0].address
+
+          });
+        }
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
 
@@ -12460,17 +12585,14 @@ var Profile = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { className: 'panel-title' },
-            'Profile \xB7 ',
+            'Profile \xB7',
             _react2.default.createElement(
               'small',
-              null,
-              _react2.default.createElement(
-                'a',
-                { href: '#' },
-                'edit'
-              )
+              { 'data-toggle': 'modal', 'data-target': '#editModal', className: 'correct-pointer' },
+              'edit'
             )
-          )
+          ),
+          _react2.default.createElement(_ProfileEditModal2.default, { first_name: this.state.first_name, last_name: this.state.last_name, address: this.state.address, updateHandler: this.updateProfileHandler.bind(this) })
         ),
         _react2.default.createElement(
           'div',
@@ -27215,6 +27337,202 @@ window.onload = function () {
 //     document.getElementById('app')
 //   );
 // };
+
+/***/ }),
+/* 242 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ProfileEditModal = function (_React$Component) {
+  _inherits(ProfileEditModal, _React$Component);
+
+  function ProfileEditModal(props) {
+    _classCallCheck(this, ProfileEditModal);
+
+    var _this = _possibleConstructorReturn(this, (ProfileEditModal.__proto__ || Object.getPrototypeOf(ProfileEditModal)).call(this, props));
+
+    _this.state = {
+      first_name: props.first_name,
+      last_name: props.last_name,
+      address: props.address
+    };
+    return _this;
+  }
+
+  _createClass(ProfileEditModal, [{
+    key: "componentWillReceiveProps",
+    value: function componentWillReceiveProps(nextProps) {
+
+      if (this.props !== nextProps) {
+
+        this.setState({
+          first_name: nextProps.first_name,
+          last_name: nextProps.last_name,
+          address: nextProps.address
+        });
+      }
+    }
+  }, {
+    key: "onSave",
+    value: function onSave() {
+      var newData = {
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        address: this.state.address
+      };
+
+      this.props.updateHandler(newData);
+    }
+  }, {
+    key: "onFirstNameChange",
+    value: function onFirstNameChange(e) {
+      this.setState({ first_name: e.target.value });
+    }
+  }, {
+    key: "onLastNameChange",
+    value: function onLastNameChange(e) {
+      this.setState({ last_name: e.target.value });
+    }
+  }, {
+    key: "onAddressChange",
+    value: function onAddressChange(e) {
+      this.setState({ address: e.target.value });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { className: "modal fade", id: "editModal", tabIndex: "-1", role: "dialog", "aria-labelledby": "editModalLabel", "aria-hidden": "true" },
+        _react2.default.createElement(
+          "div",
+          { className: "modal-dialog", role: "document" },
+          _react2.default.createElement(
+            "div",
+            { className: "modal-content" },
+            _react2.default.createElement(
+              "div",
+              { className: "modal-header" },
+              _react2.default.createElement(
+                "h5",
+                { className: "modal-title" },
+                "Edit Profile"
+              ),
+              _react2.default.createElement(
+                "button",
+                { type: "button", className: "close", "data-dismiss": "modal", "aria-label": "Close" },
+                _react2.default.createElement(
+                  "span",
+                  { "aria-hidden": "true" },
+                  "\xD7"
+                )
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "modal-body" },
+              _react2.default.createElement(
+                "p",
+                null,
+                "Update your profile details:"
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "First Name: ",
+                _react2.default.createElement("input", { type: "text", id: "first_name", onChange: this.onFirstNameChange.bind(this), placeholder: this.props.first_name })
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Last Name: ",
+                _react2.default.createElement("input", { type: "text", id: "last_name", onChange: this.onLastNameChange.bind(this), placeholder: this.props.last_name })
+              ),
+              _react2.default.createElement(
+                "p",
+                null,
+                "Address: ",
+                _react2.default.createElement("input", { type: "text", id: "address", onChange: this.onAddressChange.bind(this), placeholder: this.props.address })
+              )
+            ),
+            _react2.default.createElement(
+              "div",
+              { className: "modal-footer" },
+              _react2.default.createElement(
+                "button",
+                { type: "button", className: "btn btn-primary", onClick: this.onSave.bind(this), "data-dismiss": "modal" },
+                "Save changes"
+              ),
+              _react2.default.createElement(
+                "button",
+                { type: "button", className: "btn btn-secondary", "data-dismiss": "modal" },
+                "Close"
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ProfileEditModal;
+}(_react2.default.Component);
+
+exports.default = ProfileEditModal;
+
+/***/ }),
+/* 243 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var KitchenTableMessage = function KitchenTableMessage(props) {
+
+  return _react2.default.createElement(
+    "div",
+    { className: "kitchen-table-msg" },
+    _react2.default.createElement(
+      "p",
+      null,
+      props.userName,
+      ": ",
+      props.message
+    )
+  );
+};
+
+exports.default = KitchenTableMessage;
 
 /***/ })
 /******/ ]);

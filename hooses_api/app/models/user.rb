@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :profiles
   has_many :topics
   has_many :messages
+  has_many :kitchen_table_posts
   has_many :houses, through: :owner_groups, source: :houses 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
