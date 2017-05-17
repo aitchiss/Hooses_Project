@@ -11457,8 +11457,6 @@ var HomeContainer = function (_React$Component) {
           throw err;
         }
 
-        console.log('fetched', user);
-
         if (status === 200) {
           _this2.setState({
             currentUser: user

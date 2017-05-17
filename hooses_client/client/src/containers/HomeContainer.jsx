@@ -25,8 +25,6 @@ class HomeContainer extends React.Component {
     req.get('http://localhost:8000/api/users.json', (err, user, status) => {
       if (err) { throw err }
 
-      console.log('fetched', user)
-
       if (status === 200){
         this.setState({
           currentUser: user
