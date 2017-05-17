@@ -227,4 +227,79 @@ CompletedJob.create({
   date: "2017-02-10"
   })
 
+CompletedJob.create({
+  house: h1,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-02-10"
+  })
+
+CompletedJob.create({
+  house: h1,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-01-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-02-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-01-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-03-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-04-10"
+  })
+
+CompletedJob.create({
+  house: h2,
+  description: "garage drains blockage fixed",
+  category: "garage issues",
+  cost: 55000,
+  date: "2017-03-17"
+  })
+
+
+CompletedJob.create({
+  house: h3,
+  description: "windows cleaned",
+  category: "window cleaning",
+  cost: 2000,
+  date: "2017-02-10"
+  })
+
+CompletedJob.create({
+  house: h3,
+  description: "pest control called out for rat issue",
+  category: "vermin",
+  cost: 25000,
+  date: "2017-01-10"
+  })
+
+
+
 

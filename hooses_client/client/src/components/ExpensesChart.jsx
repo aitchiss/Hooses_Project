@@ -9,16 +9,13 @@ class ExpensesChart {
 
     let chart = new Highcharts.Chart({
       chart: {
-        type: 'column',
+        type: 'pie',
         renderTo: div
       },
       title: {
         text: 'expenses'
       },
-      series: [data],
-      xAxis: {
-        categories: categories
-      }
+      series: [{data: data}]
     })
 
   }

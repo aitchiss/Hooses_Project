@@ -15824,6 +15824,10 @@ var _ExpensesChart = __webpack_require__(293);
 
 var _ExpensesChart2 = _interopRequireDefault(_ExpensesChart);
 
+var _ExpenditureTable = __webpack_require__(294);
+
+var _ExpenditureTable2 = _interopRequireDefault(_ExpenditureTable);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -15841,25 +15845,28 @@ var Expenditure = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Expenditure.__proto__ || Object.getPrototypeOf(Expenditure)).call(this, props));
 
     _this.state = {
-      costData: {
-        name: 'cost',
-        data: []
-      }
+      data: null
     };
     return _this;
   }
 
   _createClass(Expenditure, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (this.props !== nextProps) {
+        this.componentDidMount();
+      }
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this2 = this;
+
       var req = new _AjaxRequest2.default();
       req.get('http://localhost:8000/api/houses/' + this.props.house_id + '/completed_jobs', function (err, res) {
         console.log(res);
 
-        var costs = {
-          name: 'cost',
-          data: []
-        };
+        var costs = [];
 
         var labels = [];
 
@@ -15876,16 +15883,16 @@ var Expenditure = function (_React$Component) {
               total += item.cost / 100;
             }
           });
-          costs.data.push(total);
+          costs.push({ name: label, y: total });
         });
-
-        // this.setState({costData: {name: 'cost', data: costs}})
 
         var div = document.querySelector('#chart-area');
 
         var chart = new _ExpensesChart2.default();
         console.log(div, costs, labels);
         chart.create(div, costs, labels);
+
+        _this2.setState({ data: res });
       });
     }
   }, {
@@ -15904,11 +15911,8 @@ var Expenditure = function (_React$Component) {
             'Expenditure'
           )
         ),
-        _react2.default.createElement(
-          'div',
-          { className: 'panel-body', id: 'chart-area' },
-          '* ONLY IN MVP IF TIME ALLOWS *'
-        )
+        _react2.default.createElement('div', { className: 'panel-body', id: 'chart-area' }),
+        _react2.default.createElement(_ExpenditureTable2.default, { data: this.state.data })
       );
     }
   }]);
@@ -35063,16 +35067,13 @@ var ExpensesChart = function () {
 
       var chart = new Highcharts.Chart({
         chart: {
-          type: 'column',
+          type: 'pie',
           renderTo: div
         },
         title: {
           text: 'expenses'
         },
-        series: [data],
-        xAxis: {
-          categories: categories
-        }
+        series: [{ data: data }]
       });
     }
   }]);
@@ -35081,6 +35082,160 @@ var ExpensesChart = function () {
 }();
 
 exports.default = ExpensesChart;
+
+/***/ }),
+/* 294 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ExpenditureRow = __webpack_require__(295);
+
+var _ExpenditureRow2 = _interopRequireDefault(_ExpenditureRow);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ExpenditureTable = function (_React$Component) {
+  _inherits(ExpenditureTable, _React$Component);
+
+  function ExpenditureTable(props) {
+    _classCallCheck(this, ExpenditureTable);
+
+    var _this = _possibleConstructorReturn(this, (ExpenditureTable.__proto__ || Object.getPrototypeOf(ExpenditureTable)).call(this, props));
+
+    _this.state = {
+      data: props.data
+    };
+    return _this;
+  }
+
+  _createClass(ExpenditureTable, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (this.props !== nextProps) {
+        this.setState({ data: nextProps.data });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      var rows = [];
+
+      if (this.state.data) {
+        rows = this.state.data.map(function (item, index) {
+          return _react2.default.createElement(_ExpenditureRow2.default, { key: index, date: item.date, description: item.description, category: item.category, cost: item.cost });
+        });
+      }
+
+      return _react2.default.createElement(
+        'table',
+        { className: 'table' },
+        _react2.default.createElement(
+          'thead',
+          null,
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'th',
+              null,
+              'Date'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'Description'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'Category'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              'Cost'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'tbody',
+          null,
+          rows
+        )
+      );
+    }
+  }]);
+
+  return ExpenditureTable;
+}(_react2.default.Component);
+
+exports.default = ExpenditureTable;
+
+/***/ }),
+/* 295 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ExpenditureRow = function ExpenditureRow(props) {
+
+  return _react2.default.createElement(
+    "tr",
+    null,
+    _react2.default.createElement(
+      "th",
+      { scope: "row" },
+      props.date
+    ),
+    _react2.default.createElement(
+      "td",
+      null,
+      props.description
+    ),
+    _react2.default.createElement(
+      "td",
+      null,
+      props.category
+    ),
+    _react2.default.createElement(
+      "td",
+      null,
+      props.cost / 100
+    )
+  );
+};
+
+exports.default = ExpenditureRow;
 
 /***/ })
 /******/ ]);

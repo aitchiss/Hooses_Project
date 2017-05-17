@@ -1,16 +1,20 @@
 import React from 'react'
 import AjaxRequest from '../services/AjaxRequest'
 import ExpensesChart from './ExpensesChart'
+import ExpenditureTable from './ExpenditureTable'
 
 class Expenditure extends React.Component{
 
   constructor(props){
     super(props)
     this.state = {
-      costData: {
-        name: 'cost',
-        data: []
-      }
+      data: null 
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props !== nextProps){
+      this.componentDidMount()
     }
   }
 
@@ -19,10 +23,7 @@ class Expenditure extends React.Component{
     req.get('http://localhost:8000/api/houses/'+ this.props.house_id + '/completed_jobs', (err, res) => {
       console.log(res)
 
-      let costs = {
-        name: 'cost',
-        data: []
-      }
+      let costs = []
 
       let labels = []
 
@@ -40,18 +41,16 @@ class Expenditure extends React.Component{
             total += (item.cost /100)
           }
         })
-        costs.data.push(total)
+        costs.push({name: label, y: total})
       })
-
-
-
-      // this.setState({costData: {name: 'cost', data: costs}})
 
       const div = document.querySelector('#chart-area')
 
       const chart = new ExpensesChart()
       console.log(div, costs, labels)
       chart.create(div, costs, labels)
+
+      this.setState({data: res})
 
     })
   }
@@ -68,9 +67,8 @@ class Expenditure extends React.Component{
         </div>
 
         <div className="panel-body" id="chart-area">
-          * ONLY IN MVP IF TIME ALLOWS * 
-
         </div>
+        <ExpenditureTable data={this.state.data} />
       </div>
       )
     }
