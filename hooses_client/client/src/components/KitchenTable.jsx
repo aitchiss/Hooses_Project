@@ -32,9 +32,7 @@ class KitchenTable extends React.Component{
   
 
   componentDidMount(){
-    
     this.getNewMessages()
-
   }
 
 
@@ -66,7 +64,7 @@ class KitchenTable extends React.Component{
       const req = new AjaxRequest()
       req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), (err, res) => {
         
-        this.socket.emit('kitchenTable', res)
+        this.socket.emit('kitchenTable')
         
         document.getElementById('kitchen-table-input').value = ""
       })

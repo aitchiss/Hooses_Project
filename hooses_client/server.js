@@ -11,8 +11,8 @@ app.get('/', function (req, res) {
 app.use(express.static('client/build'));
 
 io.on('connection', function(socket){
-  socket.on('kitchenTable', (msg) => {
-    io.sockets.emit('kitchenTable', msg)
+  socket.on('kitchenTable', () => {
+    io.sockets.emit('kitchenTable')
   })
 
   
