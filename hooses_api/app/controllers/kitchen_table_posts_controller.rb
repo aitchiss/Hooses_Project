@@ -2,10 +2,9 @@ class KitchenTablePostsController < ApplicationController
 
   def create
     
-    KitchenTablePost.create(post_params)
+    post = KitchenTablePost.create(post_params)
 
-    all_posts = KitchenTablePost.where({:house_id => params[:house_id]})
-    render json: all_posts.as_json({
+    render json: post.as_json({
       include: {
         user: {
           except: [:created_at, :updated_at],

@@ -19,7 +19,7 @@ class KitchenTable extends React.Component{
 
     this.socket = io("http://localhost:3000")
 
-    this.socket.on('kitchenTable', this.addNewMessage.bind(this))
+    this.socket.on('kitchenTable', this.getNewMessages.bind(this))
   }
 
 
@@ -37,10 +37,6 @@ class KitchenTable extends React.Component{
 
   }
 
-  addNewMessage(msg){
-    let messages = [...this.state.messages, msg]
-    console.log(messages)
-  }
 
 
   getNewMessages(){
@@ -69,11 +65,15 @@ class KitchenTable extends React.Component{
 
       const req = new AjaxRequest()
       req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), (err, res) => {
-        this.getNewMessages()
+        
+        this.socket.emit('kitchenTable', res)
+        
         document.getElementById('kitchen-table-input').value = ""
       })
 
-      this.socket.emit('kitchenTable', message)
+
+
+      
     }
     
   }

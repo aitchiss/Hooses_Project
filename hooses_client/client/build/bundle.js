@@ -12069,8 +12069,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -12094,7 +12092,7 @@ var KitchenTable = function (_React$Component) {
 
     _this.socket = (0, _socket2.default)("http://localhost:3000");
 
-    _this.socket.on('kitchenTable', _this.addNewMessage.bind(_this));
+    _this.socket.on('kitchenTable', _this.getNewMessages.bind(_this));
     return _this;
   }
 
@@ -12111,12 +12109,6 @@ var KitchenTable = function (_React$Component) {
     value: function componentDidMount() {
 
       this.getNewMessages();
-    }
-  }, {
-    key: 'addNewMessage',
-    value: function addNewMessage(msg) {
-      var messages = [].concat(_toConsumableArray(this.state.messages), [msg]);
-      console.log(messages);
     }
   }, {
     key: 'getNewMessages',
@@ -12152,11 +12144,11 @@ var KitchenTable = function (_React$Component) {
 
         var req = new _AjaxRequest2.default();
         req.post('http://localhost:8000/api/kitchen_table_posts.json', JSON.stringify(message), function (err, res) {
-          _this3.getNewMessages();
+
+          _this3.socket.emit('kitchenTable', res);
+
           document.getElementById('kitchen-table-input').value = "";
         });
-
-        this.socket.emit('kitchenTable', message);
       }
     }
   }, {
