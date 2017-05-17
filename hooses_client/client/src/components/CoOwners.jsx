@@ -44,7 +44,7 @@ class CoOwners extends React.Component{
        <div className="panel-title">Owners &#183; <small><a href="#">edit</a></small></div>
       </div>
 
-      <div className="panel-body">
+      <div className="panel-body co-owners">
 
         {coOwners}
       </div>

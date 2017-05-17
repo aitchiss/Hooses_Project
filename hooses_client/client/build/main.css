@@ -182,10 +182,16 @@ vertical-align: bottom;
 .co-owner-thumbnail{
   width: 50px;
   text-align: center;
+  
 }
 
 .owner-img {
   width:40px;
+}
+
+.co-owners{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {

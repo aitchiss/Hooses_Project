@@ -15723,7 +15723,7 @@ var CoOwners = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          { className: 'panel-body' },
+          { className: 'panel-body co-owners' },
           coOwners
         )
       );
