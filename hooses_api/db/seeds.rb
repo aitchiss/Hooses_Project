@@ -202,4 +202,25 @@ ktpost3 = KitchenTablePost.create({
   content: "yup - hello!"
   })
 
+CompletedJob.create({
+  house: h1,
+  description: "fix the ceiling leak",
+  cost: 25000,
+  date: "2017-05-01"
+  })
+
+CompletedJob.create({
+  house: h1,
+  description: "broken front door",
+  cost: 10000,
+  date: "2017-04-22"
+  })
+
+CompletedJob.create({
+  house: h1,
+  description: "fix gutter damage caused by pigeons",
+  cost: 43500,
+  date: "2017-02-10"
+  })
+
 
