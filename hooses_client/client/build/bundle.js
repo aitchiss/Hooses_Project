@@ -35140,7 +35140,10 @@ var ExpenditureTable = function (_React$Component) {
       var rows = [];
 
       if (this.state.data) {
-        rows = this.state.data.map(function (item, index) {
+        var data = this.state.data.sort(function (a, b) {
+          return a.date - b.date;
+        });
+        rows = data.map(function (item, index) {
           return _react2.default.createElement(_ExpenditureRow2.default, { key: index, date: item.date, description: item.description, category: item.category, cost: item.cost });
         });
       }
@@ -35172,7 +35175,7 @@ var ExpenditureTable = function (_React$Component) {
             _react2.default.createElement(
               'th',
               null,
-              'Cost'
+              'Cost (\xA3)'
             )
           )
         ),

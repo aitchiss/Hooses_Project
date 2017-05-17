@@ -17,13 +17,17 @@ class ExpenditureTable extends React.Component{
     }
   }
 
+  
 
   render(){
 
     let rows = []
 
     if (this.state.data){
-      rows = this.state.data.map((item, index) => {
+      let data = this.state.data.sort(function(a, b){
+        return a.date - b.date
+      })
+      rows = data.map((item, index) => {
         return <ExpenditureRow key={index} date={item.date} description={item.description} category={item.category} cost={item.cost}/>
       })
     }
@@ -36,7 +40,7 @@ class ExpenditureTable extends React.Component{
             <th>Date</th>
             <th>Description</th>
             <th>Category</th>
-            <th>Cost</th>
+            <th>Cost (£)</th>
           </tr>
         </thead>
         <tbody>
