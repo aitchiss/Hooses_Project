@@ -14,7 +14,8 @@ class KitchenTable extends React.Component{
       user_id: props.user_id,
       house_id: props.house_id,
       messages: [],
-      input: ''
+      input: '',
+      placeHolder: 'post a message'
     }
 
     this.socket = io("http://localhost:3000")
@@ -92,10 +93,13 @@ class KitchenTable extends React.Component{
          <div className="panel-title">Kitchen Table</div>
         </div>
 
-        <div className="panel-body" className="kitchen-table-msgs">
-          {messages}
+        <div className="panel-body">
+        {messages}
+        <div className="form-group">
+        <input className="form-control" id="form-text-entry" type="text" placeholder={this.state.placeHolder} onChange={this.onMessageInputChange.bind(this)} onKeyDown={this.onMessageSubmit.bind(this)}></input>
+        </div>        
         </div>
-        <input id="kitchen-table-input" type="text" placeholder="post a message" onChange={this.onMessageInputChange.bind(this)} onKeyDown={this.onMessageSubmit.bind(this)}></input>
+       
       </div>
     )
   }

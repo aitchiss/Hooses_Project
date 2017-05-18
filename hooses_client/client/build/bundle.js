@@ -15943,8 +15943,6 @@ var _socket2 = _interopRequireDefault(_socket);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -15963,7 +15961,8 @@ var KitchenTable = function (_React$Component) {
       user_id: props.user_id,
       house_id: props.house_id,
       messages: [],
-      input: ''
+      input: '',
+      placeHolder: 'post a message'
     };
 
     _this.socket = (0, _socket2.default)("http://localhost:3000");
@@ -16048,10 +16047,14 @@ var KitchenTable = function (_React$Component) {
         ),
         _react2.default.createElement(
           'div',
-          _defineProperty({ className: 'panel-body' }, 'className', 'kitchen-table-msgs'),
-          messages
-        ),
-        _react2.default.createElement('input', { id: 'kitchen-table-input', type: 'text', placeholder: 'post a message', onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })
+          { className: 'panel-body' },
+          messages,
+          _react2.default.createElement(
+            'div',
+            { className: 'form-group' },
+            _react2.default.createElement('input', { className: 'form-control', id: 'form-text-entry', type: 'text', placeholder: this.state.placeHolder, onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })
+          )
+        )
       );
     }
   }]);
