@@ -16048,12 +16048,12 @@ var KitchenTable = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'panel-body kitchen-table-msgs' },
-          messages,
-          _react2.default.createElement(
-            'div',
-            { className: 'form-group ' },
-            _react2.default.createElement('input', { className: 'form-control', id: 'kitchen-table-input', type: 'text', placeholder: this.state.placeHolder, onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })
-          )
+          messages
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'panel-footer' },
+          _react2.default.createElement('input', { className: 'form-control', id: 'kitchen-table-input', type: 'text', placeholder: this.state.placeHolder, onChange: this.onMessageInputChange.bind(this), onKeyDown: this.onMessageSubmit.bind(this) })
         )
       );
     }
@@ -16086,13 +16086,9 @@ var KitchenTableMessage = function KitchenTableMessage(props) {
   return _react2.default.createElement(
     "div",
     { className: "kitchen-table-msg" },
-    _react2.default.createElement(
-      "p",
-      null,
-      props.userName,
-      ": ",
-      props.message
-    )
+    props.userName,
+    ": ",
+    props.message
   );
 };
 

@@ -180,7 +180,16 @@ vertical-align: bottom;
 .kitchen-table-msgs{
   height: 300px;
   overflow-y: scroll;
+  padding-top:0px;
+  padding-bottom:0px;
+
 }
+
+.kitchen-table-msg{
+  padding-top:7px;
+  padding-bottom:7px;
+}
+
 
 .co-owner-thumbnail{
   width: 50px;

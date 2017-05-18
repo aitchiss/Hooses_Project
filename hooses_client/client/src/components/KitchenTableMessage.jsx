@@ -4,7 +4,7 @@ const KitchenTableMessage = (props) => {
 
   return (
     <div className="kitchen-table-msg">
-      <p>{props.userName}: {props.message}</p>
+      {props.userName}: {props.message}
     </div>
   )
 }

@@ -95,11 +95,12 @@ class KitchenTable extends React.Component{
 
         <div className="panel-body kitchen-table-msgs">
         {messages}
-        <div className="form-group ">
-        <input className="form-control" id="kitchen-table-input" type="text" placeholder={this.state.placeHolder} onChange={this.onMessageInputChange.bind(this)} onKeyDown={this.onMessageSubmit.bind(this)}></input>
-        </div>        
         </div>
        
+        <div className="panel-footer">
+        <input className="form-control" id="kitchen-table-input" type="text" placeholder={this.state.placeHolder} onChange={this.onMessageInputChange.bind(this)} onKeyDown={this.onMessageSubmit.bind(this)}></input>
+        </div>
+
       </div>
     )
   }
