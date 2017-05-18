@@ -17163,7 +17163,7 @@ var Topics = function (_React$Component) {
     value: function detectEnterKeyPress(event) {
       if (event.key === 'Enter') {
         this.saveNewTopic();
-        //need to collapse the panel too...laters!
+        document.querySelector("#collapseExample").className = "collapse";
       }
     }
   }, {
