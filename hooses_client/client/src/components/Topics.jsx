@@ -85,7 +85,7 @@ class Topics extends React.Component{
 
   detectEnterKeyPress(event){
    if (event.key === 'Enter') {
-        this.saveNewTopic()
+        this.saveNewTopic() 
         //need to collapse the panel too...laters!
     }
   }
