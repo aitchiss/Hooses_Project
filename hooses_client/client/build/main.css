@@ -199,18 +199,6 @@ vertical-align: bottom;
   
 }
 
-
-
-.collapse {
-  display: none
-}
-
-.collapse.in {
-  display: block
-}
-
-
-
 @media (max-width: 768px) {
     .navbar-nav>li{
     padding-top: 15px;

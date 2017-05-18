@@ -40,7 +40,7 @@ class TopicThread extends React.Component{
 
                   const newMessagesArray = [...this.state.messages, res]
                   this.setState({
-                    newMessages: '',
+                    newMessage: '',
                     messages: newMessagesArray
                   })
               }

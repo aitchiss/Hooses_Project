@@ -16881,7 +16881,7 @@ var TopicThread = function (_React$Component) {
 
             var newMessagesArray = [].concat(_toConsumableArray(_this2.state.messages), [res]);
             _this2.setState({
-              newMessages: '',
+              newMessage: '',
               messages: newMessagesArray
             });
           }
